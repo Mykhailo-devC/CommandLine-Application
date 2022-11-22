@@ -1,0 +1,14 @@
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\bin\Debug\netcoreapp3.1\CommandLine-App.exe
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\bin\Debug\netcoreapp3.1\CommandLine-App.deps.json
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\bin\Debug\netcoreapp3.1\CommandLine-App.runtimeconfig.json
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\bin\Debug\netcoreapp3.1\CommandLine-App.runtimeconfig.dev.json
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\bin\Debug\netcoreapp3.1\CommandLine-App.dll
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\bin\Debug\netcoreapp3.1\CommandLine-App.pdb
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\obj\Debug\netcoreapp3.1\CommandLine-App.csproj.AssemblyReference.cache
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\obj\Debug\netcoreapp3.1\CommandLine-App.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\obj\Debug\netcoreapp3.1\CommandLine-App.AssemblyInfoInputs.cache
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\obj\Debug\netcoreapp3.1\CommandLine-App.AssemblyInfo.cs
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\obj\Debug\netcoreapp3.1\CommandLine-App.csproj.CoreCompileInputs.cache
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\obj\Debug\netcoreapp3.1\CommandLine-App.dll
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\obj\Debug\netcoreapp3.1\CommandLine-App.pdb
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\obj\Debug\netcoreapp3.1\CommandLine-App.genruntimeconfig.cache
