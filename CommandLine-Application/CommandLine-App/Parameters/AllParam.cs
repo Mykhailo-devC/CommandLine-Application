@@ -10,6 +10,7 @@ namespace CommandLine_App.Parametrs
         public override string Name { get; set; }
         //For future allias
         public override List<string> NamePool { get; set; }
+        public override string ArgumentDescription { get; set; }
 
         public AllParam()
         {
@@ -19,11 +20,7 @@ namespace CommandLine_App.Parametrs
                 Name,
                 "-a",
             };
-        }
-
-        public override string ArgView()
-        {
-            return "";
+            ArgumentDescription = "This parameter takes no arguments";
         }
 
         public override string ToString()

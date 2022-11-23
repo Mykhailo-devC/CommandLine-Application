@@ -8,13 +8,8 @@ namespace CommandLine_App.Abstraction
     {
         public abstract string Name { get; set; }
         public abstract List<string> NamePool { get; set; }
-
+        public abstract string ArgumentDescription { get; set; }
         public abstract override string ToString();
-
-        public virtual string ArgView()
-        {
-            return $"[your_{Name}_argument]";
-        }
 
         protected StringBuilder PrintShortCuts (StringBuilder str)
         {
@@ -28,6 +23,5 @@ namespace CommandLine_App.Abstraction
 
             return str;
         }
-
     }
 }

@@ -9,6 +9,7 @@ namespace CommandLine_App.Parameters
     {
         public override string Name { get; set; }
         public override List<string> NamePool {get; set;}
+        public override string ArgumentDescription { get; set; }
         public PidParam()
         {
             Name = "pid";
@@ -17,6 +18,7 @@ namespace CommandLine_App.Parameters
                 Name,
                 "-p"
             };
+            ArgumentDescription = "This parameter takes pid";
         }
         public override string ToString()
         {

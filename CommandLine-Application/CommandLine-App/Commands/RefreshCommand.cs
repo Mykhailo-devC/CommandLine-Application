@@ -72,7 +72,7 @@ namespace CommandLine_App.Commands
             str.Append($"\nCommand '{Name}' - refresh running processes.\nParameters:");
             foreach (var p in Parametrs)
             {
-                str.Append($"\n\t{Name} {p.Name} {p.ArgView()} - {Name} ");
+                str.Append($"\n\t{Name} {p.Name} [your_argument] - {Name} ");
                 str.Append(p.ToString());
             }
             return str.ToString();
