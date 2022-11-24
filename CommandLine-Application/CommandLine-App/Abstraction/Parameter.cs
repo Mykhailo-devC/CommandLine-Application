@@ -8,6 +8,7 @@ namespace CommandLine_App.Abstraction
     {
         public abstract string Name { get; set; }
         public abstract List<string> NamePool { get; set; }
+        public abstract short ArgumentsCount { get; set; }
         public abstract string ArgumentDescription { get; set; }
         public abstract override string ToString();
 

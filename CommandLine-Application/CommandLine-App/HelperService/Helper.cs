@@ -20,6 +20,12 @@ namespace CommandLine_App.HelperService
 
         public static void HelpChooseParameter(List<string> param)
         {
+            if(param.Count == 1)
+            {
+                Console.WriteLine("Please type 'help' command to see existing parameters for this command.");
+                return;
+            }
+
             foreach (var par in CommandPool.Pool[param[0]].Parametrs)
             {
                 foreach(var name in par.NamePool)
@@ -31,7 +37,14 @@ namespace CommandLine_App.HelperService
                 }
                 
             }
+
             Console.WriteLine("Please type 'help' command to see existing parameters for this command.");
+        }
+
+        public static void HelpChooseArgument(List<string> param)
+        {
+            Console.WriteLine(ParameterPool.Pool[param[1]].ArgumentDescription);
+            Console.WriteLine($"Please type 'help {param[0]} {param[1]}' command to see existing parameters for this command.");
         }
     }
 }

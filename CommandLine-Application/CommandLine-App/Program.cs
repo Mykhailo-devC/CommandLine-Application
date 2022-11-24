@@ -12,6 +12,8 @@ namespace CommandLine_App
     {
         public static void Main(string[] args)
         {
+
+
             var userInput = Console.ReadLine().Split(" ").ToList();
 
             if (CommandPool.Pool.ContainsKey(userInput[0]))

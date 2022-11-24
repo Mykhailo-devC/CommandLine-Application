@@ -9,6 +9,7 @@ namespace CommandLine_App.Parameters
     {
         public override string Name { get; set; }
         public override List<string> NamePool { get; set; }
+        public override short ArgumentsCount { get; set; }
         public override string ArgumentDescription { get; set; }
         public NameParam()
         {
@@ -18,7 +19,9 @@ namespace CommandLine_App.Parameters
                 Name,
                 "-n"
             };
-            ArgumentDescription = "This parameter takes name";
+            ArgumentsCount = 1;
+            ArgumentDescription = "Show name (string Name), shows all processes with current [Name]," +
+                "like [show name firefox].\n";
         }
 
         public override string ToString()

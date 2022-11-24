@@ -19,39 +19,22 @@ namespace CommandLine_App.Commands
 
         public override bool Execute(List<string> param)
         {
-            if(param.Count == 0)
+            try
             {
-                return Help();
-            }
-            else if (CommandPool.Pool.ContainsKey(param[0]))
-            {
-                if (param.Count == 1)
+                switch (param.Count)
                 {
-                    return HelpCmd(param[0]);
-                }
-                else if(param.Count == 2)
-                {
-                    foreach (var par in CommandPool.Pool[param[0]].Parametrs)
-                    {
-                        if (par.NamePool.Contains(param[1]))
-                        {
-                            return HelpParam(param);
-                        }
-                    }
-
-                    Helper.HelpChooseParameter(param);
-                    return false;
-                }
-                else
-                {
-                    Console.WriteLine("Too many parameters!");
-                    Console.WriteLine(ToString());
-                    return false;
+                    case 0: return Help();
+                    case 1: return HelpCmd(param[0]);
+                    case 2: return HelpParam(param);
+                    default:
+                        Console.WriteLine("Too many parameters!");
+                        Console.WriteLine(ToString());
+                        return false;
                 }
             }
-            else
+            catch (Exception e)
             {
-                Helper.HelpChooseCommand(param[0]);
+                Console.WriteLine(e.Message);
                 return false;
             }
             
@@ -93,9 +76,14 @@ namespace CommandLine_App.Commands
                 Console.WriteLine(CommandPool.Pool[param].ToString());
                 return true;
             }
-            catch
+            catch(KeyNotFoundException)
             {
-                //TODO: Logging
+                Helper.HelpChooseCommand(param);
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
                 return false;
             }
         }
@@ -107,9 +95,19 @@ namespace CommandLine_App.Commands
                 Console.WriteLine(CommandPool.Pool[param[0]].Parametrs.Find(e => e.NamePool.Contains(param[1])).ArgumentDescription);
                 return true;
             }
-            catch
+            catch(KeyNotFoundException)
             {
-                //TODO: Logging
+                Helper.HelpChooseCommand(param[0]);
+                return false;
+            }
+            catch (NullReferenceException)
+            {
+                Helper.HelpChooseParameter(param);
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
                 return false;
             }
         }

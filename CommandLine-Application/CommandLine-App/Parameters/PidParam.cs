@@ -9,6 +9,7 @@ namespace CommandLine_App.Parameters
     {
         public override string Name { get; set; }
         public override List<string> NamePool {get; set;}
+        public override short ArgumentsCount { get; set; }
         public override string ArgumentDescription { get; set; }
         public PidParam()
         {
@@ -18,7 +19,9 @@ namespace CommandLine_App.Parameters
                 Name,
                 "-p"
             };
-            ArgumentDescription = "This parameter takes pid";
+            ArgumentsCount = 1;
+            ArgumentDescription = "Show pid (int value), shows process with [value] id," +
+                "like [show pid 89].\n";
         }
         public override string ToString()
         {
