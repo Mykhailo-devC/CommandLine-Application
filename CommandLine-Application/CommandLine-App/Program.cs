@@ -12,19 +12,26 @@ namespace CommandLine_App
     {
         public static void Main(string[] args)
         {
-
+            var _factory = new CommandFactory();
 
             var userInput = Console.ReadLine().Split(" ").ToList();
 
-            if (CommandPool.Pool.ContainsKey(userInput[0]))
-            {
-                CommandPool.Pool[userInput[0]].Execute(userInput.GetRange(1, userInput.Count - 1));
-            }
-            else
-            {
-                Helper.HelpChooseCommand(userInput[0]);
-            }
+            var command =_factory.GetCommand(userInput);
 
+            if(command != null)
+            {
+                if (command.Name.StartsWith("help"))
+                {
+                    userInput.RemoveRange(0, 1);
+                }
+                else
+                {
+                    userInput.RemoveRange(0, 2);
+                }
+                
+                command.Execute(userInput.ToArray());
+            }
+            
             #region
             /*while (true)
             {

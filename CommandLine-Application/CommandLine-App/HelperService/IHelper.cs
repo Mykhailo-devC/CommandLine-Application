@@ -4,9 +4,10 @@ using System.Text;
 
 namespace CommandLine_App.HelperService
 {
-    /*public static interface IHelper
+    public interface IHelper
     {
-        public static List<string> HelpChooseCommand(string param);
-        public static List<string> HelpChooseParameter(string param);
-    }*/
+        public void StandartHelp();
+        public void HelpChooseCommand(string param);
+        public void HelpChooseParameter(List<string> param);
+    }
 }

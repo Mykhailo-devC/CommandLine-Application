@@ -4,8 +4,8 @@ using System.Text;
 
 namespace CommandLine_App.Abstraction
 {
-    public abstract class PoolAbs<T>
+    public interface PoolAbstraction<T>
     {
-        public abstract Dictionary<string, T> Pool { get; }// need DI
+        public Dictionary<string, T> Pool { get; set; }
     }
 }

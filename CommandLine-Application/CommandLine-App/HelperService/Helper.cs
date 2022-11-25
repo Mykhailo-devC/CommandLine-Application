@@ -1,16 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
+using CommandLine_App.Pools;
 
 namespace CommandLine_App.HelperService
 {
-    public static class Helper 
+    public class Helper : IHelper
     {
-        public static void HelpChooseCommand(string param)
+        private readonly CommandPool _pool;
+        public Helper(CommandPool pool)
         {
-            foreach(var key in CommandPool.Pool.Keys)
+            _pool = pool;
+        }
+        public void StandartHelp()
+        {
+            Console.WriteLine("Please type 'help' to see more " +
+                "information about avalable commands" +
+                "and thier parameters.");
+        }
+        public void HelpChooseCommand(string param)
+        {
+            foreach(var key in _pool.Pool.Keys)
             {
-                if (key.Contains(param))
+                if (key.StartsWith(param))
                 {
                     Console.WriteLine($"Maybe you mean '{key}' command?");
                 }
@@ -18,33 +31,23 @@ namespace CommandLine_App.HelperService
             Console.WriteLine("Please type 'help' command to see existing commands.");
         }
 
-        public static void HelpChooseParameter(List<string> param)
+        public void HelpChooseParameter(List<string> param)
         {
             if(param.Count == 1)
             {
-                Console.WriteLine("Please type 'help' command to see existing parameters for this command.");
+                StandartHelp();
                 return;
             }
 
-            foreach (var par in CommandPool.Pool[param[0]].Parametrs)
+            foreach (var par in _pool.Pool[param[0]].Keys)
             {
-                foreach(var name in par.NamePool)
+                if (par.StartsWith(param[1]))
                 {
-                    if (name.Contains(param[1]))
-                    {
-                        Console.WriteLine($"Maybe you mean '{name}' parameter?");
-                    }
+                    Console.WriteLine($"Maybe you mean '{par}' parameter?");
                 }
-                
             }
 
             Console.WriteLine("Please type 'help' command to see existing parameters for this command.");
-        }
-
-        public static void HelpChooseArgument(List<string> param)
-        {
-            Console.WriteLine(ParameterPool.Pool[param[1]].ArgumentDescription);
-            Console.WriteLine($"Please type 'help {param[0]} {param[1]}' command to see existing parameters for this command.");
         }
     }
 }
