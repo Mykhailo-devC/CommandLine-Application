@@ -11,9 +11,9 @@ namespace CommandLine_App.Commands
     {
         public override string Name { get; set; }
         public override abstract string ArgumentDescription { get; set; }
-        protected CommandPool _pool;
+        protected readonly IPool<Dictionary<string, Command>> _pool;
 
-        public HelpCommand(CommandPool pool)
+        public HelpCommand(IPool<Dictionary<string, Command>> pool)
         {
             Name = "help";
             _pool = pool;
@@ -23,12 +23,12 @@ namespace CommandLine_App.Commands
 
         public override void PrintBaseToString()
         {
-            Console.WriteLine(this.ToString());
+            Console.WriteLine(ToString());
         }
 
         public override string ToString()
         {
-            return $"\n{Name} - shows all commands and their avalable parameters.";
+            return $"\nCommand '{Name}' - shows information about existing commandshe";
         }
     }
 }

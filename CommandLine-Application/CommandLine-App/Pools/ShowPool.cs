@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CommandLine_App.Pools
 {
-    public class ShowPool : PoolAbstraction<Command>
+    public class ShowPool : IPool<Command>
     {
         public Dictionary<string, Command> Pool { get; set; }
         public ShowPool()

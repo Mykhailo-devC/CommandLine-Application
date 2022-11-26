@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
+using CommandLine_App.Abstraction;
 using CommandLine_App.Pools;
 
 namespace CommandLine_App.HelperService
 {
     public class Helper : IHelper
     {
-        private readonly CommandPool _pool;
-        public Helper(CommandPool pool)
+        private readonly IPool<Dictionary<string, Command>> _pool;
+        public Helper(IPool<Dictionary<string, Command>> pool)
         {
             _pool = pool;
         }
+
         public void StandartHelp()
         {
             Console.WriteLine("Please type 'help' to see more " +
                 "information about avalable commands" +
                 "and thier parameters.");
         }
+
         public void HelpChooseCommand(string param)
         {
             foreach(var key in _pool.Pool.Keys)

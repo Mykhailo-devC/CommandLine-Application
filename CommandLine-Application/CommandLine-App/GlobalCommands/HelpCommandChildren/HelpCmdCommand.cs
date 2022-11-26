@@ -1,4 +1,5 @@
-﻿using CommandLine_App.Commands;
+﻿using CommandLine_App.Abstraction;
+using CommandLine_App.Commands;
 using CommandLine_App.HelperService;
 using CommandLine_App.Pools;
 using System;
@@ -13,7 +14,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
         public new string Name { get; set; }
         public override string ArgumentDescription { get; set; }
 
-        public HelpCmdCommand(CommandPool pool) : base(pool)
+        public HelpCmdCommand(IPool<Dictionary<string, Command>> pool) : base(pool)
         {
             Name = "help [command]";
             ArgumentDescription = "Help (string value), like [help show].";
@@ -40,7 +41,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
 
         public override string ToString()
         {
-            return $"\t{Name} - shows all parameters that spesified command can take.";
+            return $"\t'{Name}' - shows all parameters that spesified command can take.";
         }
 
         private bool HelpCmd(string arg)

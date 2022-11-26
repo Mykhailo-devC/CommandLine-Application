@@ -11,8 +11,8 @@ namespace CommandLine_App
 {
     public class CommandFactory
     {
-        private CommandPool _pool;
-        private Helper _helper;
+        private readonly IPool<Dictionary<string, Command>> _pool;
+        private readonly IHelper _helper;
 
         public CommandFactory()
         {
@@ -52,6 +52,45 @@ namespace CommandLine_App
                                 if(p.Split(' ').Length == com.Count)
                                 {
                                     return _pool.Pool[com[0]][p];
+                                }
+                            }
+
+                            _helper.HelpChooseParameter(com.GetRange(0, 2));
+                            return null;
+                        }
+                    case "refresh":
+                        {
+                            foreach (var p in _pool.Pool[com[0]].Keys)
+                            {
+                                if (p == com[1])
+                                {
+                                    return _pool.Pool[com[0]][com[1]];
+                                }
+                            }
+
+                            _helper.HelpChooseParameter(com.GetRange(0, 2));
+                            return null;
+                        }
+                    case "kill":
+                        {
+                            foreach (var p in _pool.Pool[com[0]].Keys)
+                            {
+                                if (p == com[1])
+                                {
+                                    return _pool.Pool[com[0]][com[1]];
+                                }
+                            }
+
+                            _helper.HelpChooseParameter(com.GetRange(0, 2));
+                            return null;
+                        }
+                    case "start":
+                        {
+                            foreach (var p in _pool.Pool[com[0]].Keys)
+                            {
+                                if (p == com[1])
+                                {
+                                    return _pool.Pool[com[0]][com[1]];
                                 }
                             }
 

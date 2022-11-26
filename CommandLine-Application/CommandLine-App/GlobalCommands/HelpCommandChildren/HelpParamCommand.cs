@@ -1,4 +1,5 @@
-﻿using CommandLine_App.Commands;
+﻿using CommandLine_App.Abstraction;
+using CommandLine_App.Commands;
 using CommandLine_App.HelperService;
 using CommandLine_App.Pools;
 using System;
@@ -12,13 +13,13 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
     {
         public new string Name { get; set; }
         public override string ArgumentDescription { get; set; }
-        private readonly Helper _helper;
+        private readonly IHelper _helper;
 
-        public HelpParamCommand(CommandPool pool) : base(pool)
+        public HelpParamCommand(IPool<Dictionary<string, Command>> pool, IHelper helper) : base(pool)
         {
             Name = "help [command] [parameter]";
             ArgumentDescription = "Help (string value) (string vlue), like [help show memory].";
-            _helper = new Helper(pool);
+            _helper = helper;
         }
 
         public override bool Execute(params string[] param)
@@ -42,7 +43,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
 
         public override string ToString()
         {
-            return $"\t{Name} - shows type of arguments that can take specified command.";
+            return $"\t'{Name}' - shows type of arguments that can take specified command.";
         }
 
         private bool HelpParam(string com, string par)

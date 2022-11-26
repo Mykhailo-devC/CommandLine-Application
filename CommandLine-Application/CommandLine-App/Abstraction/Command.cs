@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace CommandLine_App.Abstraction
@@ -16,7 +17,5 @@ namespace CommandLine_App.Abstraction
         {
             Console.Write(ArgumentDescription);
         }
-
-
     }
 }

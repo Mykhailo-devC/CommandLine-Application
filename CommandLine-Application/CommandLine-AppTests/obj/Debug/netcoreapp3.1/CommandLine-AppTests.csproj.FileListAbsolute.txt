@@ -99,3 +99,7 @@ E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-AppTests
 E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-AppTests\obj\Debug\netcoreapp3.1\CommandLine-AppTests.dll
 E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-AppTests\obj\Debug\netcoreapp3.1\CommandLine-AppTests.pdb
 E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-AppTests\obj\Debug\netcoreapp3.1\CommandLine-AppTests.genruntimeconfig.cache
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-AppTests\bin\Debug\netcoreapp3.1\Castle.Core.dll
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-AppTests\bin\Debug\netcoreapp3.1\Moq.dll
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-AppTests\bin\Debug\netcoreapp3.1\System.Diagnostics.EventLog.dll
+E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-AppTests\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.EventLog.dll

@@ -1,0 +1,247 @@
+------------------------------------------------------
+|Id   |Process Name                        |Memory/Kb|
+------------------------------------------------------
+|4708 |afwServ                             | 12460/Kb|
+|8204 |ApplicationFrameHost                | 22220/Kb|
+|7788 |aswEngSrv                           | 25656/Kb|
+|4380 |aswToolsSvc                         | 52216/Kb|
+|4140 |AudioDevMon                         |  2984/Kb|
+|3228 |audiodg                             |  8304/Kb|
+|3548 |AvastSvc                            |118692/Kb|
+|1764 |AvastUI                             | 49604/Kb|
+|3028 |AvastUI                             | 23432/Kb|
+|19844|AvastUI                             | 16468/Kb|
+|10416|AvastUI                             | 17988/Kb|
+|5472 |CCleanerPerformanceOptimizerService | 10844/Kb|
+|13228|conhost                             |  6384/Kb|
+|4904 |conhost                             |  6320/Kb|
+|3972 |conhost                             |  6320/Kb|
+|11280|conhost                             |  6324/Kb|
+|1552 |conhost                             |  6376/Kb|
+|1260 |conhost                             |  6400/Kb|
+|4012 |conhost                             |  3484/Kb|
+|11604|Cortana                             | 60920/Kb|
+|788  |csrss                               |  2348/Kb|
+|21336|csrss                               |  3324/Kb|
+|15832|ctfmon                              |  4572/Kb|
+|5184 |dasHost                             |  1180/Kb|
+|4936 |DCIService                          | 35160/Kb|
+|24108|devenv                              |1366732/Kb|
+|7128 |DeviceControlServer                 |  1496/Kb|
+|17076|Discord                             | 49652/Kb|
+|5608 |Discord                             | 12388/Kb|
+|280  |Discord                             | 85424/Kb|
+|11756|Discord                             | 15884/Kb|
+|13916|Discord                             |179548/Kb|
+|9916 |Discord                             | 13460/Kb|
+|8780 |dllhost                             |  4272/Kb|
+|22408|dllhost                             |  3448/Kb|
+|11984|dwm                                 |100456/Kb|
+|17308|explorer                            |126976/Kb|
+|13216|fdhost                              |  2040/Kb|
+|12984|fdlauncher                          |   812/Kb|
+|12172|firefox                             |443940/Kb|
+|20928|firefox                             |621812/Kb|
+|396  |firefox                             | 20504/Kb|
+|1220 |firefox                             | 50664/Kb|
+|8876 |firefox                             |334220/Kb|
+|18916|firefox                             |159300/Kb|
+|22552|firefox                             |122828/Kb|
+|8440 |firefox                             |158968/Kb|
+|1904 |firefox                             |158956/Kb|
+|6988 |firefox                             |292928/Kb|
+|13064|firefox                             |337484/Kb|
+|7236 |firefox                             | 70992/Kb|
+|21744|firefox                             | 22192/Kb|
+|16076|firefox                             | 21160/Kb|
+|21596|firefox                             |154324/Kb|
+|9540 |firefox                             |282720/Kb|
+|16116|firefox                             | 86340/Kb|
+|19308|firefox                             | 96216/Kb|
+|20804|firefox                             |468300/Kb|
+|8908 |firefox                             |125568/Kb|
+|18320|firefox                             |113440/Kb|
+|17056|firefox                             |438560/Kb|
+|1536 |firefox                             |220596/Kb|
+|2368 |firefox                             |107508/Kb|
+|15840|firefox                             | 31248/Kb|
+|3640 |firefox                             | 27084/Kb|
+|12840|firefox                             | 27168/Kb|
+|21580|firefox                             | 27220/Kb|
+|892  |fontdrvhost                         |  1688/Kb|
+|18512|fontdrvhost                         |  5240/Kb|
+|11472|git                                 |   668/Kb|
+|7916 |HxOutlook                           | 71188/Kb|
+|19592|HxTsr                               | 20580/Kb|
+|0    |Idle                                |    60/Kb|
+|3680 |Lavasoft.WCAssistant.WinService     | 39396/Kb|
+|2756 |LDSvc                               | 48676/Kb|
+|960  |lsass                               |  9688/Kb|
+|4888 |mDNSResponder                       |  1904/Kb|
+|2388 |Memory Compression                  |  2668/Kb|
+|1164 |Microsoft.Photos                    | 71684/Kb|
+|21536|Microsoft.ServiceHub.Controller     | 82316/Kb|
+|4964 |MMERefresh                          |   872/Kb|
+|17568|MSBuild                             | 61672/Kb|
+|22964|msedgewebview2                      | 41536/Kb|
+|8068 |msedgewebview2                      |  2036/Kb|
+|5680 |msedgewebview2                      | 59744/Kb|
+|8108 |msedgewebview2                      | 10328/Kb|
+|9444 |msedgewebview2                      |  7672/Kb|
+|20260|msedgewebview2                      | 30436/Kb|
+|14752|msedgewebview2                      | 22520/Kb|
+|5112 |NIHardwareService                   |  8656/Kb|
+|5104 |nvcontainer                         | 12748/Kb|
+|19724|nvcontainer                         | 42468/Kb|
+|1888 |NVDisplay.Container                 |  8144/Kb|
+|24008|NVDisplay.Container                 | 42784/Kb|
+|12992|NVIDIA Web Helper                   | 35476/Kb|
+|5052 |OfficeClickToRun                    | 39656/Kb|
+|11024|PerfWatson2                         | 61624/Kb|
+|16100|PhoneExperienceHost                 | 90164/Kb|
+|124  |Registry                            | 10096/Kb|
+|4196 |RtkAudUService64                    |  2572/Kb|
+|1964 |RtkAudUService64                    |  1940/Kb|
+|17088|rundll32                            |  1812/Kb|
+|18584|RuntimeBroker                       |  5880/Kb|
+|18024|RuntimeBroker                       |  6604/Kb|
+|17776|RuntimeBroker                       |  4044/Kb|
+|16528|RuntimeBroker                       |  2628/Kb|
+|13248|RuntimeBroker                       |  4612/Kb|
+|11096|RuntimeBroker                       |  4448/Kb|
+|6560 |RuntimeBroker                       |  3400/Kb|
+|9036 |RuntimeBroker                       |  5692/Kb|
+|15196|RuntimeBroker                       | 10716/Kb|
+|3408 |RvControlSvc                        |  6264/Kb|
+|14372|RvRvpnGui                           | 15456/Kb|
+|20284|SearchApp                           |108164/Kb|
+|20564|SearchApp                           |151980/Kb|
+|9100 |SearchIndexer                       | 36384/Kb|
+|3576 |SecurityHealthService               |  5088/Kb|
+|14800|SecurityHealthSystray               |  1832/Kb|
+|1052 |ServiceHub.DataWarehouseHost        |119816/Kb|
+|9400 |ServiceHub.Host.AnyCPU              |281812/Kb|
+|12968|ServiceHub.Host.dotnet.x64          |125584/Kb|
+|10948|ServiceHub.Host.dotnet.x64          | 24480/Kb|
+|8080 |ServiceHub.Host.netfx.x86           | 62280/Kb|
+|19780|ServiceHub.IdentityHost             | 60164/Kb|
+|19784|ServiceHub.IndexingService          | 41972/Kb|
+|21660|ServiceHub.IntellicodeModelService  |904408/Kb|
+|23860|ServiceHub.RoslynCodeAnalysisService|424956/Kb|
+|11972|ServiceHub.SettingsHost             |169824/Kb|
+|11736|ServiceHub.TestWindowStoreHost      |117784/Kb|
+|13004|ServiceHub.ThreadedWaitDialog       |123084/Kb|
+|684  |ServiceHub.VSDetouredHost           |165652/Kb|
+|952  |services                            |  6228/Kb|
+|12584|SgrmBroker                          |  6436/Kb|
+|16308|ShellExperienceHost                 | 59036/Kb|
+|24172|sihost                              |  7624/Kb|
+|656  |smss                                |  1064/Kb|
+|4460 |spoolsv                             |  5388/Kb|
+|5868 |sqlceip                             | 43672/Kb|
+|5792 |sqlservr                            |458172/Kb|
+|6584 |StartMenuExperienceHost             | 49700/Kb|
+|4740 |steam                               | 57532/Kb|
+|24212|steamwebhelper                      | 24376/Kb|
+|11248|steamwebhelper                      |  8144/Kb|
+|17656|steamwebhelper                      |189216/Kb|
+|23028|steamwebhelper                      | 11824/Kb|
+|8724 |steamwebhelper                      | 65720/Kb|
+|23356|steamwebhelper                      | 24448/Kb|
+|15484|steamwebhelper                      | 92808/Kb|
+|552  |svchost                             | 11908/Kb|
+|1072 |svchost                             | 13944/Kb|
+|1120 |svchost                             |  2952/Kb|
+|1332 |svchost                             | 14004/Kb|
+|1340 |svchost                             |  2244/Kb|
+|1376 |svchost                             |  6960/Kb|
+|1440 |svchost                             |  2008/Kb|
+|1508 |svchost                             |  1644/Kb|
+|1556 |svchost                             |  1612/Kb|
+|1576 |svchost                             |  3368/Kb|
+|1672 |svchost                             | 17036/Kb|
+|1804 |svchost                             |  2452/Kb|
+|1860 |svchost                             |  6136/Kb|
+|1896 |svchost                             |  2640/Kb|
+|2020 |svchost                             |  2768/Kb|
+|1212 |svchost                             |  4740/Kb|
+|2140 |svchost                             |  3076/Kb|
+|2148 |svchost                             |  1316/Kb|
+|2156 |svchost                             |  1980/Kb|
+|2164 |svchost                             |  2956/Kb|
+|2272 |svchost                             |  1476/Kb|
+|2328 |svchost                             |  9012/Kb|
+|2340 |svchost                             |  1980/Kb|
+|2536 |svchost                             |  2744/Kb|
+|2544 |svchost                             |  2652/Kb|
+|2700 |svchost                             | 13612/Kb|
+|2860 |svchost                             |  2320/Kb|
+|2952 |svchost                             |  4716/Kb|
+|2972 |svchost                             |  1548/Kb|
+|1884 |svchost                             |  2892/Kb|
+|3188 |svchost                             |  4284/Kb|
+|3308 |svchost                             |  1688/Kb|
+|3316 |svchost                             |  2428/Kb|
+|3400 |svchost                             | 25464/Kb|
+|3456 |svchost                             |  2960/Kb|
+|4020 |svchost                             |  1908/Kb|
+|3796 |svchost                             |  2632/Kb|
+|3816 |svchost                             |  1792/Kb|
+|2824 |svchost                             |  3568/Kb|
+|4660 |svchost                             |  2012/Kb|
+|4868 |svchost                             |  1220/Kb|
+|4912 |svchost                             | 39100/Kb|
+|4920 |svchost                             |  1316/Kb|
+|4928 |svchost                             |  6652/Kb|
+|5088 |svchost                             |  1580/Kb|
+|2764 |svchost                             |  1312/Kb|
+|3828 |svchost                             |  4552/Kb|
+|1972 |svchost                             |  1268/Kb|
+|5268 |svchost                             |  2408/Kb|
+|5436 |svchost                             |  3576/Kb|
+|5948 |svchost                             |  3052/Kb|
+|6032 |svchost                             |  2840/Kb|
+|7228 |svchost                             |  2576/Kb|
+|7176 |svchost                             |  1812/Kb|
+|7480 |svchost                             |  5376/Kb|
+|580  |svchost                             |  5524/Kb|
+|7204 |svchost                             |  2688/Kb|
+|5144 |svchost                             |  3924/Kb|
+|2288 |svchost                             |  1880/Kb|
+|12160|svchost                             |  5604/Kb|
+|15132|svchost                             |  1868/Kb|
+|12608|svchost                             |  3112/Kb|
+|1292 |svchost                             |  4332/Kb|
+|13008|svchost                             |  6796/Kb|
+|17276|svchost                             |  3180/Kb|
+|21936|svchost                             |  1256/Kb|
+|15820|svchost                             |  5324/Kb|
+|18696|svchost                             | 11832/Kb|
+|1428 |svchost                             |  6548/Kb|
+|10740|svchost                             |  2304/Kb|
+|2468 |svchost                             |  2344/Kb|
+|21320|svchost                             |  4232/Kb|
+|12748|svchost                             | 10196/Kb|
+|8236 |svchost                             |  2584/Kb|
+|11056|svchost                             | 14044/Kb|
+|24312|svchost                             |  3804/Kb|
+|2592 |svchost                             |  4684/Kb|
+|4    |System                              |   196/Kb|
+|24268|SystemSettings                      | 44584/Kb|
+|20004|SystemSettingsBroker                |  3492/Kb|
+|24244|taskhostw                           |  5708/Kb|
+|16564|taskhostw                           |  8112/Kb|
+|10580|Telegram                            |678252/Kb|
+|14684|testhost                            | 26116/Kb|
+|6308 |TextInputHost                       | 33048/Kb|
+|12928|Todo                                | 44756/Kb|
+|17032|UserOOBEBroker                      |  2144/Kb|
+|14460|ValetonUsbAudioCpl                  |  1984/Kb|
+|22616|VBCSCompiler                        |118660/Kb|
+|3784 |vstest.console                      | 37228/Kb|
+|20496|wallpaper32                         | 32456/Kb|
+|5936 |wallpaperservice32_c                |  1248/Kb|
+|18228|WebViewHost                         | 44140/Kb|
+|880  |wininit                             |  1560/Kb|
+|18932|winlogon                            |  2756/Kb|
+|2260 |wsc_proxy                           |  5148/Kb|

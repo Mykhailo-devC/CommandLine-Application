@@ -1,4 +1,5 @@
-﻿using CommandLine_App.Commands;
+﻿using CommandLine_App.Abstraction;
+using CommandLine_App.Commands;
 using CommandLine_App.GlobalCommands.ShowCommandChildren;
 using CommandLine_App.HelperService;
 using CommandLine_App.Pools;
@@ -16,7 +17,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
         public new string Name { get; set; }
         public override string ArgumentDescription { get; set; }
 
-        public HelpGlobalCommand(CommandPool pool) : base(pool)
+        public HelpGlobalCommand(IPool<Dictionary<string, Command>> pool) : base(pool)
         {
             Name = "help";
             ArgumentDescription = "This parameter takes no arguments, like [help]\n";
@@ -48,7 +49,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
 
         public override string ToString()
         {
-            return $"\t{Name} - shows all commands and their avalable parameters.";
+            return $"\t'{Name}' - shows all commands and their avalable parameters.";
         }
 
         private bool HelpGlobal()

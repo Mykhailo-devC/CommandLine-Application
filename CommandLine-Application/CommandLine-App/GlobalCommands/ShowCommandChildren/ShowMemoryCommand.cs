@@ -82,10 +82,13 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             {
                 var processes = Process.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 > start && e.PrivateMemorySize64 / 1024 < end);
 
-                Console.WriteLine(ProcessesToString(processes));
                 if (processes.Count() == 0)
                 {
                     Console.WriteLine("No existing processes with using memory between {0}/Kb and {1}/Kb!", start, end);
+                }
+                else
+                {
+                    Console.WriteLine(ProcessesToString(processes));
                 }
 
                 return true;

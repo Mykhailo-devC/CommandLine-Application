@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CommandLine_App.Abstraction
 {
-    public interface PoolAbstraction<T>
+    public interface IPool<T>
     {
         public Dictionary<string, T> Pool { get; set; }
     }

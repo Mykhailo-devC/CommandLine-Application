@@ -52,10 +52,13 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             {
                 var processes = Process.GetProcessesByName(arg).OrderBy(e => e.Id);
 
-                Console.WriteLine(ProcessesToString(processes));
                 if (processes.Count() == 0)
                 {
                     Console.WriteLine("No existing processes with '{0}' name!", arg);
+                }
+                else
+                {
+                    Console.WriteLine(ProcessesToString(processes));
                 }
 
                 return true;

@@ -63,7 +63,7 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             catch (ArgumentException)
             {
                 Console.WriteLine("No existing processes with [{0}] id!", arg);
-                return false;
+                return true;
             }
             catch
             {

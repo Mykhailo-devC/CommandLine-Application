@@ -9,7 +9,7 @@ using System.Text;
 
 namespace CommandLine_App.Pools
 {
-    public class CommandPool : PoolAbstraction<Dictionary<string, Command>>
+    public class CommandPool : IPool<Dictionary<string, Command>>
     {
         public Dictionary<string, Dictionary<string, Command>> Pool { get; set; }
         public CommandPool()
@@ -17,9 +17,9 @@ namespace CommandLine_App.Pools
             Pool = new Dictionary<string, Dictionary<string, Command>>()
             {
                 { "show", new ShowPool().Pool },
-                /*{ "kill", new KillCommand() },
-                { "refresh", new RefreshCommand() },
-                { "start", new StartCommand() }*/
+                { "kill", new KillPool().Pool },
+                { "refresh", new RefreshPool().Pool },
+                { "start", new StartPool().Pool },
                 { "help", new HelpPool(this).Pool }
             };
         }
