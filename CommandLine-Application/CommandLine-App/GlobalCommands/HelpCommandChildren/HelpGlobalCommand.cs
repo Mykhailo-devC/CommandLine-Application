@@ -3,12 +3,11 @@ using CommandLine_App.Commands;
 using CommandLine_App.GlobalCommands.ShowCommandChildren;
 using CommandLine_App.HelperService;
 using CommandLine_App.Pools;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Xml.Linq;
+
 
 namespace CommandLine_App.GlobalCommands.HelpCommandChildren
 {
@@ -29,6 +28,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             {
                 if (param.Any())
                 {
+                    Log.Warning("[{1}] User inputs incorrect count of parameters, [params = '{0}']", param, this.GetType());
                     PrintArgumentTip();
                     return false;
                 }
@@ -37,7 +37,8 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+
+                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
                 return false;
             }
         }
@@ -66,11 +67,12 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
                     }
                 }
 
+                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
                 return true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                Log.Error(ex, "[{0}] Exeption has been thrown from HelpGlobal!", this.GetType());
                 return false;
             }
         }

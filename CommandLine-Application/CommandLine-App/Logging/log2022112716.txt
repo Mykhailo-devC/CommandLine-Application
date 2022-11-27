@@ -1,0 +1,20 @@
+|Flow:2eece267-c822-47df-885f-fa2db6cb76a0| 2022-11-27 16:34:27 [INF] Command 'help' has been created
+|Flow:2eece267-c822-47df-885f-fa2db6cb76a0| 2022-11-27 16:34:27 [INF] [CommandLine_App.GlobalCommands.HelpCommandChildren.HelpCmdCommand] Execute has been finished successfully!
+|Flow:2eece267-c822-47df-885f-fa2db6cb76a0| 2022-11-27 16:34:27 [INF] Program finish working.
+
+|Flow:5fb0b20e-99bd-445f-a3af-61c1993ae52c| 2022-11-27 16:35:27 [WRN] User inputs incorrect parameters, [input = '["refresh","memoty","te"]']
+|Flow:113100b2-bd77-411d-89f1-acbb780ae125| 2022-11-27 16:36:56 [WRN] User inputs incorrect parameters, [input = '["refresh","memory","t"]']
+|Flow:113100b2-bd77-411d-89f1-acbb780ae125| 2022-11-27 16:36:56 [INF] Program finish working.
+
+|Flow:a14828bd-f1b3-480e-84c9-538bf18fb162| 2022-11-27 16:37:53 [WRN] User inputs incorrect parameters, [input = '["refresh","memory","td"]']
+|Flow:a14828bd-f1b3-480e-84c9-538bf18fb162| 2022-11-27 16:37:53 [INF] Program finish working.
+
+|Flow:decae68a-73da-4196-a69a-8c02b5f37eff| 2022-11-27 16:38:25 [INF] Command 'refresh' has been created
+|Flow:decae68a-73da-4196-a69a-8c02b5f37eff| 2022-11-27 16:38:25 [ERR] [CommandLine_App.GlobalCommands.RefreshCommandChildren.RefreshPidCommand] Exeption has been thrown from Execute!
+System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at System.Int32.Parse(String s)
+   at CommandLine_App.GlobalCommands.RefreshCommandChildren.RefreshPidCommand.Execute(String[] param) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\RefreshCommandChildren\RefreshPidCommand.cs:line 33
+|Flow:decae68a-73da-4196-a69a-8c02b5f37eff| 2022-11-27 16:38:26 [INF] Program finish working.
+

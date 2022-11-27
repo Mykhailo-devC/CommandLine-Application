@@ -2,6 +2,7 @@
 using CommandLine_App.Commands;
 using CommandLine_App.HelperService;
 using CommandLine_App.Pools;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             {
                 if (param.Length! != 1)
                 {
+                    Log.Warning("[{1}] User inputs incorrect count of parameters, [params = '{0}']", param, this.GetType());
                     PrintArgumentTip();
                     return false;
                 }
@@ -34,7 +36,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
                 return false;
             }
         }
@@ -50,6 +52,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             {
                 if (!_pool.Pool.ContainsKey(arg))
                 {
+                    Log.Warning("[{1}] User inputs incorrect parameters, [params = '{0}']", arg, this.GetType());
                     PrintArgumentTip();
                     return false;
                 }
@@ -61,11 +64,12 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
                     Console.WriteLine(par.ToString());
                 }
 
+                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
                 return true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                Log.Error(ex, "[{0}] Exeption has been thrown from HelpCmd!", this.GetType());
                 return false;
             }
         }

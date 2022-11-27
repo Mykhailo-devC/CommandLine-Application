@@ -1,4 +1,5 @@
 ﻿using CommandLine_App.Commands;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,6 +24,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
             {
                 if (param.Length != 1)
                 {
+                    Log.Warning("[{1}] User inputs incorrect count of parameters, [params = '{0}']", param, this.GetType());
                     PrintArgumentTip();
                     return false;
                 }
@@ -31,7 +33,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
                 return false;
             }
         }
@@ -53,6 +55,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
 
                 if (processes.Count() == 0)
                 {
+                    Log.Warning("[{1}] No existing process with current name, [arg = '{0}']", arg, this.GetType());
                     Console.WriteLine("No existing processes with '{0}' name!", arg);
                 }
                 else
@@ -64,10 +67,12 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
                     }
                 }
 
+                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                Log.Error(ex, "[{0}] Exeption has been thrown from KillName!", this.GetType());
                 return false;
             }
         }

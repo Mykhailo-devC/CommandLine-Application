@@ -4,6 +4,7 @@ using System.Text;
 using System.Xml.Linq;
 using CommandLine_App.Abstraction;
 using CommandLine_App.Pools;
+using Serilog;
 
 namespace CommandLine_App.HelperService
 {
@@ -17,6 +18,8 @@ namespace CommandLine_App.HelperService
 
         public void StandartHelp()
         {
+            Log.Information("StandartHelp method was activated!");
+
             Console.WriteLine("Please type 'help' to see more " +
                 "information about avalable commands" +
                 "and thier parameters.");
@@ -24,19 +27,24 @@ namespace CommandLine_App.HelperService
 
         public void HelpChooseCommand(string param)
         {
-            foreach(var key in _pool.Pool.Keys)
+            Log.Information("HelpChooseCommand method was activated!");
+
+            foreach (var key in _pool.Pool.Keys)
             {
                 if (key.StartsWith(param))
                 {
                     Console.WriteLine($"Maybe you mean '{key}' command?");
                 }
             }
+
             Console.WriteLine("Please type 'help' command to see existing commands.");
         }
 
         public void HelpChooseParameter(List<string> param)
         {
-            if(param.Count == 1)
+            Log.Information("HelpChooseParameter method was activated!");
+
+            if (param.Count == 1)
             {
                 StandartHelp();
                 return;

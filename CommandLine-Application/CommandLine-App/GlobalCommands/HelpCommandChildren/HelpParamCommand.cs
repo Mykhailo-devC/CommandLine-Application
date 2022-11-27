@@ -2,6 +2,7 @@
 using CommandLine_App.Commands;
 using CommandLine_App.HelperService;
 using CommandLine_App.Pools;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             {
                 if (param.Length != 2)
                 {
+                    Log.Warning("[{1}] User inputs incorrect count of parameters, [params = '{0}']", param, this.GetType());
                     PrintArgumentTip();
                     return false;
                 }
@@ -36,7 +38,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
                 return false;
             }
         }
@@ -52,6 +54,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             {
                 if (!_pool.Pool.ContainsKey(com))
                 {
+                    Log.Warning("[{1}] User inputs incorrect command, [com = '{0}']",com, this.GetType());
                     PrintArgumentTip();
                     _helper.HelpChooseCommand(com);
                     return false;
@@ -59,6 +62,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
 
                 if (!_pool.Pool[com].ContainsKey(par))
                 {
+                    Log.Warning("[{1}] User inputs incorrect parameters, [params = '{0}']",par, this.GetType());
                     PrintArgumentTip();
                     _helper.HelpChooseParameter(new List<string> { com, par });
                     return false;
@@ -67,11 +71,12 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
                 _pool.Pool[com][par].PrintArgumentTip();
                 Console.WriteLine(_pool.Pool[com][par].ToString());
 
+                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
                 return true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                Log.Error(ex, "[{0}] Exeption has been thrown from HelpParam!", this.GetType());
                 return false;
             }
         }

@@ -15,8 +15,7 @@ namespace CommandLine_AppTests.RefreshCommandTests
 
         [TestInitialize]
         public void TestInitialize()
-        {
-            var m = new Mock<RefreshNameCommand>().
+        { 
 
             _command = new RefreshNameCommand();
         }

@@ -3,6 +3,7 @@ using CommandLine_App.Commands;
 using CommandLine_App.GlobalCommands.HelpCommandChildren;
 using CommandLine_App.HelperService;
 using CommandLine_App.Pools;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,6 +27,7 @@ namespace CommandLine_App
             {
                 if(com.Count == 0)
                 {
+                    Log.Warning("User inputs empty string, [input = '{0}']",com);
                     _helper.StandartHelp();
                     return null;
                 }
@@ -42,6 +44,7 @@ namespace CommandLine_App
                                 }
                             }
 
+                            Log.Warning("User inputs incorrect parameters, [input = '{0}']", com);
                             _helper.HelpChooseParameter(com.GetRange(0, 2));
                             return null;
                         }
@@ -55,6 +58,7 @@ namespace CommandLine_App
                                 }
                             }
 
+                            Log.Warning("User inputs incorrect parameters, [input = '{0}']", com);
                             _helper.HelpChooseParameter(com.GetRange(0, 2));
                             return null;
                         }
@@ -68,6 +72,7 @@ namespace CommandLine_App
                                 }
                             }
 
+                            Log.Warning("User inputs incorrect parameters, [input = '{0}']", com);
                             _helper.HelpChooseParameter(com.GetRange(0, 2));
                             return null;
                         }
@@ -81,6 +86,7 @@ namespace CommandLine_App
                                 }
                             }
 
+                            Log.Warning("User inputs incorrect parameters, [input = '{0}']", com);
                             _helper.HelpChooseParameter(com.GetRange(0, 2));
                             return null;
                         }
@@ -94,11 +100,13 @@ namespace CommandLine_App
                                 }
                             }
 
+                            Log.Warning("User inputs incorrect parameters, [input = '{0}']", com);
                             _helper.HelpChooseParameter(com.GetRange(0, 2));
                             return null;
                         }
                     default:
                         {
+                            Log.Warning("User inputs incorrect command, [input = '{0}']", com);
                             _helper.HelpChooseCommand(com[0]);
                             return null;
                         }
@@ -106,7 +114,7 @@ namespace CommandLine_App
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Log.Error(ex, "Exeption has been thrown from Command Factory! [input = '{0}']", com);
                 return null;
             }
         } 

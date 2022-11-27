@@ -1,4 +1,5 @@
 ﻿using CommandLine_App.Commands;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,17 +31,19 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
                     return KillByMemory(int.Parse(param.First()), int.Parse(param.Last()));
                 }
 
+                Log.Warning("[{1}] User inputs incorrect count of parameters, [params = '{0}']", param, this.GetType());
                 PrintArgumentTip();
                 return false;
             }
-            catch (FormatException)
+            catch (FormatException ex)
             {
+                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
                 PrintArgumentTip();
                 return false;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
                 return false;
             }
         }
@@ -63,6 +66,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
 
                 if (processes.Count() == 0)
                 {
+                    Log.Warning("[{1}] No existing process with current memory, [arg = '{0}']", arg, this.GetType());
                     Console.WriteLine("No existing processes with using {0}/Kb of memory!", arg);
                 }
                 else
@@ -74,10 +78,12 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
                     }
                 }
 
+                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                Log.Error(ex, "[{0}] Exeption has been thrown from KillMemory!", this.GetType());
                 return false;
             }
         }
@@ -90,6 +96,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
 
                 if (processes.Count() == 0)
                 {
+                    Log.Warning("[{2}] No existing process with current memory, [arg = '{0}, {1}']", start, end, this.GetType());
                     Console.WriteLine("No existing processes with using memory between {0}/Kb and {1}/Kb!", start, end);
                 }
                 else
@@ -101,10 +108,12 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
                     }
                 }
 
+                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                Log.Error(ex, "[{0}] Exeption has been thrown from KillMemory!", this.GetType());
                 return false;
             }
         }

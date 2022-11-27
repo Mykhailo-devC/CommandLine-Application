@@ -1,8 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "8ST1bX9AN61SklQqXkvaSrnFK0S8VdNSNVfrhaJ5alAOulh7NtWn5Or0SvAS1rQUIah4/aVkAQNb9++/P2gqig==",
+  "dgSpecHash": "PNuJl4tIw/HBLFQoANZewpiSvMKtBEuGgiakMOAEUdMAB9nKzAVw1e1uWVMromUuk8fvzm56QYopp17G7unu7w==",
   "success": true,
   "projectFilePath": "E:\\Projects\\CommandLine-Application\\CommandLine-Application\\CommandLine-App\\CommandLine-App.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Misha\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.0.0\\microsoft.extensions.dependencyinjection.abstractions.2.0.0.nupkg.sha512",
+    "C:\\Users\\Misha\\.nuget\\packages\\microsoft.extensions.logging\\2.0.0\\microsoft.extensions.logging.2.0.0.nupkg.sha512",
+    "C:\\Users\\Misha\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
+    "C:\\Users\\Misha\\.nuget\\packages\\microsoft.extensions.options\\2.0.0\\microsoft.extensions.options.2.0.0.nupkg.sha512",
+    "C:\\Users\\Misha\\.nuget\\packages\\microsoft.extensions.primitives\\2.0.0\\microsoft.extensions.primitives.2.0.0.nupkg.sha512",
+    "C:\\Users\\Misha\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512",
+    "C:\\Users\\Misha\\.nuget\\packages\\serilog.extensions.logging\\3.1.1-dev-10301\\serilog.extensions.logging.3.1.1-dev-10301.nupkg.sha512",
+    "C:\\Users\\Misha\\.nuget\\packages\\serilog.formatting.compact\\1.1.1-dev-00944\\serilog.formatting.compact.1.1.1-dev-00944.nupkg.sha512",
+    "C:\\Users\\Misha\\.nuget\\packages\\serilog.sinks.console\\4.1.1-dev-00896\\serilog.sinks.console.4.1.1-dev-00896.nupkg.sha512",
+    "C:\\Users\\Misha\\.nuget\\packages\\serilog.sinks.file\\5.0.1-dev-00947\\serilog.sinks.file.5.0.1-dev-00947.nupkg.sha512",
+    "C:\\Users\\Misha\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.4.0\\system.runtime.compilerservices.unsafe.4.4.0.nupkg.sha512"
+  ],
   "logs": []
 }

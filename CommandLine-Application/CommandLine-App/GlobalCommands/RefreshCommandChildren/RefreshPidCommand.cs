@@ -1,5 +1,6 @@
 ﻿using CommandLine_App.Abstraction;
 using CommandLine_App.Commands;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,15 +25,22 @@ namespace CommandLine_App.GlobalCommands.RefreshCommandChildren
             {
                 if (param.Length != 1)
                 {
+                    Log.Warning("[{1}] User inputs incorrect count of parameters, [params = '{0}']", param, this.GetType());
                     PrintArgumentTip();
                     return false;
                 }
 
                 return RefreshByPID(int.Parse(param.First()));
             }
+            catch (FormatException ex)
+            {
+                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
+                PrintArgumentTip();
+                return false;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
                 return false;
             }
         }
@@ -58,15 +66,18 @@ namespace CommandLine_App.GlobalCommands.RefreshCommandChildren
 
                 Console.WriteLine($"{process.ProcessName} was refreshed");
 
+                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
                 return true;
             }
             catch (ArgumentException)
             {
+                Log.Warning("[{1}] No existing process with current id, [arg = '{0}']", arg, this.GetType());
                 Console.WriteLine("No existing processes with [{0}] id!", arg);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                Log.Error(ex, "[{0}] Exeption has been thrown from RefreshPid!", this.GetType());
                 return false;
             }
         }

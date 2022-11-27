@@ -1,4 +1,5 @@
 ﻿using CommandLine_App.Commands;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,6 +24,7 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
             {
                 if (param.Length != 1)
                 {
+                    Log.Warning("[{1}] User inputs incorrect count of parameters, [params = '{0}']", param, this.GetType());
                     PrintArgumentTip();
                     return false;
                 }
@@ -31,7 +33,7 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
                 return false;
             }
         }
@@ -53,11 +55,13 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
                 info.FileName = arg;
                 Process.Start(info);
 
+                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
                 Console.WriteLine($"{arg} was started!");
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
                 return false;
             }
         }
