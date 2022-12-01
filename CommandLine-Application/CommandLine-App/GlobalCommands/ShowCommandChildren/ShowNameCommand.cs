@@ -3,6 +3,7 @@ using CommandLine_App.HelperService;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,7 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
+                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']", param, this.GetType());
                 return false;
             }
         }
@@ -69,8 +70,7 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{0}] Exeption has been thrown from ShowByName!", this.GetType());
-                return false;
+                throw ex;
             }
         }
     }

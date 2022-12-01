@@ -34,13 +34,13 @@ namespace CommandLine_App.GlobalCommands.RefreshCommandChildren
             }
             catch (FormatException ex)
             {
-                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
+                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
                 PrintArgumentTip();
                 return false;
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
+                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
                 return false;
             }
         }
@@ -69,16 +69,15 @@ namespace CommandLine_App.GlobalCommands.RefreshCommandChildren
                 Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
                 return true;
             }
-            catch (ArgumentException)
+            catch (ArgumentException ex)
             {
-                Log.Warning("[{1}] No existing process with current id, [arg = '{0}']", arg, this.GetType());
+                
                 Console.WriteLine("No existing processes with [{0}] id!", arg);
-                return true;
+                throw ex;
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{0}] Exeption has been thrown from RefreshPid!", this.GetType());
-                return false;
+                throw ex;
             }
         }
     }

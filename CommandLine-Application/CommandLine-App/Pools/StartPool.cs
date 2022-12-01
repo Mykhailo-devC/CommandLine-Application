@@ -15,6 +15,7 @@ namespace CommandLine_App.Pools
             Pool = new Dictionary<string, Command>()
             {
                 { "name", new StartNameCommand() },
+                { "file", new StartFileCommand() },
             };
         }
     }

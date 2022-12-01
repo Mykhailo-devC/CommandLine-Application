@@ -1,0 +1,4 @@
+|Flow:91fbe306-45be-4685-8e7c-bfe105ea9184| 2022-11-27 17:10:28 [INF] Command 'help' has been created
+|Flow:91fbe306-45be-4685-8e7c-bfe105ea9184| 2022-11-27 17:10:28 [INF] [CommandLine_App.GlobalCommands.HelpCommandChildren.HelpGlobalCommand] Execute has been finished successfully!
+|Flow:91fbe306-45be-4685-8e7c-bfe105ea9184| 2022-11-27 17:10:28 [INF] Program finish working.
+

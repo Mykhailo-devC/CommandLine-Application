@@ -1,0 +1,25 @@
+|Flow:cc5c9904-65fb-44e3-ac92-c94c8dfabd85| 2022-11-28 11:00:15 [WRN] User inputs incorrect parameters, [input = '["start","notepad"]']
+|Flow:cc5c9904-65fb-44e3-ac92-c94c8dfabd85| 2022-11-28 11:00:15 [INF] HelpChooseParameter method was activated!
+|Flow:cc5c9904-65fb-44e3-ac92-c94c8dfabd85| 2022-11-28 11:00:15 [INF] Program finish working.
+
+|Flow:d0c4b873-b92d-4a0c-b8cf-d2911fad3748| 2022-11-28 11:00:27 [INF] Command 'start' has been created
+|Flow:d0c4b873-b92d-4a0c-b8cf-d2911fad3748| 2022-11-28 11:00:27 [INF] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Execute has been finished successfully!
+|Flow:d0c4b873-b92d-4a0c-b8cf-d2911fad3748| 2022-11-28 11:00:27 [INF] Program finish working.
+
+|Flow:3fb5216d-af9c-4a15-835f-14a7fb4a10df| 2022-11-28 11:00:45 [INF] Command 'start' has been created
+|Flow:3fb5216d-af9c-4a15-835f-14a7fb4a10df| 2022-11-28 11:00:45 [ERR] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Exeption has been thrown from Execute!
+System.ComponentModel.Win32Exception (2): Не удается найти указанный файл.
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand.RefreshByName(String arg) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartNameCommand.cs:line 56
+|Flow:3fb5216d-af9c-4a15-835f-14a7fb4a10df| 2022-11-28 11:00:45 [INF] Program finish working.
+
+|Flow:dd784b4a-cf2d-4671-95d4-58da2282aefc| 2022-11-28 11:01:05 [INF] Command 'start' has been created
+|Flow:dd784b4a-cf2d-4671-95d4-58da2282aefc| 2022-11-28 11:01:05 [INF] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Execute has been finished successfully!
+|Flow:dd784b4a-cf2d-4671-95d4-58da2282aefc| 2022-11-28 11:01:05 [INF] Program finish working.
+
+|Flow:a2d8d090-d199-48f1-ac12-f3bddce2f1c5| 2022-11-28 11:01:22 [INF] Command 'kill' has been created
+|Flow:a2d8d090-d199-48f1-ac12-f3bddce2f1c5| 2022-11-28 11:01:22 [INF] [CommandLine_App.GlobalCommands.KillCommandChildren.KillNameCommand] Execute has been finished successfully!
+|Flow:a2d8d090-d199-48f1-ac12-f3bddce2f1c5| 2022-11-28 11:01:22 [INF] Program finish working.
+

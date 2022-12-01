@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace CommandLine_App.GlobalCommands.StartCommandChildren
 {
@@ -29,11 +30,11 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
                     return false;
                 }
 
-                return RefreshByName(param.First());
+                return StartByName(param.First());
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
+                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
                 return false;
             }
         }
@@ -47,7 +48,8 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
         {
             return $"\t'{Name}' [name_value] - starts the process with specified name.";
         }
-        private bool RefreshByName(string arg)
+
+        private bool StartByName(string arg)
         {
             try
             {
@@ -61,8 +63,7 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
-                return false;
+                throw ex;
             }
         }
     }

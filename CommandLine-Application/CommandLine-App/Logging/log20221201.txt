@@ -1,0 +1,221 @@
+|Flow:3ffc5274-773b-41a0-9c29-fe7d77bac1b3| 2022-12-01 17:09:00 [INF] Command 'help' has been created
+|Flow:3ffc5274-773b-41a0-9c29-fe7d77bac1b3| 2022-12-01 17:09:01 [WRN] [CommandLine_App.GlobalCommands.HelpCommandChildren.HelpCmdCommand] User inputs incorrect parameters, [params = 'sh']
+|Flow:3ffc5274-773b-41a0-9c29-fe7d77bac1b3| 2022-12-01 17:09:01 [INF] Program finish working.
+
+|Flow:657655b3-47f4-4539-9aff-32afc71a6ab4| 2022-12-01 17:09:15 [WRN] User inputs incorrect command, [input = '["sho\t"]']
+|Flow:657655b3-47f4-4539-9aff-32afc71a6ab4| 2022-12-01 17:09:15 [INF] HelpChooseCommand method was activated!
+|Flow:657655b3-47f4-4539-9aff-32afc71a6ab4| 2022-12-01 17:09:15 [INF] Program finish working.
+
+|Flow:41514bdd-65bf-488a-a92a-512bd6295508| 2022-12-01 17:10:15 [WRN] User inputs incorrect command, [input = '["sho"]']
+|Flow:41514bdd-65bf-488a-a92a-512bd6295508| 2022-12-01 17:10:24 [INF] HelpChooseCommand method was activated!
+|Flow:41514bdd-65bf-488a-a92a-512bd6295508| 2022-12-01 17:11:08 [INF] Program finish working.
+
+|Flow:93d5c822-0110-4a21-85fb-d2646320a121| 2022-12-01 17:11:18 [WRN] User inputs incorrect command, [input = '["sh"]']
+|Flow:93d5c822-0110-4a21-85fb-d2646320a121| 2022-12-01 17:11:18 [INF] HelpChooseCommand method was activated!
+|Flow:93d5c822-0110-4a21-85fb-d2646320a121| 2022-12-01 17:11:18 [INF] Program finish working.
+
+|Flow:7c74c948-bc22-461c-b48d-698186a12ae3| 2022-12-01 17:11:23 [WRN] User inputs incorrect command, [input = '["shi"]']
+|Flow:7c74c948-bc22-461c-b48d-698186a12ae3| 2022-12-01 17:11:23 [INF] HelpChooseCommand method was activated!
+|Flow:7c74c948-bc22-461c-b48d-698186a12ae3| 2022-12-01 17:11:23 [INF] Program finish working.
+
+|Flow:354ff5ae-6ed1-4336-997f-c4164150701f| 2022-12-01 17:11:28 [WRN] User inputs incorrect command, [input = '["sh"]']
+|Flow:354ff5ae-6ed1-4336-997f-c4164150701f| 2022-12-01 17:11:28 [INF] HelpChooseCommand method was activated!
+|Flow:354ff5ae-6ed1-4336-997f-c4164150701f| 2022-12-01 17:11:28 [INF] Program finish working.
+
+|Flow:229362e8-0766-47ed-b949-efa8dc568acd| 2022-12-01 17:11:34 [WRN] User inputs incorrect command, [input = '["s"]']
+|Flow:229362e8-0766-47ed-b949-efa8dc568acd| 2022-12-01 17:11:34 [INF] HelpChooseCommand method was activated!
+|Flow:229362e8-0766-47ed-b949-efa8dc568acd| 2022-12-01 17:11:34 [INF] Program finish working.
+
+|Flow:bad08e48-d1ff-46f1-8d5f-a2eac800ff93| 2022-12-01 17:11:46 [WRN] User inputs incorrect parameters, [input = '["show","m"]']
+|Flow:bad08e48-d1ff-46f1-8d5f-a2eac800ff93| 2022-12-01 17:11:46 [INF] HelpChooseParameter method was activated!
+|Flow:bad08e48-d1ff-46f1-8d5f-a2eac800ff93| 2022-12-01 17:11:46 [INF] Program finish working.
+
+|Flow:727dd8ce-6643-4c60-b484-74d4610c2bbc| 2022-12-01 17:15:01 [INF] Command 'help' has been created
+|Flow:727dd8ce-6643-4c60-b484-74d4610c2bbc| 2022-12-01 17:15:01 [INF] [CommandLine_App.GlobalCommands.HelpCommandChildren.HelpCmdCommand] Execute has been finished successfully!
+|Flow:727dd8ce-6643-4c60-b484-74d4610c2bbc| 2022-12-01 17:15:01 [INF] Program finish working.
+
+|Flow:243f712b-7992-4435-9c9f-2a50c006ddaa| 2022-12-01 17:24:31 [INF] Command 'start' has been created
+|Flow:243f712b-7992-4435-9c9f-2a50c006ddaa| 2022-12-01 17:24:31 [INF] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Execute has been finished successfully!
+|Flow:243f712b-7992-4435-9c9f-2a50c006ddaa| 2022-12-01 17:24:31 [INF] Program finish working.
+
+|Flow:e756e2bc-d204-40eb-8a99-591ddc11460f| 2022-12-01 17:24:42 [INF] Command 'kill' has been created
+|Flow:e756e2bc-d204-40eb-8a99-591ddc11460f| 2022-12-01 17:24:42 [INF] [CommandLine_App.GlobalCommands.KillCommandChildren.KillNameCommand] Execute has been finished successfully!
+|Flow:e756e2bc-d204-40eb-8a99-591ddc11460f| 2022-12-01 17:24:42 [INF] Program finish working.
+
+|Flow:dd6890da-c832-4bd5-8b7c-6eeb5fdf3124| 2022-12-01 17:24:52 [INF] Command 'start' has been created
+|Flow:dd6890da-c832-4bd5-8b7c-6eeb5fdf3124| 2022-12-01 17:24:52 [INF] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Execute has been finished successfully!
+|Flow:dd6890da-c832-4bd5-8b7c-6eeb5fdf3124| 2022-12-01 17:24:52 [INF] Program finish working.
+
+|Flow:7d4c3666-859c-4688-9c42-25aaa3479425| 2022-12-01 17:25:38 [INF] Command 'start' has been created
+|Flow:7d4c3666-859c-4688-9c42-25aaa3479425| 2022-12-01 17:25:38 [ERR] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Exeption has been thrown from Execute!
+System.ComponentModel.Win32Exception (2): Не удается найти указанный файл.
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand.StartByNameWithParams(String name, String arg) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartNameCommand.cs:line 82
+|Flow:7d4c3666-859c-4688-9c42-25aaa3479425| 2022-12-01 17:25:38 [INF] Program finish working.
+
+|Flow:7afb8243-722c-41df-80e2-1a1ed41226d5| 2022-12-01 17:26:03 [INF] Command 'start' has been created
+|Flow:7afb8243-722c-41df-80e2-1a1ed41226d5| 2022-12-01 17:26:03 [ERR] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Exeption has been thrown from Execute!
+System.ComponentModel.Win32Exception (2): Не удается найти указанный файл.
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand.StartByNameWithParams(String name, String arg) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartNameCommand.cs:line 82
+|Flow:7afb8243-722c-41df-80e2-1a1ed41226d5| 2022-12-01 17:26:03 [INF] Program finish working.
+
+|Flow:4d1ce95d-7d1e-411c-b693-a45bc53be90e| 2022-12-01 17:26:17 [INF] Command 'start' has been created
+|Flow:4d1ce95d-7d1e-411c-b693-a45bc53be90e| 2022-12-01 17:26:17 [ERR] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Exeption has been thrown from Execute!
+System.ComponentModel.Win32Exception (2): Не удается найти указанный файл.
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand.StartByName(String arg) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartNameCommand.cs:line 62
+|Flow:4d1ce95d-7d1e-411c-b693-a45bc53be90e| 2022-12-01 17:26:17 [INF] Program finish working.
+
+|Flow:d206ee06-8839-4070-9dbd-225ae5e9ca30| 2022-12-01 17:26:37 [INF] Command 'show' has been created
+|Flow:d206ee06-8839-4070-9dbd-225ae5e9ca30| 2022-12-01 17:26:37 [INF] [CommandLine_App.GlobalCommands.ShowCommandChildren.ShowNameCommand] Execute has been finished successfully!
+|Flow:d206ee06-8839-4070-9dbd-225ae5e9ca30| 2022-12-01 17:26:37 [INF] Program finish working.
+
+|Flow:aae8dd6a-6549-4236-b63d-9c9ca39f0ea3| 2022-12-01 17:26:54 [INF] Command 'start' has been created
+|Flow:aae8dd6a-6549-4236-b63d-9c9ca39f0ea3| 2022-12-01 17:26:54 [ERR] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Exeption has been thrown from Execute!
+System.ComponentModel.Win32Exception (2): Не удается найти указанный файл.
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand.StartByName(String arg) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartNameCommand.cs:line 62
+|Flow:aae8dd6a-6549-4236-b63d-9c9ca39f0ea3| 2022-12-01 17:26:54 [INF] Program finish working.
+
+|Flow:1260a4bc-67ed-4394-8b8c-6e1c7c0e1275| 2022-12-01 17:27:16 [INF] Command 'start' has been created
+|Flow:1260a4bc-67ed-4394-8b8c-6e1c7c0e1275| 2022-12-01 17:27:16 [ERR] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Exeption has been thrown from Execute!
+System.ComponentModel.Win32Exception (2): Не удается найти указанный файл.
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand.StartByName(String arg) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartNameCommand.cs:line 62
+|Flow:1260a4bc-67ed-4394-8b8c-6e1c7c0e1275| 2022-12-01 17:27:16 [INF] Program finish working.
+
+|Flow:e4605ec1-88e4-4f9d-8439-0261b844bd23| 2022-12-01 17:27:42 [INF] Command 'start' has been created
+|Flow:e4605ec1-88e4-4f9d-8439-0261b844bd23| 2022-12-01 17:28:09 [ERR] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Exeption has been thrown from Execute!
+System.ComponentModel.Win32Exception (2): Не удается найти указанный файл.
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand.StartByName(String arg) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartNameCommand.cs:line 62
+|Flow:e4605ec1-88e4-4f9d-8439-0261b844bd23| 2022-12-01 17:28:13 [INF] Program finish working.
+
+|Flow:e0989b45-d9c6-46ba-bee8-f47daebce745| 2022-12-01 17:28:45 [INF] Command 'start' has been created
+|Flow:e0989b45-d9c6-46ba-bee8-f47daebce745| 2022-12-01 17:29:07 [ERR] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Exeption has been thrown from Execute!
+System.ComponentModel.Win32Exception (2): Не удается найти указанный файл.
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand.StartByName(String arg) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartNameCommand.cs:line 62
+|Flow:8674bb67-2b73-4881-b24c-e951857f0c8d| 2022-12-01 17:30:14 [INF] Command 'show' has been created
+|Flow:8674bb67-2b73-4881-b24c-e951857f0c8d| 2022-12-01 17:30:23 [WRN] [CommandLine_App.GlobalCommands.ShowCommandChildren.ShowNameCommand] No existing process with current name, [arg = 'firefox']
+|Flow:6c971ebd-3a86-45a8-a481-bc138485415b| 2022-12-01 17:30:33 [INF] Command 'show' has been created
+|Flow:561b0e2e-507d-4ee5-84da-ddab3a5526f8| 2022-12-01 17:31:52 [INF] Command 'start' has been created
+|Flow:561b0e2e-507d-4ee5-84da-ddab3a5526f8| 2022-12-01 17:31:52 [WRN] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] User inputs incorrect count of parameters, [params = '["C:\\\\Program","Files\\\\Mozilla","Firefox\\\\firefox.exe"]']
+|Flow:561b0e2e-507d-4ee5-84da-ddab3a5526f8| 2022-12-01 17:31:52 [INF] Program finish working.
+
+|Flow:3839abcd-92df-4242-8946-8516fa6ac88d| 2022-12-01 17:32:24 [INF] Command 'start' has been created
+|Flow:dfe0e597-b203-4a55-b46c-e46d5d67a375| 2022-12-01 17:34:35 [INF] Command 'start' has been created
+|Flow:dfe0e597-b203-4a55-b46c-e46d5d67a375| 2022-12-01 17:34:51 [INF] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Execute has been finished successfully!
+|Flow:dfe0e597-b203-4a55-b46c-e46d5d67a375| 2022-12-01 17:34:51 [INF] Program finish working.
+
+|Flow:4d43034a-08f9-4912-b5ed-51573d72ea20| 2022-12-01 17:35:32 [INF] Command 'start' has been created
+|Flow:4d43034a-08f9-4912-b5ed-51573d72ea20| 2022-12-01 17:36:17 [INF] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Execute has been finished successfully!
+|Flow:4d43034a-08f9-4912-b5ed-51573d72ea20| 2022-12-01 17:36:17 [INF] Program finish working.
+
+|Flow:6c934923-2f87-4e66-b88b-2cd6fe530f0d| 2022-12-01 17:36:23 [INF] Command 'start' has been created
+|Flow:32ebd693-5d59-4582-80f2-dae255335d03| 2022-12-01 18:14:31 [INF] Command 'start' has been created
+|Flow:221375f3-8b2e-4958-bab4-7baf16785e4d| 2022-12-01 18:16:54 [INF] Command 'start' has been created
+|Flow:9d9b118d-c763-4b01-a293-88a113193397| 2022-12-01 18:18:30 [INF] Command 'start' has been created
+|Flow:aac6747b-83f9-4c40-8aa0-b7cb9c43dc59| 2022-12-01 18:19:04 [INF] Command 'start' has been created
+|Flow:fbcdf548-0ac9-4d8e-b24d-8da12677f80f| 2022-12-01 18:44:09 [INF] Command 'help' has been created
+|Flow:fbcdf548-0ac9-4d8e-b24d-8da12677f80f| 2022-12-01 18:44:09 [INF] [CommandLine_App.GlobalCommands.HelpCommandChildren.HelpGlobalCommand] Execute has been finished successfully!
+|Flow:fbcdf548-0ac9-4d8e-b24d-8da12677f80f| 2022-12-01 18:44:09 [INF] Program finish working.
+
+|Flow:7a89fed5-aefe-4374-864f-a468e38711a3| 2022-12-01 18:44:42 [INF] Command 'start' has been created
+|Flow:b9c54de1-0962-4b55-855f-e61c7c494f05| 2022-12-01 18:46:06 [INF] Command 'start' has been created
+|Flow:b9c54de1-0962-4b55-855f-e61c7c494f05| 2022-12-01 18:46:37 [INF] [CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand] Execute has been finished successfully!
+|Flow:b9c54de1-0962-4b55-855f-e61c7c494f05| 2022-12-01 18:46:39 [INF] Program finish working.
+
+|Flow:b027b31e-2bda-40ba-b958-5f660af56410| 2022-12-01 18:46:58 [INF] Command 'start' has been created
+|Flow:b027b31e-2bda-40ba-b958-5f660af56410| 2022-12-01 18:47:33 [ERR] [CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand] Exeption has been thrown from Execute!
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand.ConcatFilePath(String[] param) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartFileCommand.cs:line 69
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand.Execute(String[] param) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartFileCommand.cs:line 27
+|Flow:b027b31e-2bda-40ba-b958-5f660af56410| 2022-12-01 18:47:37 [INF] Program finish working.
+
+|Flow:200497c7-a8e8-4950-a1e4-d86feba7cfaf| 2022-12-01 18:48:44 [INF] Command 'start' has been created
+|Flow:200497c7-a8e8-4950-a1e4-d86feba7cfaf| 2022-12-01 18:48:52 [WRN] [CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand] User inputs incorrect count of parameters, [params = '[]']
+|Flow:200497c7-a8e8-4950-a1e4-d86feba7cfaf| 2022-12-01 18:49:00 [INF] Program finish working.
+
+|Flow:388e7390-8ff1-4189-87ca-65968bdf18ac| 2022-12-01 18:49:14 [INF] Command 'start' has been created
+|Flow:388e7390-8ff1-4189-87ca-65968bdf18ac| 2022-12-01 18:49:25 [ERR] [CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand] Exeption has been thrown from Execute!
+System.Exception: File path isn't valid
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand.ConcatFilePath(String[] param) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartFileCommand.cs:line 89
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand.Execute(String[] param) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartFileCommand.cs:line 27
+|Flow:388e7390-8ff1-4189-87ca-65968bdf18ac| 2022-12-01 18:49:27 [INF] Program finish working.
+
+|Flow:66132dc4-3fef-4f55-83b0-3849400b9826| 2022-12-01 19:15:59 [WRN] User inputs incorrect parameters, [input = '["show","id","test"]']
+|Flow:66132dc4-3fef-4f55-83b0-3849400b9826| 2022-12-01 19:15:59 [INF] HelpChooseParameter method was activated!
+|Flow:66132dc4-3fef-4f55-83b0-3849400b9826| 2022-12-01 19:15:59 [INF] Program finish working.
+
+|Flow:61a013b3-9b9f-4ed0-a06b-6c9b74437eb6| 2022-12-01 19:17:20 [INF] Command 'show' has been created
+|Flow:61a013b3-9b9f-4ed0-a06b-6c9b74437eb6| 2022-12-01 19:17:43 [ERR] [CommandLine_App.GlobalCommands.ShowCommandChildren.ShowPidCommand] Exeption has been thrown from Execute! [params = '["test"]']
+System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at System.Int32.Parse(String s)
+   at CommandLine_App.GlobalCommands.ShowCommandChildren.ShowPidCommand.Execute(String[] param) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\ShowCommandChildren\ShowPidCommand.cs:line 35
+|Flow:61a013b3-9b9f-4ed0-a06b-6c9b74437eb6| 2022-12-01 19:17:49 [INF] Program finish working.
+
+|Flow:dcf16fcd-f6ac-4f3a-a4f8-a5e43fa232e1| 2022-12-01 19:18:52 [WRN] User inputs incorrect parameters, [input = '["show","id","tets"]']
+|Flow:dcf16fcd-f6ac-4f3a-a4f8-a5e43fa232e1| 2022-12-01 19:18:52 [INF] HelpChooseParameter method was activated!
+|Flow:dcf16fcd-f6ac-4f3a-a4f8-a5e43fa232e1| 2022-12-01 19:18:52 [INF] Program finish working.
+
+|Flow:c3ae06d3-7cfa-4946-b18f-28573857fcac| 2022-12-01 19:21:07 [INF] Command 'start' has been created
+|Flow:c3ae06d3-7cfa-4946-b18f-28573857fcac| 2022-12-01 19:21:07 [ERR] [CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand] Exeption has been thrown from Execute! [params = '["C:\\Users\\Misha\\Desktop\\ToDoList.txt"]']
+System.ComponentModel.Win32Exception (193): The specified executable is not a valid application for this OS platform.
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand.StartFile(String path) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartFileCommand.cs:line 64
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand.Execute(String[] param) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartFileCommand.cs:line 27
+|Flow:c3ae06d3-7cfa-4946-b18f-28573857fcac| 2022-12-01 19:21:07 [INF] Program finish working.
+
+|Flow:37e7b13b-e6bf-4d79-82df-085091a1919c| 2022-12-01 19:22:29 [INF] Command 'start' has been created
+|Flow:37e7b13b-e6bf-4d79-82df-085091a1919c| 2022-12-01 19:22:29 [ERR] [CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand] Exeption has been thrown from Execute! [params = '["C:\\\\Users\\\\Misha\\\\Desktop\\\\ToDoList.txt"]']
+System.ComponentModel.Win32Exception (193): The specified executable is not a valid application for this OS platform.
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand.StartFile(String path) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartFileCommand.cs:line 64
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand.Execute(String[] param) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartFileCommand.cs:line 27
+|Flow:37e7b13b-e6bf-4d79-82df-085091a1919c| 2022-12-01 19:22:29 [INF] Program finish working.
+
+|Flow:7ef837dc-8884-4ac2-8452-c7f8f60d861d| 2022-12-01 19:23:43 [INF] Command 'show' has been created
+|Flow:7ef837dc-8884-4ac2-8452-c7f8f60d861d| 2022-12-01 19:23:43 [WRN] [CommandLine_App.GlobalCommands.ShowCommandChildren.ShowNameCommand] No existing process with current name, [arg = 'ToDoList']
+|Flow:7ef837dc-8884-4ac2-8452-c7f8f60d861d| 2022-12-01 19:23:43 [INF] [CommandLine_App.GlobalCommands.ShowCommandChildren.ShowNameCommand] Execute has been finished successfully!
+|Flow:7ef837dc-8884-4ac2-8452-c7f8f60d861d| 2022-12-01 19:23:43 [INF] Program finish working.
+
+|Flow:d216dad5-6fcb-4f90-98d3-3e44701b4cdb| 2022-12-01 19:23:50 [INF] Command 'show' has been created
+|Flow:d216dad5-6fcb-4f90-98d3-3e44701b4cdb| 2022-12-01 19:23:50 [INF] [CommandLine_App.GlobalCommands.ShowCommandChildren.ShowAllCommand] Execute has been finished successfully!
+|Flow:d216dad5-6fcb-4f90-98d3-3e44701b4cdb| 2022-12-01 19:23:50 [INF] Program finish working.
+
+|Flow:fbe4924b-b6f2-4d36-9bf6-e96084fffade| 2022-12-01 19:25:20 [INF] Command 'show' has been created
+|Flow:608c6f5e-db3a-47fc-9c55-977838424e25| 2022-12-01 19:35:48 [INF] Command 'show' has been created
+|Flow:3ca2d549-7207-49b7-9f6c-a1e28b99d2cf| 2022-12-01 19:40:32 [INF] Command 'show' has been created
+|Flow:76a9e075-491c-4e90-8829-54c2ab9ee31e| 2022-12-01 19:42:36 [INF] Command 'show' has been created
+|Flow:6df25675-4c99-433d-bb89-2029c4fb3eb7| 2022-12-01 19:44:43 [INF] Command 'show' has been created
+|Flow:551ced52-32b1-4b5a-bca8-9c0129679398| 2022-12-01 19:48:09 [INF] Command 'start' has been created
+|Flow:551ced52-32b1-4b5a-bca8-9c0129679398| 2022-12-01 19:48:34 [INF] [CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand] Execute has been finished successfully!
+|Flow:551ced52-32b1-4b5a-bca8-9c0129679398| 2022-12-01 19:48:38 [INF] Program finish working.
+
+|Flow:ba5ac0d2-144c-442b-a5aa-e30ff3bbf59a| 2022-12-01 19:49:39 [INF] Command 'start' has been created
+|Flow:ba5ac0d2-144c-442b-a5aa-e30ff3bbf59a| 2022-12-01 19:49:39 [INF] [CommandLine_App.GlobalCommands.StartCommandChildren.StartFileCommand] Execute has been finished successfully!
+|Flow:ba5ac0d2-144c-442b-a5aa-e30ff3bbf59a| 2022-12-01 19:49:39 [INF] Program finish working.
+
+|Flow:c326a380-7543-4a4f-a804-271fe76027c6| 2022-12-01 19:51:56 [INF] Command 'start' has been created
+|Flow:c326a380-7543-4a4f-a804-271fe76027c6| 2022-12-01 19:51:56 [ERR] [CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand] Exeption has been thrown from Execute! [params = '["firefox"]']
+System.ComponentModel.Win32Exception (2): Не удается найти указанный файл.
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand.StartByName(String arg) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartNameCommand.cs:line 66
+   at CommandLine_App.GlobalCommands.StartCommandChildren.StartNameCommand.Execute(String[] param) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\StartCommandChildren\StartNameCommand.cs:line 33
+|Flow:c326a380-7543-4a4f-a804-271fe76027c6| 2022-12-01 19:51:56 [INF] Program finish working.
+

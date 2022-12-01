@@ -37,8 +37,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             }
             catch (Exception ex)
             {
-
-                Log.Error(ex, "[{0}] Exeption has been thrown from Execute!", this.GetType());
+                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
                 return false;
             }
         }
@@ -72,8 +71,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{0}] Exeption has been thrown from HelpGlobal!", this.GetType());
-                return false;
+                throw ex;
             }
         }
     }

@@ -1,0 +1,8 @@
+|Flow:a955c649-fece-4ce7-8601-6e47b3d728ac| 2022-11-28 10:58:45 [INF] Command 'show' has been created
+|Flow:a955c649-fece-4ce7-8601-6e47b3d728ac| 2022-11-28 10:58:45 [INF] [CommandLine_App.GlobalCommands.ShowCommandChildren.ShowAllCommand] Execute has been finished successfully!
+|Flow:a955c649-fece-4ce7-8601-6e47b3d728ac| 2022-11-28 10:58:45 [INF] Program finish working.
+
+|Flow:c4617ca9-5a88-433a-b0a8-0d0fd3cec302| 2022-11-28 10:59:43 [INF] Command 'show' has been created
+|Flow:c4617ca9-5a88-433a-b0a8-0d0fd3cec302| 2022-11-28 10:59:43 [INF] [CommandLine_App.GlobalCommands.ShowCommandChildren.ShowNameCommand] Execute has been finished successfully!
+|Flow:c4617ca9-5a88-433a-b0a8-0d0fd3cec302| 2022-11-28 10:59:43 [INF] Program finish working.
+

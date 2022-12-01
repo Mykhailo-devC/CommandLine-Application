@@ -6,6 +6,8 @@ using Serilog.Formatting.Compact;
 using Serilog.Formatting.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -16,7 +18,6 @@ namespace CommandLine_App
         public static void Main(string[] args)
         {
             LoggerSetup();
-
             var _factory = new CommandFactory();
             
             var userInput = Console.ReadLine().Split(" ").ToList();
@@ -68,8 +69,8 @@ namespace CommandLine_App
 
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.File("E:\\Projects\\CommandLine-Application\\CommandLine-Application\\CommandLine-App\\Logging\\log.txt",
-                    outputTemplate: $"|Flow:{flow}| "+"{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}",
-                    rollingInterval: RollingInterval.Hour)
+                    outputTemplate: $"|Flow:{flow}| " + "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}",
+                    rollingInterval: RollingInterval.Day)
                 .CreateLogger();
         }
     }
