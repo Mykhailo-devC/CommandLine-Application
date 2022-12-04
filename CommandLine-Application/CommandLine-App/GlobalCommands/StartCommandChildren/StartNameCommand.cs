@@ -1,9 +1,11 @@
 ﻿using CommandLine_App.Commands;
+using CommandLine_App.Pools;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -11,11 +13,9 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
 {
     public class StartNameCommand : StartCommand
     {
-        public new string Name { get; set; }
-        public override string ArgumentDescription { get; set; }
         public StartNameCommand()
         {
-            Name = "start name";
+            Name += CommandChildrenType.name.ToString();
             ArgumentDescription = "Start name (string value)," +
                 "like [start name firefox].\n";
         }
@@ -34,14 +34,9 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
+                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
                 return false;
             }
-        }
-
-        public override void PrintBaseToString()
-        {
-            Console.WriteLine(base.ToString());
         }
 
         public override string ToString()

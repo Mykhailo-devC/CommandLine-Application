@@ -9,10 +9,8 @@ using System.Text.RegularExpressions;
 
 namespace CommandLine_App.GlobalCommands.StartCommandChildren
 {
-    public class StartFileCommand : StartCommand
+    /*public class StartFileCommand : StartCommand
     {
-        public new string Name { get; set; }
-        public override string ArgumentDescription { get; set; }
         public StartFileCommand()
         {
             Name = "start file";
@@ -36,12 +34,6 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
                 return false;
             }
         }
-
-        public override void PrintBaseToString()
-        {
-            Console.WriteLine(base.ToString());
-        }
-
         public override string ToString()
         {
             return $"\t'{Name}' [path_value] - starts the process with specified file path.";
@@ -85,5 +77,5 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
             
             throw new Exception("File path isn't valid");
         }
-    }
+    }*/
 }

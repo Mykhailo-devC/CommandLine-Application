@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
 using CommandLine_App.Abstraction;
@@ -10,15 +11,9 @@ namespace CommandLine_App.HelperService
 {
     public class Helper : IHelper
     {
-        private readonly IPool<Dictionary<string, Command>> _pool;
-        public Helper(IPool<Dictionary<string, Command>> pool)
-        {
-            _pool = pool;
-        }
-
         public void StandartHelp()
         {
-            Log.Information("StandartHelp method was activated!");
+            Log.Information($"{MethodBase.GetCurrentMethod().Name} was activated!");
 
             Console.WriteLine("Please type 'help' to see more " +
                 "information about avalable commands" +
@@ -27,34 +22,28 @@ namespace CommandLine_App.HelperService
 
         public void HelpChooseCommand(string param)
         {
-            Log.Information("HelpChooseCommand method was activated!");
+            Log.Information($"{MethodBase.GetCurrentMethod().Name} was activated!");
 
-            foreach (var key in _pool.Pool.Keys)
+            foreach (var name in Enum.GetNames(typeof(CommandType)))
             {
-                if (key.StartsWith(param))
+                if (name.StartsWith(param))
                 {
-                    Console.WriteLine($"Maybe you mean '{key}' command?");
+                    Console.WriteLine($"Maybe you mean '{name}' command?");
                 }
             }
 
             Console.WriteLine("Please type 'help' command to see existing commands.");
         }
 
-        public void HelpChooseParameter(List<string> param)
+        public void HelpChooseParameter(string param)
         {
-            Log.Information("HelpChooseParameter method was activated!");
+            Log.Information($"{MethodBase.GetCurrentMethod().Name} was activated!");
 
-            if (param.Count == 1)
+            foreach (var name in Enum.GetNames(typeof(CommandChildrenType)))
             {
-                StandartHelp();
-                return;
-            }
-
-            foreach (var par in _pool.Pool[param[0]].Keys)
-            {
-                if (par.StartsWith(param[1]))
+                if (name.StartsWith(param))
                 {
-                    Console.WriteLine($"Maybe you mean '{par}' parameter?");
+                    Console.WriteLine($"Maybe you mean '{name}' parameter?");
                 }
             }
 

@@ -1,20 +1,20 @@
 ﻿using CommandLine_App.Commands;
+using CommandLine_App.Pools;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace CommandLine_App.GlobalCommands.RefreshCommandChildren
 {
     public class RefreshNameCommand : RefreshCommand
     {
-        public new string Name { get; set; }
-        public override string ArgumentDescription { get; set; }
         public RefreshNameCommand()
         {
-            Name = "refresh name";
+            Name += CommandChildrenType.name.ToString();
             ArgumentDescription = "Refresh name (string value)," +
                 "like [refresh name firefox].\n";
         }
@@ -33,14 +33,9 @@ namespace CommandLine_App.GlobalCommands.RefreshCommandChildren
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
+                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
                 return false;
             }
-        }
-
-        public override void PrintBaseToString()
-        {
-            Console.WriteLine(base.ToString());
         }
 
         public override string ToString()

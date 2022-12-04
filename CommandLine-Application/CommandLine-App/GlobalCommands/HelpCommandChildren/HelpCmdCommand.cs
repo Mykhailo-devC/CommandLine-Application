@@ -6,18 +6,16 @@ using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace CommandLine_App.GlobalCommands.HelpCommandChildren
 {
     public class HelpCmdCommand : HelpCommand
     {
-        public new string Name { get; set; }
-        public override string ArgumentDescription { get; set; }
-
         public HelpCmdCommand(IPool<Dictionary<string, Command>> pool) : base(pool)
         {
-            Name = "help [command]";
+            Name += "[command]";
             ArgumentDescription = "Help (string value), like [help show].";
         }
 
@@ -36,7 +34,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
+                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
                 return false;
             }
         }
@@ -48,29 +46,21 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
 
         private bool HelpCmd(string arg)
         {
-            try
+            if (!_pool.Pool.ContainsKey(arg))
             {
-                if (!_pool.Pool.ContainsKey(arg))
-                {
-                    Log.Warning("[{1}] User inputs incorrect parameters, [params = '{0}']", arg, this.GetType());
-                    PrintArgumentTip();
-                    return false;
-                }
-
-                _pool.Pool[arg].Values.First().PrintBaseToString();
-
-                foreach (var par in _pool.Pool[arg].Values)
-                {
-                    Console.WriteLine(par.ToString());
-                }
-
-                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
-                return true;
+                Log.Warning("[{1}] User inputs incorrect parameters, [params = '{0}']", arg, this.GetType());
+                PrintArgumentTip();
+                return false;
             }
-            catch (Exception ex)
+
+
+            foreach (var par in _pool.Pool[arg].Values)
             {
-                throw ex;
+                Console.WriteLine(par.ToString());
             }
+
+            Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
+            return true;
         }
     }
 }

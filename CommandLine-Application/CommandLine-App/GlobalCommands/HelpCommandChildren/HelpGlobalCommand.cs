@@ -7,18 +7,14 @@ using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Reflection;
 
 namespace CommandLine_App.GlobalCommands.HelpCommandChildren
 {
     public class HelpGlobalCommand : HelpCommand
     {
-        public new string Name { get; set; }
-        public override string ArgumentDescription { get; set; }
-
         public HelpGlobalCommand(IPool<Dictionary<string, Command>> pool) : base(pool)
         {
-            Name = "help";
             ArgumentDescription = "This parameter takes no arguments, like [help]\n";
         }
 
@@ -37,14 +33,9 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
+                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
                 return false;
             }
-        }
-
-        public override void PrintBaseToString()
-        {
-            Console.WriteLine(base.ToString());
         }
 
         public override string ToString()
@@ -54,25 +45,16 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
 
         private bool HelpGlobal()
         {
-            try
+            foreach (var com in _pool.Pool.Values)
             {
-                foreach(var com in _pool.Pool.Values)
+                foreach (var par in com.Values)
                 {
-                    com.Values.First().PrintBaseToString();
-
-                    foreach(var par in com.Values)
-                    {
-                        Console.WriteLine(par.ToString());
-                    }
+                    Console.WriteLine(par.ToString());
                 }
+            }
 
-                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
+            return true;
         }
     }
 }

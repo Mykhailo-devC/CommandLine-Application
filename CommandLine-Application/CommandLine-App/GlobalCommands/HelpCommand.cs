@@ -9,22 +9,15 @@ namespace CommandLine_App.Commands
 {
     public abstract class HelpCommand : Command
     {
-        public override string Name { get; set; }
-        public override abstract string ArgumentDescription { get; set; }
         protected readonly IPool<Dictionary<string, Command>> _pool;
 
         public HelpCommand(IPool<Dictionary<string, Command>> pool)
         {
-            Name = "help";
+            Name = CommandType.help.ToString();
             _pool = pool;
         }
 
         public override abstract bool Execute(params string[] param);
-
-        public override void PrintBaseToString()
-        {
-            Console.WriteLine(ToString());
-        }
 
         public override string ToString()
         {

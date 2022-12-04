@@ -8,6 +8,6 @@ namespace CommandLine_App.HelperService
     {
         public void StandartHelp();
         public void HelpChooseCommand(string param);
-        public void HelpChooseParameter(List<string> param);
+        public void HelpChooseParameter(string param);
     }
 }

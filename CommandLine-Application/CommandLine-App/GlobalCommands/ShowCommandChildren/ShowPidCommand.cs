@@ -1,22 +1,22 @@
 ﻿using CommandLine_App.Commands;
 using CommandLine_App.HelperService;
+using CommandLine_App.Pools;
+using CommandLine_App.ProcessService;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace CommandLine_App.GlobalCommands.ShowCommandChildren
 {
     public class ShowPidCommand : ShowCommand
-    {
-        public new string Name { get; set; }
-        public override string ArgumentDescription { get; set; }
-
-        public ShowPidCommand()
+    { 
+        public ShowPidCommand(ProcessWrapper wrapper) : base(wrapper)
         {
-            Name = "show pid";
+            Name += CommandChildrenType.pid.ToString();
             ArgumentDescription = "Show pid (int value), " +
                 "like [show pid 89].\n";
         }
@@ -27,23 +27,19 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             {
                 if (param.Length != 1)
                 {
-                    Log.Warning("[{1}] User inputs incorrect count of parameters, [params = '{0}']", param, this.GetType());
+                    Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] Incorrect parameters! [parameters = {param}]");
                     PrintArgumentTip();
                     return false;
                 }
 
-                return ShowByPID(int.Parse(param.First()));
+                ShowByPID(int.Parse(param[0]));
+                return true;
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
+                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
                 return false;
             }
-        }
-
-        public override void PrintBaseToString()
-        {
-            Console.WriteLine(base.ToString());
         }
 
         public override string ToString()
@@ -52,25 +48,20 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
                 $" with specified process identifier";
         }
 
-        private bool ShowByPID(int arg)
+        private void ShowByPID(int arg)
         {
             try
             {
-                var process = Process.GetProcessById(arg);
+                var process = _wrapper.GetProcessById(arg);
 
                 Console.WriteLine(ProcessesToString(new List<Process> { process }));
 
-                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
-                return true;
+                Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
             }
             catch (ArgumentException ex)
             {
-                
+                Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] No existing processes with {arg} id!");
                 Console.WriteLine("No existing processes with [{0}] id!", arg);
-                throw ex;
-            }
-            catch (Exception ex)
-            {
                 throw ex;
             }
         }

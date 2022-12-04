@@ -1,4 +1,6 @@
 ﻿using CommandLine_App.Abstraction;
+using CommandLine_App.Pools;
+using CommandLine_App.ProcessService;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,11 +10,10 @@ namespace CommandLine_App.Commands
 {
     public abstract class RefreshCommand : Command
     {
-        public override string Name { get; set; }
-        public override abstract string ArgumentDescription { get; set; }
-        public RefreshCommand()
+        protected ProcessWrapper _wrapper;
+        public RefreshCommand(ProcessWrapper wrapper)
         {
-            Name = "refresh";
+            Name = CommandType.refresh.ToString();
         }
 
         public override abstract bool Execute(params string[] param);
@@ -21,8 +22,5 @@ namespace CommandLine_App.Commands
         {
             return $"\nCommand '{Name}' - refresh specifeied processes.";
         }
-
-        public override abstract void PrintBaseToString();
-
     }
 }

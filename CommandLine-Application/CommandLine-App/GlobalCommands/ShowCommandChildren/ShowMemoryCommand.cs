@@ -1,21 +1,21 @@
 ﻿using CommandLine_App.Commands;
 using CommandLine_App.HelperService;
+using CommandLine_App.Pools;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace CommandLine_App.GlobalCommands.ShowCommandChildren
 {
     public class ShowMemoryCommand : ShowCommand
     {
-        public new string Name { get; set; }
-        public override string ArgumentDescription { get; set; }
         public ShowMemoryCommand()
         {
-            Name = "show memory";
+            Name += CommandChildrenType.memory.ToString();
             ArgumentDescription = "Show memory (int value), like [show memory 200]." +
                 "\nShow memory (int start, int end), like [show memory 500 1000].\n";
         }
@@ -38,20 +38,15 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             }
             catch (FormatException ex)
             {
-                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
+                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
                 PrintArgumentTip();
                 return false;
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
+                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
                 return false;
             }
-        }
-
-        public override void PrintBaseToString()
-        {
-            Console.WriteLine(base.ToString());
         }
 
         public override string ToString()

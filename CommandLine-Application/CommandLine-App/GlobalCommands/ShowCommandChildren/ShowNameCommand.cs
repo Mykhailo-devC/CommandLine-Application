@@ -1,22 +1,23 @@
 ﻿using CommandLine_App.Commands;
 using CommandLine_App.HelperService;
+using CommandLine_App.Pools;
+using CommandLine_App.ProcessService;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace CommandLine_App.GlobalCommands.ShowCommandChildren
 {
     public class ShowNameCommand : ShowCommand
     {
-        public new string Name { get; set; }
-        public override string ArgumentDescription { get; set; }
-        public ShowNameCommand()
+        public ShowNameCommand(ProcessWrapper wrapper) : base(wrapper)
         {
-            Name = "show name";
+            Name += CommandChildrenType.name.ToString();
             ArgumentDescription = "Show name (string value)," +
                 "like [show name firefox].\n";
         }
@@ -26,51 +27,38 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             {
                 if (param.Length != 1)
                 {
-                    Log.Warning("[{1}] User inputs incorrect count of parameters, [params = '{0}']", param, this.GetType());
+                    Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] Incorrect parameters! [parameters = {param}]");
                     PrintArgumentTip();
                     return false;
                 }
 
-                return ShowByName(param.First());
+                ShowByName(param[0]);
+                return true;
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']", param, this.GetType());
+                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
                 return false;
             }
-        }
-
-        public override void PrintBaseToString()
-        {
-            Console.WriteLine(base.ToString());
         }
 
         public override string ToString()
         {
             return $"\t'{Name}' [name_value] - shows all running processes with specified name";
         }
-        private bool ShowByName(string arg)
+        private void ShowByName(string arg)
         {
-            try
+            var processes = _wrapper.GetProcessesByName(arg).OrderBy(e => e.Id);
+
+            if (processes.Count() == 0)
             {
-                var processes = Process.GetProcessesByName(arg).OrderBy(e => e.Id);
-
-                if (processes.Count() == 0)
-                {
-                    Log.Warning("[{1}] No existing process with current name, [arg = '{0}']", arg, this.GetType());
-                    Console.WriteLine("No existing processes with '{0}' name!", arg);
-                }
-                else
-                {
-                    Console.WriteLine(ProcessesToString(processes));
-                }
-
-                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
-                return true;
+                Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] No existing processes with {arg} name!");
+                Console.WriteLine("No existing processes with '{0}' name!", arg);
             }
-            catch (Exception ex)
+            else
             {
-                throw ex;
+                Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
+                Console.WriteLine(ProcessesToString(processes));
             }
         }
     }

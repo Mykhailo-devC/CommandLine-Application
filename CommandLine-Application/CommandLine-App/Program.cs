@@ -1,6 +1,9 @@
 ﻿using CommandLine_App.Abstraction;
 using CommandLine_App.Commands;
+using CommandLine_App.Factory;
 using CommandLine_App.HelperService;
+using CommandLine_App.InputValidatorService;
+using CommandLine_App.Pools;
 using Serilog;
 using Serilog.Formatting.Compact;
 using Serilog.Formatting.Json;
@@ -15,15 +18,21 @@ namespace CommandLine_App
 {
     public class Program
     {
+        private static IInputValidator _validator = new InputValidator();
+        public const string LOGGING_PATH = "\\Logging\\log.txt";
         public static void Main(string[] args)
         {
             LoggerSetup();
-            var _factory = new CommandFactory();
             
             var userInput = Console.ReadLine().Split(" ").ToList();
 
+            if (!_validator.IsValid(userInput))
+            {
+                return;
+            }
+
+            var _factory = new CommandFactory();
             var command =_factory.GetCommand(userInput);
-            
 
             if(command != null)
             {
@@ -63,15 +72,17 @@ namespace CommandLine_App
             }*/
             #endregion
         }
+
         private static void LoggerSetup()
         {
             var flow = Guid.NewGuid();
 
             Log.Logger = new LoggerConfiguration()
-                .WriteTo.File("E:\\Projects\\CommandLine-Application\\CommandLine-Application\\CommandLine-App\\Logging\\log.txt",
+                .WriteTo.File(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + LOGGING_PATH,
                     outputTemplate: $"|Flow:{flow}| " + "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}",
                     rollingInterval: RollingInterval.Day)
                 .CreateLogger();
         }
+
     }
 }

@@ -1,20 +1,21 @@
 ﻿using CommandLine_App.Commands;
+using CommandLine_App.Pools;
+using CommandLine_App.ProcessService;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace CommandLine_App.GlobalCommands.KillCommandChildren
 {
     public class KillMemoryCommand : KillCommand
     {
-        public new string Name { get; set; }
-        public override string ArgumentDescription { get; set; }
-        public KillMemoryCommand()
+        public KillMemoryCommand(ProcessWrapper wrapper) : base(wrapper)
         {
-            Name = "show memory";
+            Name += CommandChildrenType.memory.ToString();
             ArgumentDescription = "Kill memory (int value), like [kill memory 200]." +
                 "\nKill memory (int start, int end), like [kill memory 500 1000].\n";
         }
@@ -24,95 +25,72 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
             {
                 if (param.Length == 1)
                 {
-                    return KillByMemory(int.Parse(param.First()));
+                    KillByMemory(int.Parse(param[0]));
+                    return true;
                 }
                 if (param.Length == 2)
                 {
-                    return KillByMemory(int.Parse(param.First()), int.Parse(param.Last()));
+                    KillByMemory(int.Parse(param[0]), int.Parse(param[1]));
+                    return true;
                 }
 
-                Log.Warning("[{1}] User inputs incorrect count of parameters, [params = '{0}']", param, this.GetType());
+                Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] Incorrect parameters! [parameters = {param}]");
                 PrintArgumentTip();
                 return false;
             }
             catch (FormatException ex)
             {
-                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
+                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
                 PrintArgumentTip();
                 return false;
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
+                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
                 return false;
             }
         }
-
-        public override void PrintBaseToString()
-        {
-            Console.WriteLine(base.ToString());
-        }
-
         public override string ToString()
         {
             return $"\t'{Name}' [memory_value] - stops all running processes with specified memory.";
         }
-        private bool KillByMemory(int arg)
+        private void KillByMemory(int arg)
         {
-            try
+            var processes = _wrapper.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 == arg);
+
+            if (processes.Count() == 0)
             {
-
-                var processes = Process.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 == arg);
-
-                if (processes.Count() == 0)
-                {
-                    Log.Warning("[{1}] No existing process with current memory, [arg = '{0}']", arg, this.GetType());
-                    Console.WriteLine("No existing processes with using {0}/Kb of memory!", arg);
-                }
-                else
-                {
-                    foreach (var process in processes)
-                    {
-                        Console.WriteLine($"{process.ProcessName} was stopped!");
-                        process.Kill();
-                    }
-                }
-
-                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
-                return true;
+                Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] No existing processes with using {arg}/Kb of memory!");
+                Console.WriteLine("No existing processes with using {0}/Kb of memory!", arg);
             }
-            catch (Exception ex)
+            else
             {
-                throw ex;
+                Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
+                foreach (var process in processes)
+                {
+                    Console.WriteLine($"{process.ProcessName} was stopped!");
+                    _wrapper.Kill(process);
+                }
             }
         }
 
-        private bool KillByMemory(int start, int end)
+        private void KillByMemory(int start, int end)
         {
-            try
+            var processes = _wrapper.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 > start && e.PrivateMemorySize64 / 1024 < end);
+
+            if (processes.Count() == 0)
             {
-                var processes = Process.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 > start && e.PrivateMemorySize64 / 1024 < end);
-
-                if (processes.Count() == 0)
-                {
-                    Log.Warning("[{2}] No existing process with current memory, [arg = '{0}, {1}']", start, end, this.GetType());
-                    Console.WriteLine("No existing processes with using memory between {0}/Kb and {1}/Kb!", start, end);
-                }
-                else
-                {
-                    foreach (var process in processes)
-                    {
-                        Console.WriteLine($"{process.ProcessName} was stopped!");
-                        process.Kill();
-                    }
-                }
-
-                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
-                return true;
+                Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] No existing processes with using {start}-{end}/Kb of memory!");
+                Console.WriteLine("No existing processes with using memory between {0}/Kb and {1}/Kb!", start, end);
             }
-            catch (Exception ex)
+            else
             {
-                throw ex;
+                Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
+                foreach (var process in processes)
+                {
+                    Console.WriteLine($"{process.ProcessName} was stopped!");
+                    _wrapper.Kill(process);
+                }
             }
         }
     }

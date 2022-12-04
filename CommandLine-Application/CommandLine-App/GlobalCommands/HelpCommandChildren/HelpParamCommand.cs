@@ -6,19 +6,18 @@ using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace CommandLine_App.GlobalCommands.HelpCommandChildren
 {
     public class HelpParamCommand : HelpCommand
     {
-        public new string Name { get; set; }
-        public override string ArgumentDescription { get; set; }
         private readonly IHelper _helper;
 
         public HelpParamCommand(IPool<Dictionary<string, Command>> pool, IHelper helper) : base(pool)
         {
-            Name = "help [command] [parameter]";
+            Name += "[command] [parameter]";
             ArgumentDescription = "Help (string value) (string vlue), like [help show memory].";
             _helper = helper;
         }
@@ -38,7 +37,7 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
+                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
                 return false;
             }
         }
@@ -50,34 +49,27 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
 
         private bool HelpParam(string com, string par)
         {
-            try
+            if (!_pool.Pool.ContainsKey(com))
             {
-                if (!_pool.Pool.ContainsKey(com))
-                {
-                    Log.Warning("[{1}] User inputs incorrect command, [com = '{0}']",com, this.GetType());
-                    PrintArgumentTip();
-                    _helper.HelpChooseCommand(com);
-                    return false;
-                }
-
-                if (!_pool.Pool[com].ContainsKey(par))
-                {
-                    Log.Warning("[{1}] User inputs incorrect parameters, [params = '{0}']",par, this.GetType());
-                    PrintArgumentTip();
-                    _helper.HelpChooseParameter(new List<string> { com, par });
-                    return false;
-                }
-
-                _pool.Pool[com][par].PrintArgumentTip();
-                Console.WriteLine(_pool.Pool[com][par].ToString());
-
-                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
-                return true;
+                Log.Warning("[{1}] User inputs incorrect command, [com = '{0}']", com, this.GetType());
+                PrintArgumentTip();
+                _helper.HelpChooseCommand(com);
+                return false;
             }
-            catch (Exception ex)
+
+            if (!_pool.Pool[com].ContainsKey(par))
             {
-                throw ex;
+                Log.Warning("[{1}] User inputs incorrect parameters, [params = '{0}']", par, this.GetType());
+                PrintArgumentTip();
+                _helper.HelpChooseParameter(par);
+                return false;
             }
+
+            _pool.Pool[com][par].PrintArgumentTip();
+            Console.WriteLine(_pool.Pool[com][par].ToString());
+
+            Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
+            return true;
         }
     }
 }

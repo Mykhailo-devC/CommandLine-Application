@@ -1,21 +1,22 @@
 ﻿using CommandLine_App.Commands;
 using CommandLine_App.HelperService;
+using CommandLine_App.Pools;
+using CommandLine_App.ProcessService;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace CommandLine_App.GlobalCommands.ShowCommandChildren
 {
     public class ShowAllCommand : ShowCommand
     {
-        public new string Name { get; set; }
-        public override string ArgumentDescription { get; set; }
-        public ShowAllCommand()
+        public ShowAllCommand(ProcessWrapper wrapper) : base(wrapper)
         {
-            Name = "show all";
+            Name += CommandChildrenType.all.ToString();
             ArgumentDescription = "This parameter takes no arguments, like [show all]\n";
         }
         public override bool Execute(params string[] param)
@@ -24,45 +25,32 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             {
                 if (param.Any())
                 {
-                    Log.Warning("[{1}] User inputs incorrect count of parameters, [params = '{0}']", param, this.GetType());
+                    Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] Incorrect parameters! [parameters = {param}]");
                     PrintArgumentTip();
                     return false;
                 }
 
-                return ShowAll();
+                ShowAll();
+                return true;
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']", param, this.GetType());
+                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
                 return false;
             }
-        }
-
-        public override void PrintBaseToString()
-        {
-            Console.WriteLine(base.ToString());
         }
 
         public override string ToString()
         {
             return $"\t'{Name}' - shows all running processes at the execution moment";
         }
-        private bool ShowAll()
+        private void ShowAll()
         {
-            try
-            {
-                var processes = Process.GetProcesses().OrderBy(e => e.ProcessName);
+            var processes = _wrapper.GetProcesses().OrderBy(e => e.ProcessName);
 
-                Console.WriteLine(ProcessesToString(processes));
+            Console.WriteLine(ProcessesToString(processes));
 
-                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
+            Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
         }
     }
 }

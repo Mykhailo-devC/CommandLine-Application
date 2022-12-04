@@ -1,20 +1,20 @@
 ﻿using CommandLine_App.Commands;
+using CommandLine_App.Pools;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace CommandLine_App.GlobalCommands.KillCommandChildren
 {
     public class KillPidCommand : KillCommand
     {
-        public new string Name { get; set; }
-        public override string ArgumentDescription { get; set; }
         public KillPidCommand()
         {
-            Name = "kill pid";
+            Name += CommandChildrenType.pid.ToString();
             ArgumentDescription = "Kill pid (string value)," +
                 "like [kill name 55].\n";
         }
@@ -31,16 +31,17 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
 
                 return KillByPID(int.Parse(param.First()));
             }
-            catch (Exception ex)
+            catch (FormatException ex)
             {
-                Log.Error(ex, "[{1}] Exeption has been thrown from Execute! [params = '{0}']",param, this.GetType());
+                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
+                PrintArgumentTip();
                 return false;
             }
-        }
-
-        public override void PrintBaseToString()
-        {
-            Console.WriteLine(base.ToString());
+            catch (Exception ex)
+            {
+                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
+                return false;
+            }
         }
 
         public override string ToString()
