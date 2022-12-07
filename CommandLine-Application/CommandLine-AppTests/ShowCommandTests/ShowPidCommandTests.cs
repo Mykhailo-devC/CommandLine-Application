@@ -1,4 +1,5 @@
 ﻿using CommandLine_App.GlobalCommands.ShowCommandChildren;
+using CommandLine_App.ProcessService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -9,12 +10,12 @@ namespace CommandLine_AppTests.ShowCommandTests
     [TestClass]
     public class ShowPidCommandTests
     {
-        private ShowPidCommand _command;
+        private ShowPid _command;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            _command = new ShowPidCommand();
+            _command = new ShowPid();
         }
 
         [TestCleanup]

@@ -3,25 +3,18 @@ using CommandLine_App.Pools;
 using CommandLine_App.ProcessService;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace CommandLine_App.Commands
 {
-    public abstract class StartCommand : Command
+    public abstract class Refresh : Command
     {
-        protected ProcessWrapper _wrapper;
-        public StartCommand(ProcessWrapper wrapper)
-        {
-            _wrapper = wrapper;
-            Name = CommandType.start.ToString();
-        }
-
         public override abstract bool Execute(params string[] param);
 
         public override string ToString()
         {
-            return $"\nCommand '{Name}' - starts specifeied processes.";
+            return $"\nCommand '{this.GetType().Name}' - refresh specifeied processes.";
         }
-
     }
 }

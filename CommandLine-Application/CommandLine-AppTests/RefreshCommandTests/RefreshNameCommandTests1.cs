@@ -1,5 +1,6 @@
 ﻿using CommandLine_App.GlobalCommands.RefreshCommandChildren;
 using CommandLine_App.GlobalCommands.ShowCommandChildren;
+using CommandLine_App.ProcessService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
@@ -11,13 +12,13 @@ namespace CommandLine_AppTests.RefreshCommandTests
     [TestClass]
     public class RefreshNameCommandTests
     {
-        private RefreshNameCommand _command;
+        private RefreshName _command;
 
         [TestInitialize]
         public void TestInitialize()
         { 
 
-            _command = new RefreshNameCommand();
+            _command = new RefreshName();
         }
 
         [TestCleanup]

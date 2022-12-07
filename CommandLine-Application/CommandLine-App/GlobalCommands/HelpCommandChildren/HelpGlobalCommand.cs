@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace CommandLine_App.GlobalCommands.HelpCommandChildren
 {
-    public class HelpGlobalCommand : HelpCommand
+    /*public class HelpGlobalCommand : HelpCommand
     {
         public HelpGlobalCommand(IPool<Dictionary<string, Command>> pool) : base(pool)
         {
@@ -56,6 +56,6 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
             return true;
         }
-    }
+    }*/
 }
 

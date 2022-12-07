@@ -1,6 +1,7 @@
 ﻿using CommandLine_App.Abstraction;
 using CommandLine_App.GlobalCommands.HelpCommandChildren;
 using CommandLine_App.GlobalCommands.ShowCommandChildren;
+using CommandLine_App.ProcessService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
@@ -12,12 +13,12 @@ namespace CommandLine_AppTests.ShowCommandTests
     [TestClass]
     public class ShowAllCommandTests
     {
-        private ShowAllCommand _command;
+        private ShowAll _command;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            _command = new ShowAllCommand();
+            _command = new ShowAll();
         }
 
         [TestCleanup]

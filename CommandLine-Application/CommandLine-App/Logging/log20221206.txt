@@ -1,0 +1,81 @@
+|Flow:f335d9e1-a6ad-4eaa-83c2-1877c32b0883| 2022-12-06 21:02:40 [INF] User inputs valid commands!, [input = '["show","all"]']
+|Flow:f335d9e1-a6ad-4eaa-83c2-1877c32b0883| 2022-12-06 21:02:40 [INF] 'CommandLine_App.GlobalCommands.ShowCommandChildren.ShowAll' has been created
+|Flow:f335d9e1-a6ad-4eaa-83c2-1877c32b0883| 2022-12-06 21:02:40 [INF] [Class:CommandLine_App.GlobalCommands.ShowCommandChildren.ShowAll][Method:ShowAllProcesses] finished successfully!
+|Flow:f335d9e1-a6ad-4eaa-83c2-1877c32b0883| 2022-12-06 21:02:40 [INF] Program finish working.
+
+|Flow:07c817e8-4921-49c9-bc7c-4e4d0dcbc3df| 2022-12-06 21:02:50 [INF] User inputs valid commands!, [input = '["start","name","notepad"]']
+|Flow:07c817e8-4921-49c9-bc7c-4e4d0dcbc3df| 2022-12-06 21:02:50 [INF] 'CommandLine_App.GlobalCommands.StartCommandChildren.StartName' has been created
+|Flow:07c817e8-4921-49c9-bc7c-4e4d0dcbc3df| 2022-12-06 21:02:50 [INF] [Class:CommandLine_App.GlobalCommands.StartCommandChildren.StartName][Method:StartByName] finished successfully!
+|Flow:07c817e8-4921-49c9-bc7c-4e4d0dcbc3df| 2022-12-06 21:02:50 [INF] Program finish working.
+
+|Flow:011862ca-d1d5-4a48-94e5-0f925f37a8b1| 2022-12-06 23:08:04 [WRN] User inputs empty string!
+|Flow:011862ca-d1d5-4a48-94e5-0f925f37a8b1| 2022-12-06 23:08:04 [INF] StandartHelp was activated!
+|Flow:8cd0e9d7-dfc9-431c-94ff-e093187045b3| 2022-12-06 23:12:46 [WRN] User inputs incorrect command, [input = 'all']
+|Flow:8cd0e9d7-dfc9-431c-94ff-e093187045b3| 2022-12-06 23:12:54 [INF] HelpChooseCommand was activated!
+|Flow:8cd0e9d7-dfc9-431c-94ff-e093187045b3| 2022-12-06 23:13:12 [WRN] User inputs incorrect command child, [input = '["show","all"]']
+|Flow:8cd0e9d7-dfc9-431c-94ff-e093187045b3| 2022-12-06 23:13:13 [INF] HelpChooseParameter was activated!
+|Flow:8f03af31-b5b2-465c-913d-259f8397e1f8| 2022-12-06 23:15:52 [INF] User inputs valid commands!, [input = '["show","all"]']
+|Flow:1102aaf7-b453-4719-b695-fd009cc8713c| 2022-12-06 23:16:35 [INF] User inputs valid commands!, [input = '["show","all"]']
+|Flow:1102aaf7-b453-4719-b695-fd009cc8713c| 2022-12-06 23:16:35 [INF] 'CommandLine_App.GlobalCommands.ShowCommandChildren.ShowAll' has been created
+|Flow:1102aaf7-b453-4719-b695-fd009cc8713c| 2022-12-06 23:16:35 [INF] [Class:CommandLine_App.GlobalCommands.ShowCommandChildren.ShowAll][Method:ShowAllProcesses] finished successfully!
+|Flow:1102aaf7-b453-4719-b695-fd009cc8713c| 2022-12-06 23:16:35 [INF] Program finish working.
+
+|Flow:aacb311a-fdff-4300-aa99-f703e1f10790| 2022-12-06 23:16:42 [WRN] User inputs incorrect command, [input = 'sh']
+|Flow:aacb311a-fdff-4300-aa99-f703e1f10790| 2022-12-06 23:16:42 [INF] HelpChooseCommand was activated!
+|Flow:aacb311a-fdff-4300-aa99-f703e1f10790| 2022-12-06 23:16:42 [WRN] User inputs incorrect command, [input = '["sh","all"]']
+|Flow:aacb311a-fdff-4300-aa99-f703e1f10790| 2022-12-06 23:16:42 [INF] HelpChooseCommand was activated!
+|Flow:4fe61b6a-b499-40bb-8e84-39a63db5ec62| 2022-12-06 23:20:55 [WRN] User inputs empty string!
+|Flow:4fe61b6a-b499-40bb-8e84-39a63db5ec62| 2022-12-06 23:20:55 [INF] StandartHelp was activated!
+|Flow:5ece5ff5-026c-4dcc-b4fa-e0cdc793a883| 2022-12-06 23:21:04 [WRN] User inputs incorrect command, [input = 'al']
+|Flow:5ece5ff5-026c-4dcc-b4fa-e0cdc793a883| 2022-12-06 23:21:04 [WRN] User inputs incorrect command child, [input = '["show","al"]']
+|Flow:5ece5ff5-026c-4dcc-b4fa-e0cdc793a883| 2022-12-06 23:21:04 [INF] HelpChooseParameter was activated!
+|Flow:5ece5ff5-026c-4dcc-b4fa-e0cdc793a883| 2022-12-06 23:21:04 [INF] Program finish working.
+
+|Flow:286ae367-11d6-44b5-87ab-68b2ac522ba2| 2022-12-06 23:21:48 [WRN] User inputs incorrect command, [input = 'al']
+|Flow:286ae367-11d6-44b5-87ab-68b2ac522ba2| 2022-12-06 23:21:56 [WRN] User inputs incorrect command child, [input = '["show","al"]']
+|Flow:286ae367-11d6-44b5-87ab-68b2ac522ba2| 2022-12-06 23:22:09 [INF] HelpChooseParameter was activated!
+|Flow:9650606e-23d4-47f0-9315-5e6ce187f8cb| 2022-12-06 23:22:59 [WRN] User inputs incorrect command, [input = 'al']
+|Flow:9650606e-23d4-47f0-9315-5e6ce187f8cb| 2022-12-06 23:22:59 [WRN] User inputs incorrect command child, [input = '["show","al"]']
+|Flow:9650606e-23d4-47f0-9315-5e6ce187f8cb| 2022-12-06 23:22:59 [INF] HelpChooseParameter was activated!
+|Flow:9650606e-23d4-47f0-9315-5e6ce187f8cb| 2022-12-06 23:22:59 [INF] Program finish working.
+
+|Flow:aeee6e79-11ee-4ee7-b964-b2ca5125c6d8| 2022-12-06 23:23:13 [WRN] User inputs incorrect command, [input = 'sh']
+|Flow:aeee6e79-11ee-4ee7-b964-b2ca5125c6d8| 2022-12-06 23:23:13 [WRN] User inputs incorrect command, [input = '["sh","al"]']
+|Flow:aeee6e79-11ee-4ee7-b964-b2ca5125c6d8| 2022-12-06 23:23:13 [INF] HelpChooseCommand was activated!
+|Flow:430fddcf-b6c0-40b0-9d9b-a9b3424ac55b| 2022-12-06 23:23:23 [WRN] User inputs incorrect command, [input = 'al']
+|Flow:430fddcf-b6c0-40b0-9d9b-a9b3424ac55b| 2022-12-06 23:23:23 [WRN] User inputs incorrect command child, [input = '["show","al"]']
+|Flow:430fddcf-b6c0-40b0-9d9b-a9b3424ac55b| 2022-12-06 23:23:23 [INF] HelpChooseParameter was activated!
+|Flow:430fddcf-b6c0-40b0-9d9b-a9b3424ac55b| 2022-12-06 23:23:23 [INF] Program finish working.
+
+|Flow:1a5f52af-7979-4c2d-a662-9c5d5b6aa314| 2022-12-06 23:23:28 [WRN] User inputs incorrect command, [input = 'nam']
+|Flow:1a5f52af-7979-4c2d-a662-9c5d5b6aa314| 2022-12-06 23:23:28 [WRN] User inputs incorrect command child, [input = '["show","nam"]']
+|Flow:1a5f52af-7979-4c2d-a662-9c5d5b6aa314| 2022-12-06 23:23:28 [INF] HelpChooseParameter was activated!
+|Flow:1a5f52af-7979-4c2d-a662-9c5d5b6aa314| 2022-12-06 23:23:28 [INF] Program finish working.
+
+|Flow:363236df-3a45-4036-9c38-b98447f8db82| 2022-12-06 23:23:37 [INF] User inputs valid commands!, [input = '["show","name","firef"]']
+|Flow:363236df-3a45-4036-9c38-b98447f8db82| 2022-12-06 23:23:38 [WRN] [Class:CommandLine_App.InputValidatorService.InputParser][Method:ValidateNameChild] Incorrect arguments! [arguments = System.String[]]
+|Flow:363236df-3a45-4036-9c38-b98447f8db82| 2022-12-06 23:23:38 [INF] 'CommandLine_App.GlobalCommands.ShowCommandChildren.ShowName' has been created
+|Flow:363236df-3a45-4036-9c38-b98447f8db82| 2022-12-06 23:23:38 [WRN] [Class:CommandLine_App.GlobalCommands.ShowCommandChildren.ShowName][Method:ShowByName] No existing processes with firef name!
+|Flow:363236df-3a45-4036-9c38-b98447f8db82| 2022-12-06 23:23:38 [INF] Program finish working.
+
+|Flow:651a9463-ac87-4254-938a-fc3e2d9ffb09| 2022-12-06 23:23:47 [INF] User inputs valid commands!, [input = '["show","name","123"]']
+|Flow:651a9463-ac87-4254-938a-fc3e2d9ffb09| 2022-12-06 23:23:47 [WRN] [Class:CommandLine_App.InputValidatorService.InputParser][Method:ValidateNameChild] Incorrect arguments! [arguments = System.String[]]
+|Flow:651a9463-ac87-4254-938a-fc3e2d9ffb09| 2022-12-06 23:23:47 [INF] 'CommandLine_App.GlobalCommands.ShowCommandChildren.ShowName' has been created
+|Flow:651a9463-ac87-4254-938a-fc3e2d9ffb09| 2022-12-06 23:23:47 [WRN] [Class:CommandLine_App.GlobalCommands.ShowCommandChildren.ShowName][Method:ShowByName] No existing processes with 123 name!
+|Flow:651a9463-ac87-4254-938a-fc3e2d9ffb09| 2022-12-06 23:23:47 [INF] Program finish working.
+
+|Flow:3b206f60-cd75-40ca-be65-7e08324597ec| 2022-12-06 23:23:56 [INF] User inputs valid commands!, [input = '["show","pid","sa"]']
+|Flow:3b206f60-cd75-40ca-be65-7e08324597ec| 2022-12-06 23:23:56 [WRN] [Class:CommandLine_App.InputValidatorService.InputParser][Method:ValidatePidChild] Incorrect arguments! [arguments = System.String[]]
+|Flow:3b206f60-cd75-40ca-be65-7e08324597ec| 2022-12-06 23:23:56 [INF] 'CommandLine_App.GlobalCommands.ShowCommandChildren.ShowPid' has been created
+|Flow:3b206f60-cd75-40ca-be65-7e08324597ec| 2022-12-06 23:23:56 [ERR] [Class:CommandLine_App.GlobalCommands.ShowCommandChildren.ShowPid][Method:Execute][parameters = System.String[]]
+System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at System.Int32.Parse(String s)
+   at CommandLine_App.GlobalCommands.ShowCommandChildren.ShowPid.Execute(String[] param) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\GlobalCommands\ShowCommandChildren\ShowPid.cs:line 27
+|Flow:3b206f60-cd75-40ca-be65-7e08324597ec| 2022-12-06 23:23:56 [INF] Program finish working.
+
+|Flow:648a82a9-e4ae-4277-bbbb-271548e6b4c8| 2022-12-06 23:25:44 [INF] User inputs valid commands!, [input = '["show","pid","sa"]']
+|Flow:648a82a9-e4ae-4277-bbbb-271548e6b4c8| 2022-12-06 23:26:09 [WRN] [Class:CommandLine_App.InputValidatorService.InputParser][Method:ValidatePidChild] Incorrect arguments! [arguments = System.String[]]
+|Flow:6331f646-828b-4962-a172-42c3dfec10d7| 2022-12-06 23:26:58 [INF] User inputs valid commands!, [input = '["show","pid","sa"]']
+|Flow:6331f646-828b-4962-a172-42c3dfec10d7| 2022-12-06 23:27:02 [WRN] [Class:CommandLine_App.InputValidatorService.InputParser][Method:ValidatePidChild] Incorrect arguments! [arguments = System.String[]]

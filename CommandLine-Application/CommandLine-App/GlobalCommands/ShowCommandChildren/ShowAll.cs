@@ -12,25 +12,17 @@ using System.Text;
 
 namespace CommandLine_App.GlobalCommands.ShowCommandChildren
 {
-    public class ShowAllCommand : ShowCommand
+    public class ShowAll : Show
     {
-        public ShowAllCommand(ProcessWrapper wrapper) : base(wrapper)
+        public ShowAll()
         {
-            Name += CommandChildrenType.all.ToString();
             ArgumentDescription = "This parameter takes no arguments, like [show all]\n";
         }
         public override bool Execute(params string[] param)
         {
             try
             {
-                if (param.Any())
-                {
-                    Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] Incorrect parameters! [parameters = {param}]");
-                    PrintArgumentTip();
-                    return false;
-                }
-
-                ShowAll();
+                ShowAllProcesses();
                 return true;
             }
             catch (Exception ex)
@@ -42,11 +34,11 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
 
         public override string ToString()
         {
-            return $"\t'{Name}' - shows all running processes at the execution moment";
+            return $"\tCommand '{this.GetType().Name.ToLower().Insert(4, " ")}' - shows all running processes at the execution moment";
         }
-        private void ShowAll()
+        private void ShowAllProcesses()
         {
-            var processes = _wrapper.GetProcesses().OrderBy(e => e.ProcessName);
+            var processes = _processWrapper.GetProcesses().OrderBy(e => e.ProcessName);
 
             Console.WriteLine(ProcessesToString(processes));
 

@@ -26,7 +26,7 @@ namespace CommandLine_App.HelperService
 
             foreach (var name in Enum.GetNames(typeof(CommandType)))
             {
-                if (name.StartsWith(param))
+                if (name.ToLower().StartsWith(param))
                 {
                     Console.WriteLine($"Maybe you mean '{name}' command?");
                 }
@@ -41,7 +41,7 @@ namespace CommandLine_App.HelperService
 
             foreach (var name in Enum.GetNames(typeof(CommandChildrenType)))
             {
-                if (name.StartsWith(param))
+                if (name.ToLower().StartsWith(param))
                 {
                     Console.WriteLine($"Maybe you mean '{name}' parameter?");
                 }

@@ -1,5 +1,6 @@
 ﻿using CommandLine_App.Commands;
 using CommandLine_App.Pools;
+using CommandLine_App.ProcessService;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,10 @@ using System.Text;
 
 namespace CommandLine_App.GlobalCommands.KillCommandChildren
 {
-    public class KillPidCommand : KillCommand
+    public class KillPid : Kill
     {
-        public KillPidCommand()
+        public KillPid()
         {
-            Name += CommandChildrenType.pid.ToString();
             ArgumentDescription = "Kill pid (string value)," +
                 "like [kill name 55].\n";
         }
@@ -22,20 +22,8 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
         {
             try
             {
-                if (param.Length != 1)
-                {
-                    Log.Warning("[{1}] User inputs incorrect count of parameters, [params = '{0}']", param, this.GetType());
-                    PrintArgumentTip();
-                    return false;
-                }
-
-                return KillByPID(int.Parse(param.First()));
-            }
-            catch (FormatException ex)
-            {
-                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
-                PrintArgumentTip();
-                return false;
+                KillByPID(int.Parse(param[0]));
+                return true;
             }
             catch (Exception ex)
             {
@@ -46,30 +34,25 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
 
         public override string ToString()
         {
-            return $"\t'{Name}' [pid_value] - stops running process" +
+            return $"\tCommand '{this.GetType().Name.ToLower().Insert(4, " ")}' [pid_value] - stops running process" +
                 $" with specified process identifier";
         }
 
-        private bool KillByPID(int arg)
+        private void KillByPID(int arg)
         {
             try
             {
-                var process = Process.GetProcessById(arg);
+                var process = _processWrapper.GetProcessById(arg);
 
-                process.Kill();
+                _processWrapper.Kill(process);
 
-                Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
+                Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
                 Console.WriteLine($"{process.ProcessName} was stopped");
-
-                return true;
             }
             catch (ArgumentException ex)
             {
+                Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] No existing processes with {arg} id!");
                 Console.WriteLine("No existing processes with [{0}] id!", arg);
-                throw ex;
-            }
-            catch (Exception ex)
-            {
                 throw ex;
             }
         }

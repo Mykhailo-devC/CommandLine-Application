@@ -1,4 +1,5 @@
-﻿using CommandLine_App.Commands;
+﻿using CommandLine_App.Abstraction;
+using CommandLine_App.Commands;
 using CommandLine_App.Pools;
 using CommandLine_App.ProcessService;
 using Serilog;
@@ -11,11 +12,10 @@ using System.Text;
 
 namespace CommandLine_App.GlobalCommands.KillCommandChildren
 {
-    public class KillNameCommand : KillCommand
+    public class KillName : Kill
     {
-        public KillNameCommand(ProcessWrapper wrapper) : base(wrapper)
+        public KillName()
         {
-            Name += CommandChildrenType.name.ToString();
             ArgumentDescription = "Kill name (string value)," +
                 "like [kill name firefox].\n";
         }
@@ -23,13 +23,6 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
         {
             try
             {
-                if (param.Length != 1)
-                {
-                    Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] Incorrect parameters! [parameters = {param}]");
-                    PrintArgumentTip();
-                    return false;
-                }
-
                 KillByName(param[0]);
                 return true;
             }
@@ -42,11 +35,11 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
 
         public override string ToString()
         {
-            return $"\t'{Name}' [name_value] - stops all running processes with specified name.";
+            return $"\tCommand '{this.GetType().Name.ToLower().Insert(4, " ")}' [name_value] - stops all running processes with specified name.";
         }
         private void KillByName(string arg)
         {
-            var processes = _wrapper.GetProcessesByName(arg).OrderBy(e => e.Id);
+            var processes = _processWrapper.GetProcessesByName(arg).OrderBy(e => e.Id);
 
             if (processes.Count() == 0)
             {
@@ -59,7 +52,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
                 Console.WriteLine($"{processes.First().ProcessName} was stopped!");
                 foreach (var process in processes)
                 {
-                    _wrapper.Kill(process);
+                    _processWrapper.Kill(process);
                 }
             }
         }

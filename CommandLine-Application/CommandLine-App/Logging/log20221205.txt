@@ -1,0 +1,50 @@
+|Flow:0038206e-9090-41ae-8de2-ee49189ea501| 2022-12-05 14:39:56 [INF] User inputs valid commands!, [input = '["show","all"]']
+|Flow:0038206e-9090-41ae-8de2-ee49189ea501| 2022-12-05 14:39:56 [INF] Command 'show all' has been created
+|Flow:0038206e-9090-41ae-8de2-ee49189ea501| 2022-12-05 14:39:56 [INF] [Class:CommandLine_App.GlobalCommands.ShowCommandChildren.ShowAllCommand][Method:ShowAll] finished successfully!
+|Flow:0038206e-9090-41ae-8de2-ee49189ea501| 2022-12-05 14:39:56 [INF] Program finish working.
+
+|Flow:61508646-3d77-4371-85fb-42701058723c| 2022-12-05 14:40:25 [INF] User inputs help command!, [input = '["help","sh"]']
+|Flow:61508646-3d77-4371-85fb-42701058723c| 2022-12-05 14:40:25 [INF] Program finish working.
+
+|Flow:065dc23d-d068-4fd6-ad93-681ead4bd919| 2022-12-05 14:40:59 [INF] User inputs help command!, [input = '["help","show","a"]']
+|Flow:065dc23d-d068-4fd6-ad93-681ead4bd919| 2022-12-05 14:40:59 [WRN] User inputs incorrect command child, [input = '["show","a"]']
+|Flow:065dc23d-d068-4fd6-ad93-681ead4bd919| 2022-12-05 14:40:59 [INF] HelpChooseParameter was activated!
+|Flow:065dc23d-d068-4fd6-ad93-681ead4bd919| 2022-12-05 14:40:59 [INF] Program finish working.
+
+|Flow:dc111cef-30ff-40f9-a6dd-3e8ae1c05dfb| 2022-12-05 15:03:26 [INF] User inputs help command!, [input = '["help","sh"]']
+|Flow:dc111cef-30ff-40f9-a6dd-3e8ae1c05dfb| 2022-12-05 15:03:26 [WRN] User inputs incorrect command, [input = 'sh']
+|Flow:dc111cef-30ff-40f9-a6dd-3e8ae1c05dfb| 2022-12-05 15:03:26 [INF] HelpChooseCommand was activated!
+|Flow:dc111cef-30ff-40f9-a6dd-3e8ae1c05dfb| 2022-12-05 15:03:26 [INF] Program finish working.
+
+|Flow:5d1dffcf-2231-4df5-9b5f-3b38e466ae8d| 2022-12-05 15:03:35 [INF] User inputs help command!, [input = '["help","k"]']
+|Flow:5d1dffcf-2231-4df5-9b5f-3b38e466ae8d| 2022-12-05 15:03:35 [WRN] User inputs incorrect command, [input = 'k']
+|Flow:5d1dffcf-2231-4df5-9b5f-3b38e466ae8d| 2022-12-05 15:03:35 [INF] HelpChooseCommand was activated!
+|Flow:5d1dffcf-2231-4df5-9b5f-3b38e466ae8d| 2022-12-05 15:03:35 [INF] Program finish working.
+
+|Flow:18723eda-5bb0-4eee-a3bc-0bc479bb8fa4| 2022-12-05 15:03:39 [INF] User inputs help command!, [input = '["help","s"]']
+|Flow:18723eda-5bb0-4eee-a3bc-0bc479bb8fa4| 2022-12-05 15:03:39 [WRN] User inputs incorrect command, [input = 's']
+|Flow:18723eda-5bb0-4eee-a3bc-0bc479bb8fa4| 2022-12-05 15:03:39 [INF] HelpChooseCommand was activated!
+|Flow:18723eda-5bb0-4eee-a3bc-0bc479bb8fa4| 2022-12-05 15:03:39 [INF] Program finish working.
+
+|Flow:82125c78-104e-427c-84af-eb4cf8461155| 2022-12-05 16:29:52 [INF] User inputs valid commands!, [input = '["show","all"]']
+|Flow:82125c78-104e-427c-84af-eb4cf8461155| 2022-12-05 16:29:52 [INF] Command 'show all' has been created
+|Flow:82125c78-104e-427c-84af-eb4cf8461155| 2022-12-05 16:29:52 [INF] [Class:CommandLine_App.GlobalCommands.ShowCommandChildren.ShowAllCommand][Method:ShowAll] finished successfully!
+|Flow:82125c78-104e-427c-84af-eb4cf8461155| 2022-12-05 16:29:52 [INF] Program finish working.
+
+|Flow:3f020b61-550f-46b9-8c6d-6728499f0da6| 2022-12-05 16:30:10 [INF] User inputs valid commands!, [input = '["show","name","firefox"]']
+|Flow:3f020b61-550f-46b9-8c6d-6728499f0da6| 2022-12-05 16:30:10 [INF] Command 'show name' has been created
+|Flow:3f020b61-550f-46b9-8c6d-6728499f0da6| 2022-12-05 16:30:10 [INF] [Class:CommandLine_App.GlobalCommands.ShowCommandChildren.ShowNameCommand][Method:ShowByName] finished successfully!
+|Flow:3f020b61-550f-46b9-8c6d-6728499f0da6| 2022-12-05 16:30:10 [INF] Program finish working.
+
+|Flow:fe0a4920-26d3-4f2d-8074-200539319894| 2022-12-05 17:34:57 [INF] User inputs help command!, [input = '["help"]']
+|Flow:fe0a4920-26d3-4f2d-8074-200539319894| 2022-12-05 17:34:57 [ERR] [Class:CommandLine_App.Factory.CommandFactory][Method:GetCommand][input = System.Collections.Generic.List`1[System.String]]
+System.ArgumentException: Requested value 'help' was not found.
+   at System.Enum.TryParseByName(RuntimeType enumType, String originalValueString, ReadOnlySpan`1 value, Boolean ignoreCase, Boolean throwOnFailure, UInt64& result)
+   at System.Enum.TryParseInt32Enum(RuntimeType enumType, String originalValueString, ReadOnlySpan`1 value, Int32 minInclusive, Int32 maxInclusive, Boolean ignoreCase, Boolean throwOnFailure, TypeCode type, Int32& result)
+   at System.Enum.TryParse[TEnum](String value, Boolean ignoreCase, Boolean throwOnFailure, TEnum& result)
+   at System.Enum.Parse[TEnum](String value, Boolean ignoreCase)
+   at System.Enum.Parse[TEnum](String value)
+   at CommandLine_App.Factory.CommandFactory.GetCommand(List`1 userInput) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Factory\CommandFactory.cs:line 27
+|Flow:fe0a4920-26d3-4f2d-8074-200539319894| 2022-12-05 17:34:57 [INF] Program finish working.
+
+|Flow:c16548ae-fc47-471d-b421-7fce8588b9a1| 2022-12-05 17:35:59 [INF] User inputs help command!, [input = '["help"]']

@@ -2,6 +2,7 @@
 using CommandLine_App.GlobalCommands.HelpCommandChildren;
 using CommandLine_App.GlobalCommands.ShowCommandChildren;
 using CommandLine_App.Pools;
+using CommandLine_App.ProcessService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
@@ -21,7 +22,7 @@ namespace CommandLine_AppTests.HelpCommandTests
           
             var dict = new Dictionary<string, Dictionary<string, Command>>()
             {
-                { "show", new Dictionary<string, Command>(){ { "all", new ShowAllCommand() } } },
+                { "show", new Dictionary<string, Command>(){ { "all", new ShowAllCommand(new ProcessWrapper()) } } },
             };
 
             var mock = new Mock<IPool<Dictionary<string, Command>>>();

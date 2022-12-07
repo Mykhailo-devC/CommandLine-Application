@@ -1,5 +1,6 @@
 ﻿using CommandLine_App.GlobalCommands.RefreshCommandChildren;
 using CommandLine_App.GlobalCommands.ShowCommandChildren;
+using CommandLine_App.ProcessService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,12 @@ namespace CommandLine_AppTests.RefreshCommandTests
     [TestClass]
     public class RefreshPidCommandTests
     {
-        private RefreshPidCommand _command;
+        private RefreshPid _command;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            _command = new RefreshPidCommand();
+            _command = new RefreshPid();
         }
 
         [TestCleanup]

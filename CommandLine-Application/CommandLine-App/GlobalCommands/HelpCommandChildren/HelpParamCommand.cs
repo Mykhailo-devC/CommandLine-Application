@@ -11,7 +11,7 @@ using System.Text;
 
 namespace CommandLine_App.GlobalCommands.HelpCommandChildren
 {
-    public class HelpParamCommand : HelpCommand
+    /*public class HelpParamCommand : HelpCommand
     {
         private readonly IHelper _helper;
 
@@ -71,5 +71,5 @@ namespace CommandLine_App.GlobalCommands.HelpCommandChildren
             Log.Information("[{0}] Execute has been finished successfully!", this.GetType());
             return true;
         }
-    }
+    }*/
 }

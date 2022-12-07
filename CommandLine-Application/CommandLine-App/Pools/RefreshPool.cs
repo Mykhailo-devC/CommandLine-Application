@@ -1,6 +1,7 @@
 ﻿using CommandLine_App.Abstraction;
 using CommandLine_App.GlobalCommands.RefreshCommandChildren;
 using CommandLine_App.GlobalCommands.ShowCommandChildren;
+using CommandLine_App.ProcessService;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,8 +15,8 @@ namespace CommandLine_App.Pools
         {
             Pool = new Dictionary<string, Command>()
             {
-                { "name", new RefreshNameCommand() },
-                { "pid", new RefreshPidCommand() },
+                { "name", new RefreshName() },
+                { "pid", new RefreshPid() },
             };
         }
     }

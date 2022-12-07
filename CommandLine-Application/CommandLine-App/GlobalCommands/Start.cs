@@ -7,20 +7,13 @@ using System.Text;
 
 namespace CommandLine_App.Commands
 {
-    public abstract class KillCommand : Command
+    public abstract class Start : Command
     {
-        protected ProcessWrapper _wrapper;
-        public KillCommand(ProcessWrapper wrapper)
-        {
-            _wrapper = wrapper;
-            Name = CommandType.kill.ToString();
-        }
-
         public override abstract bool Execute(params string[] param);
 
         public override string ToString()
         {
-            return $"\nCommand '{Name}' - stop specifeied processes.";
+            return $"\nCommand '{this.GetType().Name}' - starts specifeied processes.";
         }
 
     }

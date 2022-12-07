@@ -12,20 +12,13 @@ using System.Text;
 
 namespace CommandLine_App.Commands
 {
-    public abstract class ShowCommand : Command
+    public abstract class Show : Command
     {
-        protected ProcessWrapper _wrapper;
-        public ShowCommand(ProcessWrapper wrapper)
-        {
-            _wrapper = wrapper;
-            Name = CommandType.show.ToString() + " ";
-        }
-
         public override abstract bool Execute(params string[] param);
 
         public override string ToString()
         {
-            return $"\nCommand '{Name}' - shows running processes.";
+            return $"\nCommand '{this.GetType().Name}' - shows running processes.";
         }
 
         protected string ProcessesToString(IEnumerable<Process> processes)

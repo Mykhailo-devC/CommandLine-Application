@@ -6,9 +6,9 @@ namespace CommandLine_App.Pools
 {
     public enum CommandChildrenType
     {
-        all,
-        memory,
-        name,
-        pid,
+        All,
+        Memory,
+        Name,
+        Pid,
     }
 }

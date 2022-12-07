@@ -10,14 +10,14 @@ namespace CommandLine_App.Pools
     public class ShowPool : IPool<Command>
     {
         public Dictionary<string, Command> Pool { get; set; }
-        public ShowPool(ProcessWrapper wrapper)
+        public ShowPool()
         {
             Pool = new Dictionary<string, Command>()
             {
-                { "all", new ShowAllCommand(wrapper) },
-                { "memory", new ShowMemoryCommand(wrapper) },
-                { "name", new ShowNameCommand(wrapper) },
-                { "pid", new ShowPidCommand(wrapper) },
+                { "all", new ShowAll() },
+                { "memory", new ShowMemory() },
+                { "name", new ShowName() },
+                { "pid", new ShowPid() },
             };
         }
     }

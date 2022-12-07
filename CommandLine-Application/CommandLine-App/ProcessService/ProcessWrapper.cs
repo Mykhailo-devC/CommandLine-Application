@@ -5,37 +5,37 @@ using System.Text;
 
 namespace CommandLine_App.ProcessService
 {
-    public class ProcessWrapper : Process
+    public class ProcessWrapper
     {
-        public new Process[] GetProcesses()
+        public virtual Process[] GetProcesses()
         {
-            return GetProcesses();
+            return Process.GetProcesses();
         }
 
-        public new Process[] GetProcessesByName(string name)
+        public Process[] GetProcessesByName(string name)
         {
-            return GetProcessesByName(name);
+            return Process.GetProcessesByName(name);
         }
-        public new Process GetProcessById(int id)
+        public Process GetProcessById(int id)
         {
             return Process.GetProcessById(id);
         }
 
-        public new bool Start(string name)
+        public bool Start(string name)
         {
             ProcessStartInfo info = new ProcessStartInfo();
             info.FileName = name;
-            Start(info);
+            Process.Start(info);
 
             return true;
         }
 
-        public new void Kill(Process process)
+        public void Kill(Process process)
         {
             process.Kill();
         }
 
-        public new void Refresh(Process process)
+        public void Refresh(Process process)
         {
             process.Refresh();
         }

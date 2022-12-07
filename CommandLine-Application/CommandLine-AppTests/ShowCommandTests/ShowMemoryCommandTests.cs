@@ -1,7 +1,11 @@
 ﻿using CommandLine_App.GlobalCommands.ShowCommandChildren;
+using CommandLine_App.ProcessService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Text;
 
 namespace CommandLine_AppTests.ShowCommandTests
@@ -9,12 +13,19 @@ namespace CommandLine_AppTests.ShowCommandTests
     [TestClass]
     public class ShowMemoryCommandTests
     {
-        private ShowMemoryCommand _command;
+        private ShowMemory _command;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            _command = new ShowMemoryCommand();
+
+            ProcessWrapper wrapper = Mock.Of<ProcessWrapper>(w => w.GetProcesses() == new Process[0]);
+            Mock<ProcessWrapper> mock = new Mock<ProcessWrapper>();
+            mock.Setup(w => w.Kill(It.IsAny<Process>())).Verifiable();
+            //Mock<ProcessWrapper> wrapper = new Mock<ProcessWrapper>();
+            //wrapper.Setup(w => w.GetProcesses()).Returns(o);
+
+            _command = new ShowMemory();
         }
 
         [TestCleanup]

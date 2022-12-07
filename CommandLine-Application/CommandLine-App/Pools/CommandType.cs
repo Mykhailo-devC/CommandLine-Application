@@ -6,10 +6,10 @@ namespace CommandLine_App.Pools
 {
     public enum CommandType
     {
-        show,
-        help,
-        kill,
-        refresh,
-        start
+        Show,
+        Help,
+        Kill,
+        Refresh,
+        Start
     }
 }

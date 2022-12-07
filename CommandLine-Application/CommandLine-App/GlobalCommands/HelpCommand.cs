@@ -7,13 +7,13 @@ using System.Text;
 
 namespace CommandLine_App.Commands
 {
-    public abstract class HelpCommand : Command
+    /*public abstract class HelpCommand : Command
     {
         protected readonly IPool<Dictionary<string, Command>> _pool;
 
         public HelpCommand(IPool<Dictionary<string, Command>> pool)
         {
-            Name = CommandType.help.ToString();
+            Name = CommandType.Help.ToString();
             _pool = pool;
         }
 
@@ -23,5 +23,5 @@ namespace CommandLine_App.Commands
         {
             return $"\nCommand '{Name}' - shows information about existing commandshe";
         }
-    }
+    }*/
 }

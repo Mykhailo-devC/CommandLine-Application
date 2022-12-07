@@ -1,5 +1,5 @@
-﻿using CommandLine_App.Commands;
-using CommandLine_App.HelperService;
+﻿using CommandLine_App.Abstraction;
+using CommandLine_App.Commands;
 using CommandLine_App.Pools;
 using CommandLine_App.ProcessService;
 using Serilog;
@@ -10,29 +10,20 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace CommandLine_App.GlobalCommands.ShowCommandChildren
+namespace CommandLine_App.GlobalCommands.RefreshCommandChildren
 {
-    public class ShowPidCommand : ShowCommand
-    { 
-        public ShowPidCommand(ProcessWrapper wrapper) : base(wrapper)
+    public class RefreshPid : Refresh
+    {
+        public RefreshPid()
         {
-            Name += CommandChildrenType.pid.ToString();
-            ArgumentDescription = "Show pid (int value), " +
-                "like [show pid 89].\n";
+            ArgumentDescription = "Refresh pid (string value)," +
+                "like [refresh name 242].\n";
         }
-
         public override bool Execute(params string[] param)
         {
             try
             {
-                if (param.Length != 1)
-                {
-                    Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] Incorrect parameters! [parameters = {param}]");
-                    PrintArgumentTip();
-                    return false;
-                }
-
-                ShowByPID(int.Parse(param[0]));
+                RefreshByPID(int.Parse(param[0]));
                 return true;
             }
             catch (Exception ex)
@@ -44,17 +35,19 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
 
         public override string ToString()
         {
-            return $"\t'{Name}' [pid_value] - shows running process" +
+            return $"\tCommand '{this.GetType().Name.ToLower().Insert(7, " ")}' [pid_value] - refresh running process" +
                 $" with specified process identifier";
         }
 
-        private void ShowByPID(int arg)
+        private void RefreshByPID(int arg)
         {
             try
             {
-                var process = _wrapper.GetProcessById(arg);
+                var process = _processWrapper.GetProcessById(arg);
 
-                Console.WriteLine(ProcessesToString(new List<Process> { process }));
+                _processWrapper.Refresh(process);
+
+                Console.WriteLine($"{process.ProcessName} was refreshed");
 
                 Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
             }

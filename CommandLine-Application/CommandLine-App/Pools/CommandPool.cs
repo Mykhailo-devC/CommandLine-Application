@@ -2,6 +2,7 @@
 using CommandLine_App.Commands;
 using CommandLine_App.GlobalCommands.HelpCommandChildren;
 using CommandLine_App.GlobalCommands.ShowCommandChildren;
+using CommandLine_App.ProcessService;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;

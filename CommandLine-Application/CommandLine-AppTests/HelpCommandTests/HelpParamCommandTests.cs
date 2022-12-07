@@ -2,6 +2,7 @@
 using CommandLine_App.GlobalCommands.HelpCommandChildren;
 using CommandLine_App.GlobalCommands.ShowCommandChildren;
 using CommandLine_App.HelperService;
+using CommandLine_App.ProcessService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
@@ -20,7 +21,7 @@ namespace CommandLine_AppTests.HelpCommandTests
         {
             var dict = new Dictionary<string, Dictionary<string, Command>>()
             {
-                { "show", new Dictionary<string, Command>(){ { "memory", new ShowMemoryCommand() } } },
+                { "show", new Dictionary<string, Command>(){ { "memory", new ShowMemoryCommand(new ProcessWrapper()) } } },
             };
 
             var helperMock = new Mock<IHelper>();

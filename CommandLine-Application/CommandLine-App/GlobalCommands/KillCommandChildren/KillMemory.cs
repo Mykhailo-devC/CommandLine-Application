@@ -11,11 +11,10 @@ using System.Text;
 
 namespace CommandLine_App.GlobalCommands.KillCommandChildren
 {
-    public class KillMemoryCommand : KillCommand
+    public class KillMemory : Kill
     {
-        public KillMemoryCommand(ProcessWrapper wrapper) : base(wrapper)
+        public KillMemory()
         {
-            Name += CommandChildrenType.memory.ToString();
             ArgumentDescription = "Kill memory (int value), like [kill memory 200]." +
                 "\nKill memory (int start, int end), like [kill memory 500 1000].\n";
         }
@@ -28,21 +27,11 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
                     KillByMemory(int.Parse(param[0]));
                     return true;
                 }
-                if (param.Length == 2)
+                else
                 {
                     KillByMemory(int.Parse(param[0]), int.Parse(param[1]));
                     return true;
                 }
-
-                Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] Incorrect parameters! [parameters = {param}]");
-                PrintArgumentTip();
-                return false;
-            }
-            catch (FormatException ex)
-            {
-                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
-                PrintArgumentTip();
-                return false;
             }
             catch (Exception ex)
             {
@@ -52,11 +41,11 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
         }
         public override string ToString()
         {
-            return $"\t'{Name}' [memory_value] - stops all running processes with specified memory.";
+            return $"\tCommand '{this.GetType().Name.ToLower().Insert(4, " ")}' [memory_value] - stops all running processes with specified memory.";
         }
         private void KillByMemory(int arg)
         {
-            var processes = _wrapper.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 == arg);
+            var processes = _processWrapper.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 == arg);
 
             if (processes.Count() == 0)
             {
@@ -69,14 +58,14 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
                 foreach (var process in processes)
                 {
                     Console.WriteLine($"{process.ProcessName} was stopped!");
-                    _wrapper.Kill(process);
+                    _processWrapper.Kill(process);
                 }
             }
         }
 
         private void KillByMemory(int start, int end)
         {
-            var processes = _wrapper.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 > start && e.PrivateMemorySize64 / 1024 < end);
+            var processes = _processWrapper.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 > start && e.PrivateMemorySize64 / 1024 < end);
 
             if (processes.Count() == 0)
             {
@@ -89,7 +78,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
                 foreach (var process in processes)
                 {
                     Console.WriteLine($"{process.ProcessName} was stopped!");
-                    _wrapper.Kill(process);
+                    _processWrapper.Kill(process);
                 }
             }
         }

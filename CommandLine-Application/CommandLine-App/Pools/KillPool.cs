@@ -11,13 +11,13 @@ namespace CommandLine_App.Pools
     public class KillPool : IPool<Command>
     {
         public Dictionary<string, Command> Pool { get; set; }
-        public KillPool(ProcessWrapper wrapper)
+        public KillPool()
         {
             Pool = new Dictionary<string, Command>()
             {
-                { "name", new KillNameCommand(wrapper) },
-                { "pid", new KillPidCommand(wrapper) },
-                { "memory", new KillMemoryCommand(wrapper) }
+                { "name", new KillName() },
+                { "pid", new KillPid() },
+                { "memory", new KillMemory() }
             };
         }
     }

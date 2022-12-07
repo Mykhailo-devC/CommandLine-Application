@@ -15,9 +15,9 @@ namespace CommandLine_App.Pools
         {
             Pool = new Dictionary<string, Command>()
             {
-                { "help", new HelpGlobalCommand(pool) },
+                /*{ "help", new HelpGlobalCommand(pool) },
                 { "help [command]", new HelpCmdCommand(pool) },
-                { "help [command] [parameter]", new HelpParamCommand(pool, new Helper(pool)) }
+                { "help [command] [parameter]", new HelpParamCommand(pool, new Helper()) }*/
             };
         }
     }
