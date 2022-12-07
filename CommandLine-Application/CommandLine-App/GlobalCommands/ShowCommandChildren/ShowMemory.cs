@@ -38,7 +38,7 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             }
         }
 
-        public override string ToString()
+        public new string ToString()
         {
             return $"\tCommand '{this.GetType().Name.ToLower().Insert(4, " ")}' [memory_value] - shows all running processes with specified memory.";
         }

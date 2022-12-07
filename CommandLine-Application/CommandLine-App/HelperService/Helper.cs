@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
@@ -11,6 +12,14 @@ namespace CommandLine_App.HelperService
 {
     public class Helper : IHelper
     {
+
+        public HelpCommand helpCommand { get; }
+
+        public Helper()
+        {
+            helpCommand = new HelpCommand(this);
+        }
+
         public void StandartHelp()
         {
             Log.Information($"{MethodBase.GetCurrentMethod().Name} was activated!");
@@ -49,5 +58,7 @@ namespace CommandLine_App.HelperService
 
             Console.WriteLine("Please type 'help' command to see existing parameters for this command.");
         }
+
+        
     }
 }

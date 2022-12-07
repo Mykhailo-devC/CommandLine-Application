@@ -33,7 +33,7 @@ namespace CommandLine_App.GlobalCommands.RefreshCommandChildren
             }
         }
 
-        public override string ToString()
+        public new string ToString()
         {
             return $"\tCommand '{this.GetType().Name.ToLower().Insert(7, " ")}' [pid_value] - refresh running process" +
                 $" with specified process identifier";

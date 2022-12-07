@@ -32,7 +32,7 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             }
         }
 
-        public override string ToString()
+        public new string ToString()
         {
             return $"\tCommand '{this.GetType().Name.ToLower().Insert(4, " ")}' - shows all running processes at the execution moment";
         }

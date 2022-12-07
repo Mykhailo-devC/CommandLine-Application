@@ -25,7 +25,13 @@ namespace CommandLine_App.InputValidatorService
 
             try
             {
-                
+                if(userInput.FirstOrDefault() == "help")
+                {
+                    Log.Information($"User input help command, [input = '{userInput}']");
+                    _helper.helpCommand.Help(userInput);
+                    Arguments = null;
+                    return false;
+                }
 
                 if (userInput.Count < 2)
                 {
@@ -47,10 +53,10 @@ namespace CommandLine_App.InputValidatorService
                         Log.Information("User inputs valid commands!, [input = '{0}']", userInput);
                         switch (CommandChild)
                         {
-                            case CommandChildrenType.Memory: return ValidateMemoryChild(Arguments);
-                            case CommandChildrenType.Pid: return ValidatePidChild(Arguments);
-                            case CommandChildrenType.Name: return ValidateNameChild(Arguments);
-                            case CommandChildrenType.All: return ValidateAllChild(Arguments);
+                            case CommandChildrenType.Memory: return ValidateMemoryChildAguments(Arguments);
+                            case CommandChildrenType.Pid: return ValidatePidChildArguments(Arguments);
+                            case CommandChildrenType.Name: return ValidateNameChildArguments(Arguments);
+                            case CommandChildrenType.All: return ValidateAllChildArguments(Arguments);
                             default: return false; ;
                         }
                     }
@@ -77,7 +83,7 @@ namespace CommandLine_App.InputValidatorService
             }
         }
 
-        private bool ValidateAllChild(string[] args)
+        private bool ValidateAllChildArguments(string[] args)
         {
             if (!args.Any())
             {
@@ -120,7 +126,7 @@ namespace CommandLine_App.InputValidatorService
             }
         }
 
-        private bool ValidateNameChild(string[] args)
+        private bool ValidateNameChildArguments(string[] args)
         {
             if(args.Length != 1)
             {
@@ -133,7 +139,7 @@ namespace CommandLine_App.InputValidatorService
             }
         }
 
-        private bool ValidatePidChild(string[] args)
+        private bool ValidatePidChildArguments(string[] args)
         {
             if (args.Length != 1 && int.TryParse(args[0], out _))
             {
@@ -146,7 +152,7 @@ namespace CommandLine_App.InputValidatorService
             }
         }
 
-        private bool ValidateMemoryChild(string[] args)
+        private bool ValidateMemoryChildAguments(string[] args)
         {
             if (args.Length == 1 && int.TryParse(args[0], out _))
             {

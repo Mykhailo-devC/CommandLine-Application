@@ -1,4 +1,5 @@
-﻿using CommandLine_App.Commands;
+﻿using CommandLine_App.Abstraction;
+using CommandLine_App.Commands;
 using CommandLine_App.Pools;
 using CommandLine_App.ProcessService;
 using Serilog;
@@ -33,7 +34,7 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
             }
         }
 
-        public override string ToString()
+        public new string ToString()
         {
             return $"\tCommand '{this.GetType().Name.ToLower().Insert(5, " ")}' [name_value] - starts the process with specified name.";
         }
@@ -45,5 +46,6 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
             Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
             Console.WriteLine($"{arg} was started!");
         }
+        
     }
 }

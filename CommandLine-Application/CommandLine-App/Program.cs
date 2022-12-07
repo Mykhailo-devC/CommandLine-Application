@@ -1,6 +1,7 @@
 ﻿using CommandLine_App.Abstraction;
 using CommandLine_App.Commands;
 using CommandLine_App.Factory;
+using CommandLine_App.GlobalCommands.KillCommandChildren;
 using CommandLine_App.GlobalCommands.ShowCommandChildren;
 using CommandLine_App.HelperService;
 using CommandLine_App.InputValidatorService;
@@ -24,7 +25,6 @@ namespace CommandLine_App
         private static IInputParser _validator = new InputParser();
         public static void Main(string[] args)
         {
-            
             Logger.LoggerSetup();
             var userInput = Console.ReadLine().Split(" ").ToList();
 
@@ -45,7 +45,7 @@ namespace CommandLine_App
             }
             Log.Information("Program finish working.\n");
             Log.CloseAndFlush();
-
+            
             #region
             /*
             var commands = typeof(Command)

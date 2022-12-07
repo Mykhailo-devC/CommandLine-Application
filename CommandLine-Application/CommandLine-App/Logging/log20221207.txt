@@ -1,0 +1,12 @@
+|Flow:9d16175e-7954-4e76-8aea-9611519308a1| 2022-12-07 20:55:25 [INF] HelpChooseCommand was activated!
+|Flow:b8763a8b-922d-499b-b6b6-164de4169619| 2022-12-07 20:55:38 [INF] HelpChooseCommand was activated!
+|Flow:57d76ce1-2ffa-4f88-a61b-266b3ecff4fa| 2022-12-07 20:55:46 [INF] HelpChooseParameter was activated!
+|Flow:622a5f7b-f107-4806-9e8c-8e2e2bdde752| 2022-12-07 20:55:55 [INF] HelpChooseCommand was activated!
+|Flow:48988ed6-5ae2-45ba-81c0-256dc64b3529| 2022-12-07 20:56:00 [WRN] User inputs empty string!
+|Flow:48988ed6-5ae2-45ba-81c0-256dc64b3529| 2022-12-07 20:56:00 [INF] StandartHelp was activated!
+|Flow:7aa88712-d853-4398-b957-d60f9f1d2711| 2022-12-07 21:40:46 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:7aa88712-d853-4398-b957-d60f9f1d2711| 2022-12-07 21:40:46 [WRN] User inputs valid command!, [input = 'kill n']
+|Flow:7aa88712-d853-4398-b957-d60f9f1d2711| 2022-12-07 21:40:46 [INF] HelpChooseParameter was activated!
+|Flow:37cac3c2-8d45-491e-bae7-f23085a137fa| 2022-12-07 21:40:52 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:35d0f6c7-0465-4033-8393-b0bbbc60ff69| 2022-12-07 21:41:12 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:860cee80-bed7-41b9-8c4e-1ce09af68f26| 2022-12-07 21:41:19 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']

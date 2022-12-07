@@ -34,7 +34,7 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             }
         }
 
-        public override string ToString()
+        public new string ToString()
         {
             return $"\tCommand '{this.GetType().Name.ToLower().Insert(4, " ")}' [pid_value] - shows running process" +
                 $" with specified process identifier";

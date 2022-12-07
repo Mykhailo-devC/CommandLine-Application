@@ -33,7 +33,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
             }
         }
 
-        public override string ToString()
+        public new string ToString()
         {
             return $"\tCommand '{this.GetType().Name.ToLower().Insert(4, " ")}' [name_value] - stops all running processes with specified name.";
         }

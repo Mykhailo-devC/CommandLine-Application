@@ -32,7 +32,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
             }
         }
 
-        public override string ToString()
+        public new string ToString()
         {
             return $"\tCommand '{this.GetType().Name.ToLower().Insert(4, " ")}' [pid_value] - stops running process" +
                 $" with specified process identifier";

@@ -39,7 +39,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
                 return false;
             }
         }
-        public override string ToString()
+        public new string ToString()
         {
             return $"\tCommand '{this.GetType().Name.ToLower().Insert(4, " ")}' [memory_value] - stops all running processes with specified memory.";
         }

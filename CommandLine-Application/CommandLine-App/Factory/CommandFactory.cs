@@ -1,6 +1,5 @@
 ﻿using CommandLine_App.Abstraction;
 using CommandLine_App.Commands;
-using CommandLine_App.GlobalCommands.HelpCommandChildren;
 using CommandLine_App.GlobalCommands.KillCommandChildren;
 using CommandLine_App.GlobalCommands.RefreshCommandChildren;
 using CommandLine_App.GlobalCommands.ShowCommandChildren;
@@ -25,36 +24,6 @@ namespace CommandLine_App.Factory
             {
                 switch (Command)
                 {
-                    #region
-                    /*case CommandType.Help:
-                        {
-
-                            switch (userInput.Count)
-                            {
-                                case 1: return new HelpGlobalCommand(new CommandPool());
-                                case 2:
-                                    {
-                                        if (!_validator.IsCommandValid(userInput[1]))
-                                        {
-                                            return null;
-                                        }
-
-                                        return new HelpCmdCommand(new CommandPool());
-                                    }
-                                case 3:
-                                    {
-                                        if(!_validator.IsValid(userInput.GetRange(1, userInput.Count - 1)))
-                                        {
-                                            return null;
-                                        }
-
-                                        return new HelpParamCommand(new CommandPool(), new Helper());
-                                    }
-
-                                default: return null;
-                            }
-                        }*/
-                    #endregion
                     case CommandType.Show:
                         {
                             switch (CommandChild)
