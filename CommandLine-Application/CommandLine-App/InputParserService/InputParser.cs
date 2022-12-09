@@ -18,37 +18,33 @@ namespace CommandLine_App.InputValidatorService
             _helper = new Helper();
 
         }
-        public bool IsValid(List<string> userInput, out CommandType? Command, out CommandChildrenType? CommandChild, out string[] Arguments)
+        public bool TryParseUserInput(List<string> userInput, out CommandType? Command, out CommandChildrenType? CommandChild, out string[] Arguments)
         {
             Command = null;
             CommandChild = null;
+            Arguments = null;
 
             try
             {
-                if(userInput.FirstOrDefault() == "help")
-                {
-                    Log.Information($"User input help command, [input = '{userInput}']");
-                    _helper.helpCommand.Help(userInput);
-                    Arguments = null;
-                    return false;
-                }
-
-                if (userInput.Count < 2)
+                if (userInput.Count == 0)
                 {
                     Log.Warning("User inputs empty string!");
                     _helper.StandartHelp();
-                    Arguments = null;
                     return false;
                 }
 
-                var onlyArguments = new List<string>(userInput);
-                onlyArguments.RemoveRange(0, 2);
-
-                Arguments = onlyArguments.ToArray();
-
-                if (IsCommandValid(userInput[0], out Command))
+                if (userInput.FirstOrDefault() == "help")
                 {
-                    if (IsCommandChildValid(userInput[1], out CommandChild))
+                    Log.Information($"User input help command, [input = '{userInput}']");
+                    _helper.Help(userInput);
+                    return false;
+                }
+
+                Arguments = userInput.Skip(2).ToArray();
+
+                if (TryParseCommand(userInput[0], out Command))
+                {
+                    if (TryParseChildCommand(userInput[1], out CommandChild))
                     {
                         Log.Information("User inputs valid commands!, [input = '{0}']", userInput);
                         switch (CommandChild)
@@ -57,7 +53,7 @@ namespace CommandLine_App.InputValidatorService
                             case CommandChildrenType.Pid: return ValidatePidChildArguments(Arguments);
                             case CommandChildrenType.Name: return ValidateNameChildArguments(Arguments);
                             case CommandChildrenType.All: return ValidateAllChildArguments(Arguments);
-                            default: return false; ;
+                            default: return false;
                         }
                     }
                     else
@@ -76,14 +72,12 @@ namespace CommandLine_App.InputValidatorService
             }
             catch (Exception ex)
             {
-                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][input = {userInput}]");
-                Arguments = null;
+                Log.Error(ex, "[Class:{0}][Method:{1}][Input = {2}]", this.GetType(), MethodBase.GetCurrentMethod().Name, userInput);
                 return false;
-                
             }
         }
 
-        private bool ValidateAllChildArguments(string[] args)
+        private bool ValidateAllChildArguments(params string[] args)
         {
             if (!args.Any())
             {
@@ -91,12 +85,12 @@ namespace CommandLine_App.InputValidatorService
             }
             else
             {
-                Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] Incorrect arguments! [arguments = {args}]");
+                Log.Warning("[Class:{0}][Method:{1}] Incorrect arguments! [arguments = {2}]", this.GetType(), MethodBase.GetCurrentMethod().Name, args);
                 return false;
             }
         }
 
-        private bool IsCommandValid(string command, out CommandType? Command)
+        private bool TryParseCommand(string command, out CommandType? Command)
         {
             if(Enum.TryParse(command, true, out CommandType ParsedCommand))
             {
@@ -111,7 +105,7 @@ namespace CommandLine_App.InputValidatorService
             }
         }
 
-        private bool IsCommandChildValid(string child, out CommandChildrenType? CommandChild)
+        private bool TryParseChildCommand(string child, out CommandChildrenType? CommandChild)
         {
             if (Enum.TryParse(child, true, out CommandChildrenType ParsedCommandChild))
             {
@@ -126,33 +120,33 @@ namespace CommandLine_App.InputValidatorService
             }
         }
 
-        private bool ValidateNameChildArguments(string[] args)
+        private bool ValidateNameChildArguments(params string[] args)
         {
-            if(args.Length != 1)
+            if(args.Length == 1)
             {
                 return true;
             }
             else
             {
-                Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] Incorrect arguments! [arguments = {args}]");
+                Log.Warning("[Class:{0}][Method:{1}] Incorrect arguments! [arguments = {2}]", this.GetType(), MethodBase.GetCurrentMethod().Name, args);
                 return false;
             }
         }
 
-        private bool ValidatePidChildArguments(string[] args)
+        private bool ValidatePidChildArguments(params string[] args)
         {
-            if (args.Length != 1 && int.TryParse(args[0], out _))
+            if (args.Length == 1 && int.TryParse(args[0], out _))
             {
                 return true;
             }
             else
             {
-                Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] Incorrect arguments! [arguments = {args}]");
+                Log.Warning("[Class:{0}][Method:{1}] Incorrect arguments! [arguments = {2}]", this.GetType(), MethodBase.GetCurrentMethod().Name, args);
                 return false;
             }
         }
 
-        private bool ValidateMemoryChildAguments(string[] args)
+        private bool ValidateMemoryChildAguments(params string[] args)
         {
             if (args.Length == 1 && int.TryParse(args[0], out _))
             {
@@ -164,7 +158,7 @@ namespace CommandLine_App.InputValidatorService
             }
             else
             {
-                Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] Incorrect arguments! [arguments = {args}]");
+                Log.Warning("[Class:{0}][Method:{1}] Incorrect arguments! [arguments = {2}]", this.GetType(), MethodBase.GetCurrentMethod().Name, args);
                 return false;
             }
         }

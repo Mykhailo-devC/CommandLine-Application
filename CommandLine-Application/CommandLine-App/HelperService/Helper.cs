@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Xml.Linq;
-using CommandLine_App.Abstraction;
 using CommandLine_App.Pools;
 using Serilog;
 
@@ -12,12 +7,11 @@ namespace CommandLine_App.HelperService
 {
     public class Helper : IHelper
     {
-
-        public HelpCommand helpCommand { get; }
+        public HelpCommand HelpCommand { get; }
 
         public Helper()
         {
-            helpCommand = new HelpCommand(this);
+            HelpCommand = new HelpCommand(this);
         }
 
         public void StandartHelp()

@@ -1,0 +1,29 @@
+|Flow:4fac69ec-0cbe-40f7-ad58-287ea6a62ab6| 2022-12-09 14:24:03 [INF] User inputs valid commands!, [input = '["show","all"]']
+|Flow:4fac69ec-0cbe-40f7-ad58-287ea6a62ab6| 2022-12-09 14:24:03 [INF] 'CommandLine_App.GlobalCommands.ShowCommandChildren.ShowAll' has been created
+|Flow:4fac69ec-0cbe-40f7-ad58-287ea6a62ab6| 2022-12-09 14:24:03 [INF] [Class:CommandLine_App.GlobalCommands.ShowCommandChildren.ShowAll][Method:ShowAllProcesses] finished successfully!
+|Flow:4fac69ec-0cbe-40f7-ad58-287ea6a62ab6| 2022-12-09 14:24:03 [INF] Program finish working.
+
+|Flow:c46a5d3c-3aef-49ef-9286-39286dd92dab| 2022-12-09 14:24:18 [INF] User inputs valid commands!, [input = '["start","name","notepad"]']
+|Flow:c46a5d3c-3aef-49ef-9286-39286dd92dab| 2022-12-09 14:24:18 [WRN] [Class:CommandLine_App.InputValidatorService.InputParser][Method:ValidateNameChildArguments] Incorrect arguments! [arguments = System.String[]]
+|Flow:d5c85552-7294-498c-bbc9-eecf65b41a93| 2022-12-09 14:25:08 [INF] User inputs valid commands!, [input = '["start","name","notepad"]']
+|Flow:d5c85552-7294-498c-bbc9-eecf65b41a93| 2022-12-09 14:25:08 [WRN] [Class:CommandLine_App.InputValidatorService.InputParser][Method:ValidateNameChildArguments] Incorrect arguments! [arguments = System.String[]]
+|Flow:d5735176-070b-46fe-b6fc-61a87a451097| 2022-12-09 14:26:12 [INF] User inputs valid commands!, [input = '["start","name","notepad"]']
+|Flow:6b71042b-b908-4d37-a711-e13ecebba41e| 2022-12-09 14:27:18 [INF] User inputs valid commands!, [input = '["start","name","notepad"]']
+|Flow:6b71042b-b908-4d37-a711-e13ecebba41e| 2022-12-09 14:27:18 [INF] 'CommandLine_App.GlobalCommands.StartCommandChildren.StartName' has been created
+|Flow:6b71042b-b908-4d37-a711-e13ecebba41e| 2022-12-09 14:27:18 [INF] [Class:CommandLine_App.GlobalCommands.StartCommandChildren.StartName][Method:StartByName] finished successfully!
+|Flow:6b71042b-b908-4d37-a711-e13ecebba41e| 2022-12-09 14:27:18 [INF] Program finish working.
+
+|Flow:e5a43dc3-cfce-46a7-9db5-ca48e7f97569| 2022-12-09 14:27:37 [INF] User inputs valid commands!, [input = '["kill","name","notepad"]']
+|Flow:e5a43dc3-cfce-46a7-9db5-ca48e7f97569| 2022-12-09 14:27:37 [INF] 'CommandLine_App.GlobalCommands.KillCommandChildren.KillName' has been created
+|Flow:e5a43dc3-cfce-46a7-9db5-ca48e7f97569| 2022-12-09 14:27:37 [INF] [Class:CommandLine_App.GlobalCommands.KillCommandChildren.KillName][Method:KillByName] finished successfully!
+|Flow:e5a43dc3-cfce-46a7-9db5-ca48e7f97569| 2022-12-09 14:27:37 [INF] Program finish working.
+
+|Flow:e715de6f-3987-4dae-9815-bd609585b82d| 2022-12-09 14:28:05 [INF] User inputs valid commands!, [input = '["show","pid","4"]']
+|Flow:e715de6f-3987-4dae-9815-bd609585b82d| 2022-12-09 14:28:05 [INF] 'CommandLine_App.GlobalCommands.ShowCommandChildren.ShowPid' has been created
+|Flow:e715de6f-3987-4dae-9815-bd609585b82d| 2022-12-09 14:28:05 [INF] [Class:CommandLine_App.GlobalCommands.ShowCommandChildren.ShowPid][Method:ShowByPID] finished successfully!
+|Flow:e715de6f-3987-4dae-9815-bd609585b82d| 2022-12-09 14:28:05 [INF] Program finish working.
+
+|Flow:274d7aca-976b-418c-a865-c1efa7cc66fd| 2022-12-09 14:37:08 [INF] User inputs valid commands!, [input = '["show","name","fire","fox"]']
+|Flow:274d7aca-976b-418c-a865-c1efa7cc66fd| 2022-12-09 14:37:08 [WRN] [Class:CommandLine_App.InputValidatorService.InputParser][Method:ValidateNameChildArguments] Incorrect arguments! [arguments = System.String[]]
+|Flow:3a59fb8a-acd7-4884-a719-d16408782728| 2022-12-09 14:41:40 [INF] User inputs valid commands!, [input = '["show","name","fire","fox"]']
+|Flow:3a59fb8a-acd7-4884-a719-d16408782728| 2022-12-09 14:41:40 [WRN] [Class:CommandLine_App.InputValidatorService.InputParser][Method:ValidateNameChildArguments] Incorrect arguments! [arguments = ["fire","fox"]]

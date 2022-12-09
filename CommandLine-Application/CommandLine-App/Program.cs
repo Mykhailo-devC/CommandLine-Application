@@ -28,9 +28,7 @@ namespace CommandLine_App
             Logger.LoggerSetup();
             var userInput = Console.ReadLine().Split(" ").ToList();
 
-            if (!_validator.IsValid(userInput, out CommandType? Command, out CommandChildrenType? CommandChild, out string[] Arguments)
-                || Command == null
-                || CommandChild == null)
+            if (!_validator.TryParseUserInput(userInput, out CommandType? Command, out CommandChildrenType? CommandChild, out string[] Arguments))
             {
                 return;
             }

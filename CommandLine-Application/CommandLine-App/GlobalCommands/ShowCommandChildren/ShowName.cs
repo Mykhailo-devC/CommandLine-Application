@@ -30,7 +30,7 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             }
             catch (Exception ex)
             {
-                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][parameters = {param}]");
+                Log.Error(ex, "[Class:{0}][Method:{1}][Parameters = {2}]", this.GetType(), MethodBase.GetCurrentMethod().Name, param);
                 return false;
             }
         }

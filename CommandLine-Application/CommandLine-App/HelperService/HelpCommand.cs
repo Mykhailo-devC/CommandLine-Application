@@ -26,13 +26,13 @@ namespace CommandLine_App.HelperService
                     case 2: CommandHelp(userInput[1]); break;
                     case 3: ParamHelp(userInput[1], userInput[2]); break;
                     default:
-                        Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] User inputs invalid command!, [input = '{userInput}']");
+                        Log.Warning("[Class:{0}][Method:{1}] User inputs invalid command! [Input = {2}]", this.GetType(), MethodBase.GetCurrentMethod().Name, userInput);
                         break;
                 }
             }
             catch(Exception ex)
             {
-                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][input = {userInput}]");
+                Log.Error(ex, "[Class:{0}][Method:{1}][Input = {2}]", this.GetType(), MethodBase.GetCurrentMethod().Name, userInput);
             }
         }
 

@@ -7,6 +7,6 @@ namespace CommandLine_App.InputValidatorService
 {
     public interface IInputParser
     {
-        public bool IsValid(List<string> userInput, out CommandType? Command, out CommandChildrenType? CommandChild, out string[] Arguments);
+        public bool TryParseUserInput(List<string> userInput, out CommandType? Command, out CommandChildrenType? CommandChild, out string[] Arguments);
     }
 }
