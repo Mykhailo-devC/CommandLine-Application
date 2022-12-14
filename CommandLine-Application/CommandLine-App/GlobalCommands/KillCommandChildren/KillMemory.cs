@@ -1,6 +1,5 @@
 ﻿using CommandLine_App.Commands;
 using CommandLine_App.Pools;
-using CommandLine_App.ProcessService;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -35,7 +34,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[Class:{0}][Method:{1}][Parameters = {2}]", this.GetType(), MethodBase.GetCurrentMethod().Name, param);
+                Log.Error(ex, "[Class:{0}][Method:{1}][Parameters = {2}]", this.GetType().Name, MethodBase.GetCurrentMethod().Name, param);
                 return false;
             }
         }

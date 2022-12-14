@@ -1,49 +1,62 @@
-﻿using CommandLine_App.Abstraction;
-using CommandLine_App.Commands;
+﻿
 using CommandLine_App.Factory;
-using CommandLine_App.GlobalCommands.KillCommandChildren;
-using CommandLine_App.GlobalCommands.ShowCommandChildren;
-using CommandLine_App.HelperService;
 using CommandLine_App.InputValidatorService;
 using CommandLine_App.Logging;
 using CommandLine_App.Pools;
+using CommandLine_App.Utilities.Implementations;
+using CommandLine_App.Utilities.Interfaces;
 using Serilog;
-using Serilog.Formatting.Compact;
-using Serilog.Formatting.Json;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace CommandLine_App
 {
     public class Program
     {
-        private static IInputParser _validator = new InputParser();
+        private static readonly IInputParser _validator = new InputParser();
+        private static readonly Help Help = new Help();
         public static void Main(string[] args)
-        {
+        { 
             Logger.LoggerSetup();
             var userInput = Console.ReadLine().Split(" ").ToList();
 
-            if (!_validator.TryParseUserInput(userInput, out CommandType? Command, out CommandChildrenType? CommandChild, out string[] Arguments))
+            if (!_validator.TryParseUserInput(userInput, out InputParseResult result))
+            { 
+                return;
+            }
+
+            if (result.IsHelp)
             {
+                if (result.Command != null)
+                {
+                    if (result.Parameter != null)
+                    {
+                        Console.WriteLine(Help[result.Command][result.Parameter]);
+                    }
+                    else
+                    {
+                        Console.WriteLine(Help[result.Command]);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(Help);
+                }
+
                 return;
             }
 
             var _factory = new CommandFactory();
-            var command =_factory.GetCommand(Command, CommandChild);
+            var command =_factory.GetCommand(result.Command, result.Parameter);
 
             if(command != null)
             {
                 Log.Information("'{0}' has been created", command.GetType().FullName);
-                command.Execute(Arguments);
+                command.Execute(result.Arguments);
             }
             Log.Information("Program finish working.\n");
             Log.CloseAndFlush();
-            
             #region
             /*
             var commands = typeof(Command)

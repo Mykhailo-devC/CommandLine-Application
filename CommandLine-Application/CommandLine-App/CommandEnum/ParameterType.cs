@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CommandLine_App.Pools
 {
-    public enum CommandChildrenType
+    public enum ParameterType
     {
         All,
         Memory,

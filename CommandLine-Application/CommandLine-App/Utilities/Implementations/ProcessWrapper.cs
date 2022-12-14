@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace CommandLine_App.ProcessService
+namespace CommandLine_App.Utilities.Implementations
 {
     public class ProcessWrapper
     {

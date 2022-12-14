@@ -1,6 +1,5 @@
 ﻿using CommandLine_App.Commands;
 using CommandLine_App.Pools;
-using CommandLine_App.ProcessService;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -15,8 +14,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
     {
         public KillPid()
         {
-            ArgumentDescription = "Kill pid (string value)," +
-                "like [kill name 55].\n";
+            ArgumentDescription = "Kill pid (string value), like [kill name 55].\n";
         }
         public override bool Execute(params string[] param)
         {

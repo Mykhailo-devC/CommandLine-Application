@@ -2,7 +2,6 @@
 using CommandLine_App.Commands;
 using CommandLine_App.HelperService;
 using CommandLine_App.Pools;
-using CommandLine_App.ProcessService;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -18,8 +17,7 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
     {
         public ShowName()
         {
-            ArgumentDescription = "Show name (string value)," +
-                "like [show name firefox].\n";
+            ArgumentDescription = "Show name (string value), like [show name firefox].\n";
         }
         public override bool Execute(params string[] param)
         {

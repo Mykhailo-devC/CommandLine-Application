@@ -1,0 +1,7 @@
+|Flow:2200db33-6ad8-4334-875f-e9b5eb147040| 2022-12-10 15:41:11 [INF] User inputs valid commands!, [input = '["show","all","test"]']
+|Flow:2200db33-6ad8-4334-875f-e9b5eb147040| 2022-12-10 15:41:11 [WRN] [Class:InputParser][Method:ValidateAllChildArguments] Incorrect arguments! [arguments = ["test"]]
+|Flow:c1d51325-2de7-4946-9c46-487acda249e7| 2022-12-10 15:44:24 [INF] User inputs valid commands!, [input = '["show","all"]']
+|Flow:c1d51325-2de7-4946-9c46-487acda249e7| 2022-12-10 15:44:24 [INF] 'CommandLine_App.GlobalCommands.ShowCommandChildren.ShowAll' has been created
+|Flow:c1d51325-2de7-4946-9c46-487acda249e7| 2022-12-10 15:44:24 [INF] [Class:CommandLine_App.GlobalCommands.ShowCommandChildren.ShowAll][Method:ShowAllProcesses] finished successfully!
+|Flow:c1d51325-2de7-4946-9c46-487acda249e7| 2022-12-10 15:44:24 [INF] Program finish working.
+

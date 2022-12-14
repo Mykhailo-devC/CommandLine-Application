@@ -1,7 +1,6 @@
 ﻿using CommandLine_App.Abstraction;
 using CommandLine_App.Commands;
 using CommandLine_App.Pools;
-using CommandLine_App.ProcessService;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -17,8 +16,7 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
     {
         public StartName()
         {
-            ArgumentDescription = "Start name (string value)," +
-                "like [start name firefox].\n";
+            ArgumentDescription = "Start name (string value), like [start name firefox].\n";
         }
         public override bool Execute(params string[] param)
         {

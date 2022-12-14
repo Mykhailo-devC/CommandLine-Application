@@ -13,7 +13,7 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
     {
         public StartFileCommand()
         {
-            Name = "start file";
+            Description = "start file";
             ArgumentDescription = "Start file (string value)," +
                 "like [start file C:\\Program Files\\Mozilla Firefox\\firefox.exe].\n";
         }
@@ -36,7 +36,7 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
         }
         public override string ToString()
         {
-            return $"\t'{Name}' [path_value] - starts the process with specified file path.";
+            return $"\t'{Description}' [path_value] - starts the process with specified file path.";
         }
 
         private bool StartFile(string path)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using CommandLine_App.Pools;
 using Serilog;
@@ -7,13 +8,6 @@ namespace CommandLine_App.HelperService
 {
     public class Helper : IHelper
     {
-        public HelpCommand HelpCommand { get; }
-
-        public Helper()
-        {
-            HelpCommand = new HelpCommand(this);
-        }
-
         public void StandartHelp()
         {
             Log.Information($"{MethodBase.GetCurrentMethod().Name} was activated!");
@@ -26,12 +20,14 @@ namespace CommandLine_App.HelperService
         public void HelpChooseCommand(string param)
         {
             Log.Information($"{MethodBase.GetCurrentMethod().Name} was activated!");
-
-            foreach (var name in Enum.GetNames(typeof(CommandType)))
+            if (param != null)
             {
-                if (name.ToLower().StartsWith(param))
+                foreach (var name in Enum.GetNames(typeof(CommandType)))
                 {
-                    Console.WriteLine($"Maybe you mean '{name}' command?");
+                    if (name.ToLower().StartsWith(param))
+                    {
+                        Console.WriteLine($"Maybe you mean '{name}' command?");
+                    }
                 }
             }
 
@@ -41,18 +37,18 @@ namespace CommandLine_App.HelperService
         public void HelpChooseParameter(string param)
         {
             Log.Information($"{MethodBase.GetCurrentMethod().Name} was activated!");
-
-            foreach (var name in Enum.GetNames(typeof(CommandChildrenType)))
+            if (param != null)
             {
-                if (name.ToLower().StartsWith(param))
+                foreach (var name in Enum.GetNames(typeof(ParameterType)))
                 {
-                    Console.WriteLine($"Maybe you mean '{name}' parameter?");
+                    if (name.ToLower().StartsWith(param))
+                    {
+                        Console.WriteLine($"Maybe you mean '{name}' parameter?");
+                    }
                 }
             }
 
             Console.WriteLine("Please type 'help' command to see existing parameters for this command.");
         }
-
-        
     }
 }

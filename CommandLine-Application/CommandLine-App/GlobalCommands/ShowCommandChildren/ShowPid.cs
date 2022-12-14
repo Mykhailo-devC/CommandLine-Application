@@ -1,7 +1,6 @@
 ﻿using CommandLine_App.Commands;
 using CommandLine_App.HelperService;
 using CommandLine_App.Pools;
-using CommandLine_App.ProcessService;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -16,8 +15,7 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
     { 
         public ShowPid()
         {
-            ArgumentDescription = "Show pid (int value), " +
-                "like [show pid 89].\n";
+            ArgumentDescription = "Show pid (int value), like [show pid 89].\n";
         }
 
         public override bool Execute(params string[] param)
@@ -36,8 +34,7 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
 
         public new string ToString()
         {
-            return $"\tCommand '{this.GetType().Name.ToLower().Insert(4, " ")}' [pid_value] - shows running process" +
-                $" with specified process identifier";
+            return $"\tCommand 'show pid' [pid_value] - shows running process with specified process identifier";
         }
 
         private void ShowByPID(int arg)

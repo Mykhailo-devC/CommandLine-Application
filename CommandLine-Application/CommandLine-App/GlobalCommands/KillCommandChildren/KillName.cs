@@ -1,7 +1,6 @@
 ﻿using CommandLine_App.Abstraction;
 using CommandLine_App.Commands;
 using CommandLine_App.Pools;
-using CommandLine_App.ProcessService;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -16,8 +15,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
     {
         public KillName()
         {
-            ArgumentDescription = "Kill name (string value)," +
-                "like [kill name firefox].\n";
+            ArgumentDescription = "Kill name (string value), like [kill name firefox].\n";
         }
         public override bool Execute(params string[] param)
         {

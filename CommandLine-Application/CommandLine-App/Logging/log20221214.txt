@@ -1,0 +1,133 @@
+|Flow:d856dd5e-c666-4083-a4d3-c5220f38c1fb| 2022-12-14 23:01:36 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:d856dd5e-c666-4083-a4d3-c5220f38c1fb| 2022-12-14 23:02:09 [ERR] [Class:CommandLine_App.InputValidatorService.InputParser][Method:TryParseUserInput][Input = []]
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CommandLine_App.InputValidatorService.InputParser.TryParseUserInput(List`1 userInput, InputParseResult& result) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 47
+|Flow:465ad890-f452-4886-a592-cb05d36016fc| 2022-12-14 23:02:59 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:465ad890-f452-4886-a592-cb05d36016fc| 2022-12-14 23:02:59 [ERR] [Class:CommandLine_App.InputValidatorService.InputParser][Method:TryParseUserInput][Input = []]
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CommandLine_App.InputValidatorService.InputParser.TryParseUserInput(List`1 userInput, InputParseResult& result) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 47
+|Flow:43f61b80-feed-4cb6-8340-7e9337eb4f9c| 2022-12-14 23:03:12 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:43f61b80-feed-4cb6-8340-7e9337eb4f9c| 2022-12-14 23:03:12 [ERR] [Class:CommandLine_App.InputValidatorService.InputParser][Method:TryParseUserInput][Input = []]
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CommandLine_App.InputValidatorService.InputParser.TryParseUserInput(List`1 userInput, InputParseResult& result) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 47
+|Flow:5e157ea0-7411-472a-adea-94ebcb17c9c3| 2022-12-14 23:03:43 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:5e157ea0-7411-472a-adea-94ebcb17c9c3| 2022-12-14 23:03:43 [ERR] [Class:CommandLine_App.InputValidatorService.InputParser][Method:TryParseUserInput][Input = []]
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CommandLine_App.InputValidatorService.InputParser.TryParseUserInput(List`1 userInput, InputParseResult& result) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 47
+|Flow:96ebfc80-8201-4425-b67f-9722c2ae675a| 2022-12-14 23:04:25 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:96ebfc80-8201-4425-b67f-9722c2ae675a| 2022-12-14 23:04:25 [ERR] [Class:CommandLine_App.InputValidatorService.InputParser][Method:TryParseUserInput][Input = []]
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CommandLine_App.InputValidatorService.InputParser.TryParseUserInput(List`1 userInput, InputParseResult& result) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 47
+|Flow:7bfd9a72-e1a3-4a35-9027-54d59dd8bcba| 2022-12-14 23:05:05 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:7bfd9a72-e1a3-4a35-9027-54d59dd8bcba| 2022-12-14 23:05:05 [ERR] [Class:CommandLine_App.InputValidatorService.InputParser][Method:TryParseUserInput][Input = []]
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CommandLine_App.InputValidatorService.InputParser.TryParseUserInput(List`1 userInput, InputParseResult& result) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 47
+|Flow:d451fd2e-0364-4845-8670-06f74f5f8078| 2022-12-14 23:05:58 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:d451fd2e-0364-4845-8670-06f74f5f8078| 2022-12-14 23:05:58 [ERR] [Class:CommandLine_App.InputValidatorService.InputParser][Method:TryParseUserInput][Input = []]
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CommandLine_App.InputValidatorService.InputParser.TryParseUserInput(List`1 userInput, InputParseResult& result) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 47
+|Flow:b80b37d2-53ef-4b5e-b0e6-45460692f1d9| 2022-12-14 23:06:49 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:b80b37d2-53ef-4b5e-b0e6-45460692f1d9| 2022-12-14 23:06:49 [ERR] [Class:CommandLine_App.InputValidatorService.InputParser][Method:TryParseUserInput][Input = []]
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CommandLine_App.InputValidatorService.InputParser.TryParseUserInput(List`1 userInput, InputParseResult& result) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 47
+|Flow:719ed61b-bede-42bb-937c-3cf37c5d50d6| 2022-12-14 23:07:43 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:719ed61b-bede-42bb-937c-3cf37c5d50d6| 2022-12-14 23:07:43 [ERR] [Class:CommandLine_App.InputValidatorService.InputParser][Method:TryParseUserInput][Input = []]
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CommandLine_App.InputValidatorService.InputParser.TryParseUserInput(List`1 userInput, InputParseResult& result) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 47
+|Flow:1bcbb8d2-09ff-416b-8632-6707bc816d03| 2022-12-14 23:08:48 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:1bcbb8d2-09ff-416b-8632-6707bc816d03| 2022-12-14 23:09:24 [ERR] [Class:CommandLine_App.InputValidatorService.InputParser][Method:TryParseUserInput][Input = ["show"]]
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CommandLine_App.InputValidatorService.InputParser.TryParseUserInput(List`1 userInput, InputParseResult& result) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 49
+|Flow:2e26c544-7805-4a03-9f45-e6826e35aeb0| 2022-12-14 23:11:43 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:653109a3-778f-4556-9590-2aeb3c3e9df4| 2022-12-14 23:12:50 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:653109a3-778f-4556-9590-2aeb3c3e9df4| 2022-12-14 23:13:05 [WRN] User inputs incorrect command, [input = 'null']
+|Flow:653109a3-778f-4556-9590-2aeb3c3e9df4| 2022-12-14 23:13:30 [WRN] User inputs incorrect command, [input = '[]']
+|Flow:50daa9c6-2f9d-44d8-a422-3ac011f85fe0| 2022-12-14 23:21:12 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:50daa9c6-2f9d-44d8-a422-3ac011f85fe0| 2022-12-14 23:21:39 [WRN] User inputs incorrect command, [input = 'null']
+|Flow:50daa9c6-2f9d-44d8-a422-3ac011f85fe0| 2022-12-14 23:21:42 [WRN] User inputs incorrect command child, [input = '["show"]']
+|Flow:50daa9c6-2f9d-44d8-a422-3ac011f85fe0| 2022-12-14 23:21:49 [INF] HelpChooseParameter was activated!
+|Flow:50daa9c6-2f9d-44d8-a422-3ac011f85fe0| 2022-12-14 23:22:16 [ERR] [Class:CommandLine_App.InputValidatorService.InputParser][Method:TryParseUserInput][Input = ["show"]]
+System.ArgumentNullException: Value cannot be null. (Parameter 'value')
+   at System.String.StartsWith(String value)
+   at CommandLine_App.HelperService.Helper.HelpChooseParameter(String param) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\Helper.cs:line 41
+   at CommandLine_App.InputValidatorService.InputParser.TryParseUserInput(List`1 userInput, InputParseResult& result) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 68
+|Flow:85c8ade6-a82c-4ab6-9e41-13a113df3e7f| 2022-12-14 23:22:47 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:85c8ade6-a82c-4ab6-9e41-13a113df3e7f| 2022-12-14 23:22:50 [WRN] User inputs incorrect command, [input = 'null']
+|Flow:85c8ade6-a82c-4ab6-9e41-13a113df3e7f| 2022-12-14 23:22:56 [WRN] User inputs incorrect command child, [input = '["show"]']
+|Flow:85c8ade6-a82c-4ab6-9e41-13a113df3e7f| 2022-12-14 23:22:57 [INF] HelpChooseParameter was activated!
+|Flow:85c8ade6-a82c-4ab6-9e41-13a113df3e7f| 2022-12-14 23:23:01 [ERR] [Class:CommandLine_App.InputValidatorService.InputParser][Method:TryParseUserInput][Input = ["show"]]
+System.ArgumentNullException: Value cannot be null. (Parameter 'value')
+   at System.String.StartsWith(String value)
+   at CommandLine_App.HelperService.Helper.HelpChooseParameter(String param) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\Helper.cs:line 41
+   at CommandLine_App.InputValidatorService.InputParser.TryParseUserInput(List`1 userInput, InputParseResult& result) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 68
+|Flow:5f87a90d-9407-462a-9ee7-bd4a91a9ad7c| 2022-12-14 23:25:11 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:5f87a90d-9407-462a-9ee7-bd4a91a9ad7c| 2022-12-14 23:25:17 [WRN] User inputs incorrect command, [input = 'null']
+|Flow:5f87a90d-9407-462a-9ee7-bd4a91a9ad7c| 2022-12-14 23:25:20 [WRN] User inputs incorrect command child, [input = '["show"]']
+|Flow:5f87a90d-9407-462a-9ee7-bd4a91a9ad7c| 2022-12-14 23:25:22 [INF] HelpChooseParameter was activated!
+|Flow:412afe78-8683-4840-8fa8-bea57a8d8e0e| 2022-12-14 23:25:39 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:412afe78-8683-4840-8fa8-bea57a8d8e0e| 2022-12-14 23:25:39 [INF] User inputs valid commands!, [input = '["show","all"]']
+|Flow:412afe78-8683-4840-8fa8-bea57a8d8e0e| 2022-12-14 23:25:39 [ERR] [Class:CommandLine_App.InputValidatorService.InputParser][Method:TryParseUserInput][Input = ["show","all"]]
+System.ArgumentNullException: Value cannot be null. (Parameter 'source')
+   at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+   at System.Linq.Enumerable.Any[TSource](IEnumerable`1 source)
+   at CommandLine_App.InputValidatorService.InputParser.IsValidAllChildArguments(String[] args) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 88
+   at CommandLine_App.InputValidatorService.InputParser.TryParseUserInput(List`1 userInput, InputParseResult& result) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 59
+|Flow:e657be24-49d7-4580-89bb-8c6124ac43fd| 2022-12-14 23:25:45 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:e657be24-49d7-4580-89bb-8c6124ac43fd| 2022-12-14 23:25:45 [WRN] User inputs incorrect command, [input = 'null']
+|Flow:e657be24-49d7-4580-89bb-8c6124ac43fd| 2022-12-14 23:25:45 [WRN] User inputs incorrect command child, [input = '["kill"]']
+|Flow:e657be24-49d7-4580-89bb-8c6124ac43fd| 2022-12-14 23:25:45 [INF] HelpChooseParameter was activated!
+|Flow:0b298b98-58f4-4047-9b5a-c6197da71915| 2022-12-14 23:29:07 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:94aedda5-e0df-42ef-84cd-c31ee368fc36| 2022-12-14 23:29:12 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:07b9f05c-2d83-421c-a5b2-e48180c9b64b| 2022-12-14 23:29:26 [WRN] User inputs incorrect command, [input = '["he"]']
+|Flow:07b9f05c-2d83-421c-a5b2-e48180c9b64b| 2022-12-14 23:29:26 [INF] HelpChooseCommand was activated!
+|Flow:311b360e-8660-43cd-835a-15b96e23a9bc| 2022-12-14 23:29:32 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:df334f8c-4017-4ded-9b62-01b31df8cf2d| 2022-12-14 23:45:25 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:ea8033ed-c045-4ed3-b3d8-36609ccd520b| 2022-12-14 23:45:33 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:e112d4f4-1bef-44cb-be1e-135b5583993b| 2022-12-14 23:45:38 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:e112d4f4-1bef-44cb-be1e-135b5583993b| 2022-12-14 23:45:38 [WRN] User inputs incorrect command, [input = '["so"]']
+|Flow:e112d4f4-1bef-44cb-be1e-135b5583993b| 2022-12-14 23:45:38 [INF] HelpChooseCommand was activated!
+|Flow:46c4f725-c4a9-4e18-8c87-a70f364d3e82| 2022-12-14 23:45:43 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:46c4f725-c4a9-4e18-8c87-a70f364d3e82| 2022-12-14 23:45:43 [WRN] User inputs incorrect command, [input = '["sh"]']
+|Flow:46c4f725-c4a9-4e18-8c87-a70f364d3e82| 2022-12-14 23:45:43 [INF] HelpChooseCommand was activated!
+|Flow:eb4b2076-2f13-46cc-830c-b4a8fdb54d1d| 2022-12-14 23:45:50 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:eb4b2076-2f13-46cc-830c-b4a8fdb54d1d| 2022-12-14 23:45:50 [WRN] User inputs incorrect command child, [input = '["show","a"]']
+|Flow:eb4b2076-2f13-46cc-830c-b4a8fdb54d1d| 2022-12-14 23:45:50 [INF] HelpChooseParameter was activated!
+|Flow:bbd6850b-d7b1-401f-b188-d2af8aec1e2d| 2022-12-14 23:45:58 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:bbd6850b-d7b1-401f-b188-d2af8aec1e2d| 2022-12-14 23:45:58 [INF] User inputs valid commands!, [input = '["show","all"]']
+|Flow:bbd6850b-d7b1-401f-b188-d2af8aec1e2d| 2022-12-14 23:45:58 [ERR] [Class:CommandLine_App.InputValidatorService.InputParser][Method:TryParseUserInput][Input = ["show","all"]]
+System.ArgumentNullException: Value cannot be null. (Parameter 'source')
+   at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+   at System.Linq.Enumerable.Any[TSource](IEnumerable`1 source)
+   at CommandLine_App.InputValidatorService.InputParser.IsValidAllChildArguments(String[] args) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 94
+   at CommandLine_App.InputValidatorService.InputParser.TryParseUserInput(List`1 userInput, InputParseResult& result) in E:\Projects\CommandLine-Application\CommandLine-Application\CommandLine-App\Utilities\Implementations\InputParser.cs:line 57
+|Flow:be7d6a2b-e902-404b-bcf8-3849dd8d316b| 2022-12-14 23:46:32 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:be7d6a2b-e902-404b-bcf8-3849dd8d316b| 2022-12-14 23:47:24 [INF] User inputs valid commands!, [input = '["show","all"]']
+|Flow:184a739a-f77c-433f-9383-4bcbc658ab99| 2022-12-14 23:48:43 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:184a739a-f77c-433f-9383-4bcbc658ab99| 2022-12-14 23:48:43 [INF] User inputs valid commands!, [input = '["show","all"]']
+|Flow:9433430a-1903-46ec-97c0-e5be9c15dd8a| 2022-12-14 23:48:50 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:9433430a-1903-46ec-97c0-e5be9c15dd8a| 2022-12-14 23:48:50 [INF] User inputs valid commands!, [input = '["show","all","sa"]']
+|Flow:67c91874-3831-430e-8d64-85b4b654e71a| 2022-12-14 23:48:57 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:67c91874-3831-430e-8d64-85b4b654e71a| 2022-12-14 23:48:57 [INF] User inputs valid commands!, [input = '["kill","memory"]']
+|Flow:6dd9fdae-418c-480e-9a49-800e221ee9d1| 2022-12-14 23:49:05 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']
+|Flow:6dd9fdae-418c-480e-9a49-800e221ee9d1| 2022-12-14 23:49:05 [WRN] User inputs incorrect command, [input = '["ki","mem"]']
+|Flow:6dd9fdae-418c-480e-9a49-800e221ee9d1| 2022-12-14 23:49:05 [INF] HelpChooseCommand was activated!
+|Flow:b2be7ef9-daba-4c8f-839c-804cc6f5934d| 2022-12-14 23:51:00 [INF] User inputs valid commands!, [input = '["show","all"]']
+|Flow:b2be7ef9-daba-4c8f-839c-804cc6f5934d| 2022-12-14 23:51:00 [INF] 'CommandLine_App.GlobalCommands.ShowCommandChildren.ShowAll' has been created
+|Flow:b2be7ef9-daba-4c8f-839c-804cc6f5934d| 2022-12-14 23:51:01 [INF] [Class:CommandLine_App.GlobalCommands.ShowCommandChildren.ShowAll][Method:ShowAllProcesses] finished successfully!
+|Flow:b2be7ef9-daba-4c8f-839c-804cc6f5934d| 2022-12-14 23:51:01 [INF] Program finish working.
+
+|Flow:95913c70-c2f4-42f8-afee-053074962c29| 2022-12-14 23:51:04 [WRN] User inputs incorrect command, [input = '["sho"]']
+|Flow:95913c70-c2f4-42f8-afee-053074962c29| 2022-12-14 23:51:04 [INF] HelpChooseCommand was activated!
+|Flow:090e21a1-18e2-4873-980d-9197776dd3b0| 2022-12-14 23:51:09 [WRN] User inputs incorrect command child, [input = '["show","al"]']
+|Flow:090e21a1-18e2-4873-980d-9197776dd3b0| 2022-12-14 23:51:09 [INF] HelpChooseParameter was activated!
+|Flow:f3c731f4-d4ad-4573-a5b3-f6083cb4beba| 2022-12-14 23:51:40 [INF] User input help command, [input = 'System.Collections.Generic.List`1[System.String]']

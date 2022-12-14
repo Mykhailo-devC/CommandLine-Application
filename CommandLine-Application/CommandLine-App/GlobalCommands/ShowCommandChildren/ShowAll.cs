@@ -1,7 +1,6 @@
 ﻿using CommandLine_App.Commands;
 using CommandLine_App.HelperService;
 using CommandLine_App.Pools;
-using CommandLine_App.ProcessService;
 using Serilog;
 using System;
 using System.Collections.Generic;
