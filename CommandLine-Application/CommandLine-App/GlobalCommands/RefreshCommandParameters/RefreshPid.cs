@@ -1,22 +1,12 @@
-﻿using CommandLine_App.Abstraction;
-using CommandLine_App.Commands;
-using CommandLine_App.Pools;
+﻿using CommandLine_App.Commands;
 using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace CommandLine_App.GlobalCommands.RefreshCommandChildren
 {
     public class RefreshPid : Refresh
     {
-        public RefreshPid()
-        {
-            ArgumentDescription = "Refresh pid (string value), like [refresh name 242].\n";
-        }
         public override bool Execute(params string[] param)
         {
             try
@@ -29,11 +19,6 @@ namespace CommandLine_App.GlobalCommands.RefreshCommandChildren
                 Log.Error(ex, "[Class:{0}][Method:{1}][Parameters = {2}]", this.GetType(), MethodBase.GetCurrentMethod().Name, param);
                 return false;
             }
-        }
-
-        public new string ToString()
-        {
-            return $"\tCommand 'refresh pid' [pid_value] - refresh running process with specified process identifier";
         }
 
         private void RefreshByPID(int arg)

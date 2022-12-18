@@ -1,22 +1,13 @@
 ﻿using CommandLine_App.Commands;
-using CommandLine_App.HelperService;
-using CommandLine_App.Pools;
 using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace CommandLine_App.GlobalCommands.ShowCommandChildren
 {
     public class ShowAll : Show
     {
-        public ShowAll()
-        {
-            ArgumentDescription = "This parameter takes no arguments, like [show all]\n";
-        }
         public override bool Execute(params string[] param)
         {
             try
@@ -31,10 +22,6 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             }
         }
 
-        public new string ToString()
-        {
-            return $"\tCommand 'show all' - shows all running processes at the execution moment";
-        }
         private void ShowAllProcesses()
         {
             var processes = _processWrapper.GetProcesses().OrderBy(e => e.ProcessName);

@@ -1,12 +1,6 @@
 ﻿using CommandLine_App.Abstraction;
-using CommandLine_App.HelperService;
-using CommandLine_App.Pools;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
 
 namespace CommandLine_App.Commands
@@ -14,11 +8,6 @@ namespace CommandLine_App.Commands
     public abstract class Show : Command
     {
         public override abstract bool Execute(params string[] param);
-
-        public override string ToString()
-        {
-            return $"\nCommand '{this.GetType().Name}' - shows running processes.";
-        }
 
         protected string ProcessesToString(IEnumerable<Process> processes)
         {

@@ -1,21 +1,18 @@
-﻿
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CommandLine_App.Pools
 {
-    // Help["Show"]["All"]
-    //Indexator
-
     public class Help
     {
-        public Dictionary<CommandType?, CommandDescription> CommandDescriptions =>
-            new Dictionary<CommandType?, CommandDescription>()
+        public Dictionary<CommandType, CommandDescription> CommandDescriptions =>
+            new Dictionary<CommandType, CommandDescription>()
             {
                 { CommandType.Show, new CommandDescription(
                     name: "Show",
                     description: "Command 'show' - shows running processes.",
-                    parameters: new Dictionary<ParameterType?, string>()
+                    parameters: new Dictionary<ParameterType, string>()
                     {
                         {
                             ParameterType.All,
@@ -44,7 +41,7 @@ namespace CommandLine_App.Pools
                 { CommandType.Kill, new CommandDescription(
                     name: "Kill",
                     description: "Command 'kill' - stop specifeied processes.",
-                    parameters: new Dictionary<ParameterType?, string>()
+                    parameters: new Dictionary<ParameterType, string>()
                     {
                         {
                             ParameterType.Memory,
@@ -68,7 +65,7 @@ namespace CommandLine_App.Pools
                 { CommandType.Start, new CommandDescription(
                     name: "Start",
                     description: "Command 'start' - starts specifeied processes.",
-                    parameters: new Dictionary<ParameterType?, string>()
+                    parameters: new Dictionary<ParameterType, string>()
                     {
                         {
                             ParameterType.Name,
@@ -81,7 +78,7 @@ namespace CommandLine_App.Pools
                 { CommandType.Refresh, new CommandDescription(
                     name: "Refresh",
                     description: "Command 'refresh' - refresh specifeied processes.",
-                    parameters: new Dictionary<ParameterType?, string>()
+                    parameters: new Dictionary<ParameterType, string>()
                     {
                         {
                             ParameterType.Name,
@@ -109,9 +106,18 @@ namespace CommandLine_App.Pools
 
             return builder.ToString();
         }
-        public CommandDescription this[CommandType? index]
+        public CommandDescription this[CommandType index]
         {
-            get => CommandDescriptions[index];
+            get
+            {
+                if(index == CommandType.Undefined)
+                {
+                    Console.WriteLine(ToString());
+                    return null;
+                }
+
+                return CommandDescriptions[index];
+            }
         }
 
     }

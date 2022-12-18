@@ -1,27 +1,18 @@
-﻿using CommandLine_App.Abstraction;
-using CommandLine_App.Commands;
-using CommandLine_App.Pools;
+﻿using CommandLine_App.Commands;
 using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
-namespace CommandLine_App.GlobalCommands.KillCommandChildren
+namespace CommandLine_App.GlobalCommands.ShowCommandChildren
 {
-    public class KillName : Kill
+    public class ShowName : Show
     {
-        public KillName()
-        {
-            ArgumentDescription = "Kill name (string value), like [kill name firefox].\n";
-        }
         public override bool Execute(params string[] param)
         {
             try
             {
-                KillByName(param[0]);
+                ShowByName(param[0]);
                 return true;
             }
             catch (Exception ex)
@@ -31,11 +22,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
             }
         }
 
-        public new string ToString()
-        {
-            return $"\tCommand '{this.GetType().Name.ToLower().Insert(4, " ")}' [name_value] - stops all running processes with specified name.";
-        }
-        private void KillByName(string arg)
+        private void ShowByName(string arg)
         {
             var processes = _processWrapper.GetProcessesByName(arg).OrderBy(e => e.Id);
 
@@ -47,11 +34,7 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
             else
             {
                 Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
-                Console.WriteLine($"{processes.First().ProcessName} was stopped!");
-                foreach (var process in processes)
-                {
-                    _processWrapper.Kill(process);
-                }
+                Console.WriteLine(ProcessesToString(processes));
             }
         }
     }

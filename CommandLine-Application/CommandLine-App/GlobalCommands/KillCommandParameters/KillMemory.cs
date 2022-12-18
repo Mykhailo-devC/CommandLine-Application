@@ -1,51 +1,38 @@
 ﻿using CommandLine_App.Commands;
-using CommandLine_App.Pools;
 using Serilog;
 using System;
 using System.Linq;
 using System.Reflection;
 
-
-namespace CommandLine_App.GlobalCommands.ShowCommandChildren
+namespace CommandLine_App.GlobalCommands.KillCommandChildren
 {
-    public class ShowMemory : Show
+    public class KillMemory : Kill
     {
-        public ShowMemory()
-        {
-            ArgumentDescription = "Show memory (int value), like [show memory 200]." +
-                "\nShow memory (int start, int end), like [show memory 500 1000].\n";
-        }
         public override bool Execute(params string[] param)
         {
             try
             {
-                if(param.Length == 1)
+                if (param.Length == 1)
                 {
-                    ShowByMemory(int.Parse(param[0]));
+                    KillByMemory(int.Parse(param[0]));
                     return true;
                 }
                 else
                 {
-                    ShowByMemory(int.Parse(param[0]), int.Parse(param[1]));
+                    KillByMemory(int.Parse(param[0]), int.Parse(param[1]));
                     return true;
                 }
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[Class:{0}][Method:{1}][Parameters = {2}]", this.GetType(), MethodBase.GetCurrentMethod().Name, param);
+                Log.Error(ex, "[Class:{0}][Method:{1}][Parameters = {2}]", this.GetType().Name, MethodBase.GetCurrentMethod().Name, param);
                 return false;
             }
         }
 
-        public new string ToString()
+        private void KillByMemory(int arg)
         {
-            return $"\tCommand '{this.GetType().Name.ToLower().Insert(4, " ")}' [memory_value] - shows all running processes with specified memory.";
-        }
-        private void ShowByMemory(int arg)
-        {
-            var processes = _processWrapper.GetProcesses().
-                OrderBy(e => e.ProcessName).
-                Where(e => e.PrivateMemorySize64 / 1024 == arg);
+            var processes = _processWrapper.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 == arg);
 
             if (processes.Count() == 0)
             {
@@ -55,11 +42,15 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             else
             {
                 Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
-                Console.WriteLine(ProcessesToString(processes));
+                foreach (var process in processes)
+                {
+                    Console.WriteLine($"{process.ProcessName} was stopped!");
+                    _processWrapper.Kill(process);
+                }
             }
         }
 
-        private void ShowByMemory(int start, int end)
+        private void KillByMemory(int start, int end)
         {
             var processes = _processWrapper.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 > start && e.PrivateMemorySize64 / 1024 < end);
 
@@ -71,7 +62,11 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             else
             {
                 Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
-                Console.WriteLine(ProcessesToString(processes));
+                foreach (var process in processes)
+                {
+                    Console.WriteLine($"{process.ProcessName} was stopped!");
+                    _processWrapper.Kill(process);
+                }
             }
         }
     }

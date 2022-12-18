@@ -1,5 +1,4 @@
 ﻿using CommandLine_App.Abstraction;
-using CommandLine_App.Commands;
 using CommandLine_App.GlobalCommands.KillCommandChildren;
 using CommandLine_App.GlobalCommands.RefreshCommandChildren;
 using CommandLine_App.GlobalCommands.ShowCommandChildren;
@@ -7,9 +6,7 @@ using CommandLine_App.GlobalCommands.StartCommandChildren;
 using CommandLine_App.Pools;
 using Serilog;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace CommandLine_App.Factory
 {

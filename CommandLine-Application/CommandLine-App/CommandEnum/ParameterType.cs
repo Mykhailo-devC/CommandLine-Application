@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CommandLine_App.Pools
+﻿namespace CommandLine_App.Pools
 {
     public enum ParameterType
     {
+        Undefined,
         All,
         Memory,
         Name,

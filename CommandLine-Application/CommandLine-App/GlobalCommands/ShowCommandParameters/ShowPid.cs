@@ -1,26 +1,19 @@
 ﻿using CommandLine_App.Commands;
-using CommandLine_App.Pools;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 
-namespace CommandLine_App.GlobalCommands.KillCommandChildren
+namespace CommandLine_App.GlobalCommands.ShowCommandChildren
 {
-    public class KillPid : Kill
-    {
-        public KillPid()
-        {
-            ArgumentDescription = "Kill pid (string value), like [kill name 55].\n";
-        }
+    public class ShowPid : Show
+    { 
         public override bool Execute(params string[] param)
         {
             try
             {
-                KillByPID(int.Parse(param[0]));
+                ShowByPID(int.Parse(param[0]));
                 return true;
             }
             catch (Exception ex)
@@ -30,22 +23,15 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
             }
         }
 
-        public new string ToString()
-        {
-            return $"\tCommand '{this.GetType().Name.ToLower().Insert(4, " ")}' [pid_value] - stops running process" +
-                $" with specified process identifier";
-        }
-
-        private void KillByPID(int arg)
+        private void ShowByPID(int arg)
         {
             try
             {
                 var process = _processWrapper.GetProcessById(arg);
 
-                _processWrapper.Kill(process);
+                Console.WriteLine(ProcessesToString(new List<Process> { process }));
 
                 Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
-                Console.WriteLine($"{process.ProcessName} was stopped");
             }
             catch (ArgumentException ex)
             {

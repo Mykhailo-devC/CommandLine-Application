@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace CommandLine_App.InputValidatorService
 {
@@ -18,7 +17,6 @@ namespace CommandLine_App.InputValidatorService
         public InputParser()
         {
             _helper = new Helper();
-
         }
         public bool TryParseUserInput(List<string> userInput, out InputParseResult result)
         {
@@ -33,38 +31,37 @@ namespace CommandLine_App.InputValidatorService
                     return false;
                 }
 
-                result.Arguments = userInput.Skip(2).ToArray();
-
                 if (userInput.FirstOrDefault() == "help")
                 {
                     Log.Information($"User input help command, [input = '{userInput}']");
                     result.IsHelp = true;
-                    result.Arguments = null;
                     userInput.RemoveAt(0);
 
                 }
 
-                if (TryParseCommand(userInput.FirstOrDefault(), out result.Command))
+                if (TryParseCommand(userInput.ElementAtOrDefault(0), out result.Command))
                 {
-                    if (TryParseChildCommand(userInput.Skip(1).FirstOrDefault(), out result.Parameter))
+                    if (TryParseCommandParameter(userInput.ElementAtOrDefault(1), out result.Parameter))
                     {
                         Log.Information("User inputs valid commands!, [input = '{0}']", userInput);
 
                         if (result.IsHelp)
                             return true;
 
+                        result.Arguments = userInput.Skip(2).ToArray();
+
                         switch (result.Parameter)
                         {
-                            case ParameterType.Memory: return IsValidMemoryChildAguments(result.Arguments);
-                            case ParameterType.Pid: return IsValidPidChildArguments(result.Arguments);
-                            case ParameterType.Name: return IsValidNameChildArguments(result.Arguments);
-                            case ParameterType.All: return IsValidAllChildArguments(result.Arguments);
+                            case ParameterType.Memory: return IsValidMemoryParameterAguments(result.Arguments);
+                            case ParameterType.Pid: return IsValidPidParameterArguments(result.Arguments);
+                            case ParameterType.Name: return IsValidNameParameterArguments(result.Arguments);
+                            case ParameterType.All: return IsValidAllParameterArguments(result.Arguments);
                             default: return false;
                         }
                     }
                     else
                     {
-                        if (result.IsHelp && userInput.Skip(1).FirstOrDefault() == null)
+                        if (result.IsHelp && userInput.ElementAtOrDefault(1) == null)
                             return true;
 
                         Log.Warning("User inputs incorrect command child, [input = '{0}']", userInput);
@@ -75,13 +72,11 @@ namespace CommandLine_App.InputValidatorService
                 }
                 else
                 {
-                    if (result.IsHelp && userInput.FirstOrDefault() == null)
+                    if (result.IsHelp && userInput.ElementAtOrDefault(0) == null)
                         return true;
 
                     Log.Warning("User inputs incorrect command, [input = '{0}']", userInput);
                     _helper.HelpChooseCommand(userInput.FirstOrDefault());
-
-                    
 
                     return false;
                 }
@@ -93,7 +88,35 @@ namespace CommandLine_App.InputValidatorService
             }
         }
 
-        private bool IsValidAllChildArguments(params string[] args)
+        private bool TryParseCommand(string command, out CommandType Command)
+        {
+            if(Enum.TryParse(command, true, out CommandType ParsedCommand))
+            {
+                Command = ParsedCommand;
+                return true;
+            }
+            else
+            {
+                Command = CommandType.Undefined;
+                return false;
+            }
+        }
+
+        private bool TryParseCommandParameter(string child, out ParameterType CommandChild)
+        {
+            if (Enum.TryParse(child, true, out ParameterType ParsedCommandChild))
+            {
+                CommandChild = ParsedCommandChild; 
+                return true;
+            }
+            else
+            {
+                CommandChild = ParameterType.Undefined;
+                return false;
+            }
+        }
+
+        private bool IsValidAllParameterArguments(params string[] args)
         {
             if (!args.Any())
             {
@@ -105,36 +128,7 @@ namespace CommandLine_App.InputValidatorService
                 return false;
             }
         }
-
-        private bool TryParseCommand(string command, out CommandType? Command)
-        {
-            if(Enum.TryParse(command, true, out CommandType ParsedCommand))
-            {
-                Command = ParsedCommand;
-                return true;
-            }
-            else
-            {
-                Command = null;
-                return false;
-            }
-        }
-
-        private bool TryParseChildCommand(string child, out ParameterType? CommandChild)
-        {
-            if (Enum.TryParse(child, true, out ParameterType ParsedCommandChild))
-            {
-                CommandChild = ParsedCommandChild; 
-                return true;
-            }
-            else
-            {
-                CommandChild = null;
-                return false;
-            }
-        }
-
-        private bool IsValidNameChildArguments(params string[] args)
+        private bool IsValidNameParameterArguments(params string[] args)
         {
             if(args.Length == 1)
             {
@@ -147,7 +141,7 @@ namespace CommandLine_App.InputValidatorService
             }
         }
 
-        private bool IsValidPidChildArguments(params string[] args)
+        private bool IsValidPidParameterArguments(params string[] args)
         {
             if (args.Length == 1 && int.TryParse(args[0], out _))
             {
@@ -160,7 +154,7 @@ namespace CommandLine_App.InputValidatorService
             }
         }
 
-        private bool IsValidMemoryChildAguments(params string[] args)
+        private bool IsValidMemoryParameterAguments(params string[] args)
         {
             if (args.Length == 1 && int.TryParse(args[0], out _))
             {

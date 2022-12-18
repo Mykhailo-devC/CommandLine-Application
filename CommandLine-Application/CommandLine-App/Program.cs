@@ -1,5 +1,4 @@
-﻿
-using CommandLine_App.Factory;
+﻿using CommandLine_App.Factory;
 using CommandLine_App.InputValidatorService;
 using CommandLine_App.Logging;
 using CommandLine_App.Pools;
@@ -8,7 +7,6 @@ using CommandLine_App.Utilities.Interfaces;
 using Serilog;
 using System;
 using System.Linq;
-using System.Reflection;
 
 namespace CommandLine_App
 {
@@ -17,7 +15,7 @@ namespace CommandLine_App
         private static readonly IInputParser _validator = new InputParser();
         private static readonly Help Help = new Help();
         public static void Main(string[] args)
-        { 
+        {
             Logger.LoggerSetup();
             var userInput = Console.ReadLine().Split(" ").ToList();
 
@@ -28,22 +26,7 @@ namespace CommandLine_App
 
             if (result.IsHelp)
             {
-                if (result.Command != null)
-                {
-                    if (result.Parameter != null)
-                    {
-                        Console.WriteLine(Help[result.Command][result.Parameter]);
-                    }
-                    else
-                    {
-                        Console.WriteLine(Help[result.Command]);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine(Help);
-                }
-
+                Console.WriteLine(Help[result.Command]?[result.Parameter]);
                 return;
             }
 
