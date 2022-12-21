@@ -5,6 +5,6 @@ namespace CommandLine_App.Commands
 {
     public abstract class Start : Command
     {
-        public override abstract bool Execute(params string[] param);
+        public abstract bool Execute(params string[] param);
     }
 }

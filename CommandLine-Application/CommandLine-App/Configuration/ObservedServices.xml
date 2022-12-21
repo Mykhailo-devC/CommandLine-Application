@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<services>
+  <service name="EpicOnlineServices" />
+  <service name="GoogleChromeElevationService" />
+  <service name="PaceLicenseDServices" />
+  <!--<service name ="fjhsdkfhsd"/>-->
+  <!--<service name="DCIService"/>-->
+  <service name="norm service" />
+</services>

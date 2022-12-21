@@ -1,6 +1,7 @@
 ﻿using CommandLine_App.Commands;
 using Serilog;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
@@ -17,18 +18,18 @@ namespace CommandLine_App.GlobalCommands.ShowCommandChildren
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[Class:{0}][Method:{1}][Parameters = {2}]", this.GetType(), MethodBase.GetCurrentMethod().Name, param);
+                Log.Error(ex, "[Class:{0}][Method:{1}][Parameters = {2}]", this.GetType().Name, MethodBase.GetCurrentMethod().Name, param);
                 return false;
             }
         }
 
         private void ShowAllProcesses()
         {
-            var processes = _processWrapper.GetProcesses().OrderBy(e => e.ProcessName);
+            var processes = Process.GetProcesses().OrderBy(e => e.ProcessName);
 
             Console.WriteLine(ProcessesToString(processes));
 
-            Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
+            Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
         }
     }
 }

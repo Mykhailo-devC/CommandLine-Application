@@ -1,6 +1,7 @@
 ﻿using CommandLine_App.Commands;
 using Serilog;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
@@ -32,40 +33,40 @@ namespace CommandLine_App.GlobalCommands.KillCommandChildren
 
         private void KillByMemory(int arg)
         {
-            var processes = _processWrapper.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 == arg);
+            var processes = Process.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 == arg);
 
             if (processes.Count() == 0)
             {
-                Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] No existing processes with using {arg}/Kb of memory!");
+                Log.Warning($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] No existing processes with using {arg}/Kb of memory!");
                 Console.WriteLine("No existing processes with using {0}/Kb of memory!", arg);
             }
             else
             {
-                Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
+                Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
                 foreach (var process in processes)
                 {
                     Console.WriteLine($"{process.ProcessName} was stopped!");
-                    _processWrapper.Kill(process);
+                    process.Kill();
                 }
             }
         }
 
         private void KillByMemory(int start, int end)
         {
-            var processes = _processWrapper.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 > start && e.PrivateMemorySize64 / 1024 < end);
+            var processes = Process.GetProcesses().OrderBy(e => e.ProcessName).Where(e => e.PrivateMemorySize64 / 1024 > start && e.PrivateMemorySize64 / 1024 < end);
 
             if (processes.Count() == 0)
             {
-                Log.Warning($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] No existing processes with using {start}-{end}/Kb of memory!");
+                Log.Warning($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] No existing processes with using {start}-{end}/Kb of memory!");
                 Console.WriteLine("No existing processes with using memory between {0}/Kb and {1}/Kb!", start, end);
             }
             else
             {
-                Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
+                Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
                 foreach (var process in processes)
                 {
                     Console.WriteLine($"{process.ProcessName} was stopped!");
-                    _processWrapper.Kill(process);
+                    process?.Kill();
                 }
             }
         }

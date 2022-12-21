@@ -1,4 +1,5 @@
 ﻿using CommandLine_App.Factory;
+using CommandLine_App.GlobalCommands;
 using CommandLine_App.InputValidatorService;
 using CommandLine_App.Logging;
 using CommandLine_App.Pools;
@@ -16,7 +17,11 @@ namespace CommandLine_App
         private static readonly Help Help = new Help();
         public static void Main(string[] args)
         {
-            Logger.LoggerSetup();
+            var w = new Watch();
+
+            w.UpdateService("fjhsdkfhsd", "norm service");
+            //w.RemoveService("fjhsdkfhsd");
+            /*Logger.LoggerSetup();
             var userInput = Console.ReadLine().Split(" ").ToList();
 
             if (!_validator.TryParseUserInput(userInput, out InputParseResult result))
@@ -26,20 +31,20 @@ namespace CommandLine_App
 
             if (result.IsHelp)
             {
-                Console.WriteLine(Help[result.Command]?[result.Parameter]);
+                Console.WriteLine(Help[result.command]?[result.parameter]);
                 return;
             }
 
             var _factory = new CommandFactory();
-            var command =_factory.GetCommand(result.Command, result.Parameter);
+            var command =_factory.GetCommand(result.command, result.parameter);
 
             if(command != null)
             {
                 Log.Information("'{0}' has been created", command.GetType().FullName);
-                command.Execute(result.Arguments);
+                command.Execute(result.arguments);
             }
             Log.Information("Program finish working.\n");
-            Log.CloseAndFlush();
+            Log.CloseAndFlush();*/
             #region
             /*
             var commands = typeof(Command)

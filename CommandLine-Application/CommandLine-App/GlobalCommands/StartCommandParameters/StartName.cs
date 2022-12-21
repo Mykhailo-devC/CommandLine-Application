@@ -1,6 +1,7 @@
 ﻿using CommandLine_App.Commands;
 using Serilog;
 using System;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace CommandLine_App.GlobalCommands.StartCommandChildren
@@ -16,15 +17,20 @@ namespace CommandLine_App.GlobalCommands.StartCommandChildren
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "[Class:{0}][Method:{1}][Parameters = {2}]", this.GetType(), MethodBase.GetCurrentMethod().Name, param);
+                Log.Error(ex, "[Class:{0}][Method:{1}][Parameters = {2}]", this.GetType().Name, MethodBase.GetCurrentMethod().Name, param);
                 return false;
             }
         }
         private void StartByName(string arg)
         {
-            _processWrapper.Start(arg);
+            var info = new ProcessStartInfo()
+            {
+                FileName = arg,
+            };
 
-            Log.Information($"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
+            Process.Start(info);
+
+            Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] finished successfully!");
             Console.WriteLine($"{arg} was started!");
         }
         

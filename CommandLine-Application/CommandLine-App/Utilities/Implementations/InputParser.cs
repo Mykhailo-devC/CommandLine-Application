@@ -1,5 +1,4 @@
-﻿using CommandLine_App.Abstraction;
-using CommandLine_App.HelperService;
+﻿using CommandLine_App.HelperService;
 using CommandLine_App.Pools;
 using CommandLine_App.Utilities.Implementations;
 using CommandLine_App.Utilities.Interfaces;
@@ -31,7 +30,9 @@ namespace CommandLine_App.InputValidatorService
                     return false;
                 }
 
-                if (userInput.FirstOrDefault() == "help")
+                var userCommand = userInput.ElementAtOrDefault(0);
+
+                if (userCommand == "help")
                 {
                     Log.Information($"User input help command, [input = '{userInput}']");
                     result.IsHelp = true;
@@ -39,44 +40,46 @@ namespace CommandLine_App.InputValidatorService
 
                 }
 
-                if (TryParseCommand(userInput.ElementAtOrDefault(0), out result.Command))
+                if (TryParseCommand(userCommand, out result.command))
                 {
-                    if (TryParseCommandParameter(userInput.ElementAtOrDefault(1), out result.Parameter))
+                    var userParameter = userInput.ElementAtOrDefault(1);
+
+                    if (TryParseCommandParameter(userParameter, out result.parameter))
                     {
                         Log.Information("User inputs valid commands!, [input = '{0}']", userInput);
 
                         if (result.IsHelp)
                             return true;
 
-                        result.Arguments = userInput.Skip(2).ToArray();
+                        result.arguments = userInput.Skip(2).ToArray();
 
-                        switch (result.Parameter)
+                        switch (result.parameter)
                         {
-                            case ParameterType.Memory: return IsValidMemoryParameterAguments(result.Arguments);
-                            case ParameterType.Pid: return IsValidPidParameterArguments(result.Arguments);
-                            case ParameterType.Name: return IsValidNameParameterArguments(result.Arguments);
-                            case ParameterType.All: return IsValidAllParameterArguments(result.Arguments);
+                            case ParameterType.Memory: return IsValidMemoryParameterAguments(result.arguments);
+                            case ParameterType.Pid: return IsValidPidParameterArguments(result.arguments);
+                            case ParameterType.Name: return IsValidNameParameterArguments(result.arguments);
+                            case ParameterType.All: return IsValidAllParameterArguments(result.arguments);
                             default: return false;
                         }
                     }
                     else
                     {
-                        if (result.IsHelp && userInput.ElementAtOrDefault(1) == null)
+                        if (result.IsHelp && userParameter == null)
                             return true;
 
-                        Log.Warning("User inputs incorrect command child, [input = '{0}']", userInput);
-                        _helper.HelpChooseParameter(userInput.Skip(1).FirstOrDefault());
+                        Log.Warning("User inputs incorrect command parameter, [input = '{0}']", userInput);
+                        _helper.HelpChooseParameter(userParameter);
 
                         return false;
                     }
                 }
                 else
                 {
-                    if (result.IsHelp && userInput.ElementAtOrDefault(0) == null)
+                    if (result.IsHelp && userCommand == null)
                         return true;
 
                     Log.Warning("User inputs incorrect command, [input = '{0}']", userInput);
-                    _helper.HelpChooseCommand(userInput.FirstOrDefault());
+                    _helper.HelpChooseCommand(userCommand);
 
                     return false;
                 }
@@ -88,30 +91,28 @@ namespace CommandLine_App.InputValidatorService
             }
         }
 
-        private bool TryParseCommand(string command, out CommandType Command)
+        private bool TryParseCommand(string command, out CommandType parsedCommand)
         {
-            if(Enum.TryParse(command, true, out CommandType ParsedCommand))
+            if(Enum.TryParse(command, true, out parsedCommand))
             {
-                Command = ParsedCommand;
                 return true;
             }
             else
             {
-                Command = CommandType.Undefined;
+                parsedCommand = CommandType.Undefined;
                 return false;
             }
         }
 
-        private bool TryParseCommandParameter(string child, out ParameterType CommandChild)
+        private bool TryParseCommandParameter(string parameter, out ParameterType parsedParam)
         {
-            if (Enum.TryParse(child, true, out ParameterType ParsedCommandChild))
+            if (Enum.TryParse(parameter, true, out parsedParam))
             {
-                CommandChild = ParsedCommandChild; 
                 return true;
             }
             else
             {
-                CommandChild = ParameterType.Undefined;
+                parsedParam = ParameterType.Undefined;
                 return false;
             }
         }

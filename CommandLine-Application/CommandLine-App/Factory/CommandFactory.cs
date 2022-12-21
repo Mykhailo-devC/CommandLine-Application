@@ -12,15 +12,15 @@ namespace CommandLine_App.Factory
 {
     public class CommandFactory
     {
-        public Command GetCommand(CommandType? Command, ParameterType? CommandChild)
+        public Command GetCommand(CommandType? command, ParameterType? parameter)
         {
             try
             {
-                switch (Command)
+                switch (command)
                 {
                     case CommandType.Show:
                         {
-                            switch (CommandChild)
+                            switch (parameter)
                             {
                                 case ParameterType.All: return new ShowAll();
                                 case ParameterType.Name: return new ShowName();
@@ -32,7 +32,7 @@ namespace CommandLine_App.Factory
                         }
                     case CommandType.Kill:
                         {
-                            switch (CommandChild)
+                            switch (parameter)
                             {
                                 case ParameterType.Name: return new KillName();
                                 case ParameterType.Pid: return new KillPid();
@@ -43,7 +43,7 @@ namespace CommandLine_App.Factory
                         }
                     case CommandType.Start:
                         {
-                            switch (CommandChild)
+                            switch (parameter)
                             {
                                 case ParameterType.Name: return new StartName();
 
@@ -52,7 +52,7 @@ namespace CommandLine_App.Factory
                         }
                     case CommandType.Refresh:
                         {
-                            switch (CommandChild)
+                            switch (parameter)
                             {
                                 case ParameterType.Name: return new RefreshName();
                                 case ParameterType.Pid: return new RefreshPid();
@@ -66,7 +66,7 @@ namespace CommandLine_App.Factory
             }
             catch (Exception ex)
             {
-                Log.Error(ex, $"[Class:{this.GetType()}][Method:{MethodBase.GetCurrentMethod().Name}][commands = {Command}]");
+                Log.Error(ex, $"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}][commands = {command} {parameter}]");
                 return null;
             }
         }

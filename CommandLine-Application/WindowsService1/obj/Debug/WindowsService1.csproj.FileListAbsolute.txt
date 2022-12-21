@@ -1,0 +1,8 @@
+E:\Projects\CommandLine-Application\CommandLine-Application\WindowsService1\bin\Debug\WindowsService1.exe.config
+E:\Projects\CommandLine-Application\CommandLine-Application\WindowsService1\bin\Debug\WindowsService1.exe
+E:\Projects\CommandLine-Application\CommandLine-Application\WindowsService1\bin\Debug\WindowsService1.pdb
+E:\Projects\CommandLine-Application\CommandLine-Application\WindowsService1\obj\Debug\WindowsService1.csproj.AssemblyReference.cache
+E:\Projects\CommandLine-Application\CommandLine-Application\WindowsService1\obj\Debug\WindowsService1.csproj.SuggestedBindingRedirects.cache
+E:\Projects\CommandLine-Application\CommandLine-Application\WindowsService1\obj\Debug\WindowsService1.csproj.CoreCompileInputs.cache
+E:\Projects\CommandLine-Application\CommandLine-Application\WindowsService1\obj\Debug\WindowsService1.exe
+E:\Projects\CommandLine-Application\CommandLine-Application\WindowsService1\obj\Debug\WindowsService1.pdb

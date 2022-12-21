@@ -3,13 +3,8 @@ using System;
 
 namespace CommandLine_App.Abstraction
 {
-    public abstract class Command
+    public interface Command
     {
-        protected Command()
-        {
-            _processWrapper = new ProcessWrapper();
-        }
-        protected ProcessWrapper _processWrapper { get; set; }
         public abstract bool Execute(params string[] param);
     }
 }
