@@ -37,8 +37,9 @@ namespace CommandLine_App.InputValidatorService
                     Log.Information($"User input help command, [input = '{userInput}']");
                     result.IsHelp = true;
                     userInput.RemoveAt(0);
-
+                    userCommand = userInput.ElementAtOrDefault(0);
                 }
+
 
                 if (TryParseCommand(userCommand, out result.command))
                 {
@@ -131,7 +132,7 @@ namespace CommandLine_App.InputValidatorService
         }
         private bool IsValidNameParameterArguments(params string[] args)
         {
-            if(args.Length == 1)
+            if(args.Length == 1 && !string.IsNullOrWhiteSpace(args.ElementAtOrDefault(0)))
             {
                 return true;
             }
