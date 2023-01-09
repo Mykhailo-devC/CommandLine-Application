@@ -1,6 +1,9 @@
 ﻿using CommandLine_App.Abstraction;
+using CommandLine_App.CommandEnum;
 using CommandLine_App.GlobalCommands.KillCommandChildren;
 using CommandLine_App.GlobalCommands.RefreshCommandChildren;
+using CommandLine_App.GlobalCommands.ServiceCommandParameters;
+using CommandLine_App.GlobalCommands.ServiceCommandParameters.ServiceWatchCommands;
 using CommandLine_App.GlobalCommands.ShowCommandChildren;
 using CommandLine_App.GlobalCommands.StartCommandChildren;
 using CommandLine_App.Pools;
@@ -60,6 +63,17 @@ namespace CommandLine_App.Factory
                                 default: return null;
                             }
                         }
+                    case CommandType.Service:
+                        {
+                            switch (parameter)
+                            {
+                                case ParameterType.Add: return new ServiceAdd();
+                                case ParameterType.Remove: return new ServiceRemove();
+                                case ParameterType.Update: return new ServiceUpdate();
+
+                                default: return null;
+                            }
+                        }
 
                     default: return null;
                 }
@@ -67,6 +81,25 @@ namespace CommandLine_App.Factory
             catch (Exception ex)
             {
                 Log.Error(ex, $"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}][commands = {command} {parameter}]");
+                return null;
+            }
+        }
+
+        public Command GetCommand(CommandType? command, ParameterType? parameter, WatchMode mode)
+        {
+            try
+            {
+                switch (mode)
+                {
+                    case WatchMode.Start: return new ServiceWatchStart();
+                    case WatchMode.Stop: return new ServiceWatchStop();
+
+                    default: return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, $"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}][commands = {command} {parameter} {mode}]");
                 return null;
             }
         }

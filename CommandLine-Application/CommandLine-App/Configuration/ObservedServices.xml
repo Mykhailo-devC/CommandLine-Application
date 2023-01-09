@@ -4,6 +4,5 @@
   <service name="GoogleChromeElevationService" />
   <service name="PaceLicenseDServices" />
   <!--<service name ="fjhsdkfhsd"/>-->
-  <!--<service name="DCIService"/>-->
-  <service name="norm service" />
+  <service name="test" />
 </services>

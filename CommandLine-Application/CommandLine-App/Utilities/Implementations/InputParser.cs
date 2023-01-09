@@ -1,4 +1,5 @@
-﻿using CommandLine_App.HelperService;
+﻿using CommandLine_App.CommandEnum;
+using CommandLine_App.HelperService;
 using CommandLine_App.Pools;
 using CommandLine_App.Utilities.Implementations;
 using CommandLine_App.Utilities.Interfaces;
@@ -54,6 +55,18 @@ namespace CommandLine_App.InputValidatorService
 
                         result.arguments = userInput.Skip(2).ToArray();
 
+                        if(result.command == CommandType.Service)
+                        {
+                            switch (result.parameter)
+                            {
+                                case ParameterType.Add: return IsValidNameParameterArguments(result.arguments);
+                                case ParameterType.Remove: return IsValidNameParameterArguments(result.arguments);
+                                case ParameterType.Update: return IsValidUpdateParameterArguments(result.arguments);
+                                case ParameterType.Watch: return TryParseWatchMode(result.arguments, out result.watchMode);
+                                default: return false;
+                            }
+                        }
+
                         switch (result.parameter)
                         {
                             case ParameterType.Memory: return IsValidMemoryParameterAguments(result.arguments);
@@ -92,6 +105,20 @@ namespace CommandLine_App.InputValidatorService
             }
         }
 
+        private bool TryParseWatchMode(string[] args, out WatchMode watchMode)
+        {
+            if(args.Length == 1 && Enum.TryParse(args[0], true, out watchMode))
+            {
+                return true;
+            }
+            else
+            {
+                watchMode = WatchMode.Undefined;
+                Log.Warning("[Class:{0}][Method:{1}] Incorrect arguments! [arguments = {2}]", this.GetType().Name, MethodBase.GetCurrentMethod().Name, args);
+                return false;
+            }
+        }
+
         private bool TryParseCommand(string command, out CommandType parsedCommand)
         {
             if(Enum.TryParse(command, true, out parsedCommand))
@@ -117,6 +144,18 @@ namespace CommandLine_App.InputValidatorService
                 return false;
             }
         }
+        private bool IsValidUpdateParameterArguments(params string[] args)
+        {
+            if (args.Length == 2 && !string.IsNullOrWhiteSpace(args[0]) && !string.IsNullOrWhiteSpace(args[1]))
+            {
+                return true;
+            }
+            else
+            {
+                Log.Warning("[Class:{0}][Method:{1}] Incorrect arguments! [arguments = {2}]", this.GetType().Name, MethodBase.GetCurrentMethod().Name, args);
+                return false;
+            }
+        }
 
         private bool IsValidAllParameterArguments(params string[] args)
         {
@@ -130,6 +169,7 @@ namespace CommandLine_App.InputValidatorService
                 return false;
             }
         }
+
         private bool IsValidNameParameterArguments(params string[] args)
         {
             if(args.Length == 1 && !string.IsNullOrWhiteSpace(args.ElementAtOrDefault(0)))

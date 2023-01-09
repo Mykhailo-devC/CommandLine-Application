@@ -1,4 +1,5 @@
-﻿using CommandLine_App.Factory;
+﻿using CommandLine_App.CommandEnum;
+using CommandLine_App.Factory;
 using CommandLine_App.GlobalCommands;
 using CommandLine_App.InputValidatorService;
 using CommandLine_App.Logging;
@@ -7,7 +8,10 @@ using CommandLine_App.Utilities.Implementations;
 using CommandLine_App.Utilities.Interfaces;
 using Serilog;
 using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
+using System.Xml.Linq;
 
 namespace CommandLine_App
 {
@@ -17,21 +21,6 @@ namespace CommandLine_App
         private static readonly Help Help = new Help();
         public static void Main(string[] args)
         {
-            /*var t1 = new InputParseResult();
-            t1.command = CommandType.Kill;
-            t1.parameter = ParameterType.All;
-            t1.arguments = new string[0];
-
-            var t2 = new InputParseResult();
-            t2.command = CommandType.Kill;
-            t2.parameter = ParameterType.All;
-            t2.arguments = new string[0];*/
-
-            string[] t1 = new string[0];
-            string[] t2 = new string[0];
-
-            Console.WriteLine(t1 == t2 || Enumerable.SequenceEqual(t1,t2));
-            //w.RemoveService("fjhsdkfhsd");
             /*Logger.LoggerSetup();
             var userInput = Console.ReadLine().Split(" ").ToList();
 
@@ -51,46 +40,66 @@ namespace CommandLine_App
 
             if(command != null)
             {
-                Log.Information("'{0}' has been created", command.GetType().FullName);
+                Log.Information($"[Method:{MethodBase.GetCurrentMethod().Name}]" + 
+                    $"'{command.GetType().FullName}' has been created");
                 command.Execute(result.arguments);
             }
             else
             {
-                log.Error()
+                Log.Error($"[Method:{MethodBase.GetCurrentMethod().Name}] Command == null");
             }
-            Log.Information("Program finish working.\n");
+            
+            Log.Information($"Method:{MethodBase.GetCurrentMethod().Name}]" + 
+                        "Program finish working.\n");
             Log.CloseAndFlush();*/
             #region
-            /*
-            var commands = typeof(Command)
-                .Assembly.GetTypes()
-                .Where(t => t.IsSubclassOf(typeof(Command)) && !t.IsAbstract)
-                .Select(t => (Command)Activator.CreateInstance(t));
+            
 
-            foreach(var c in commands)
-            {
-                var target = c.ToString();
-                Console.WriteLine(target);
-            };
-            */
-            /*while (true)
-            {
-                var userInput = Console.ReadLine();
+            Logger.LoggerSetup();
+            var _factory = new CommandFactory();
 
-                if (CommandPool.Pool.Keys.Contains(userInput))
-                {
-                    CommandPool.Pool[userInput].Execute(null);
-                }
-                else if(userInput == "exit")
+            while (true)
+            {
+                
+                var userInput = Console.ReadLine().Split(" ").ToList();
+
+                if (userInput[0] == "exit")
                 {
                     break;
                 }
+
+                if (!_validator.TryParseUserInput(userInput, out InputParseResult result))
+                {
+                    break;
+                }
+
+                if (result.IsHelp)
+                {
+                    Console.WriteLine(Help[result.command]?[result.parameter]);
+                    break;
+                }
+
+
+                var command = result.watchMode == WatchMode.Undefined ?
+                    _factory.GetCommand(result.command, result.parameter) :
+                    _factory.GetCommand(result.command, result.parameter, result.watchMode);
+
+                if (command != null)
+                {
+                    Log.Information($"[Method:{MethodBase.GetCurrentMethod().Name}]" +
+                        $"'{command.GetType().Name}' has been created");
+                    command.Execute(result.arguments);
+                }
                 else
                 {
-                    //execute helper class
-                    Helper.HelpChooseCommand(userInput);
+                    Console.WriteLine("Command == null!");
+                    Log.Error($"[Method:{MethodBase.GetCurrentMethod().Name}] Command == null");
                 }
-            }*/
+            }
+
+            Log.Information($"Method:{MethodBase.GetCurrentMethod().Name}]" +
+                            "Program finish working.\n");
+            Log.CloseAndFlush();
             #endregion
         }
 

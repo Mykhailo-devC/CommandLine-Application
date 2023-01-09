@@ -6,7 +6,8 @@
         Show,
         Kill,
         Refresh,
-        Start
+        Start,
+        Service
     }
 }
 

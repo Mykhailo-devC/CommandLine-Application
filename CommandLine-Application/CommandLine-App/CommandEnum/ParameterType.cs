@@ -7,5 +7,9 @@
         Memory,
         Name,
         Pid,
+        Add,
+        Remove,
+        Update,
+        Watch
     }
 }

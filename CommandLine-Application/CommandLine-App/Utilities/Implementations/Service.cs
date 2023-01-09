@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿
+using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 
@@ -6,11 +7,9 @@ namespace CommandLine_App.GlobalCommands
 {
     public class Service
     {
-        public delegate void ServiceStatusChange(
-            string name,
-            ServiceControllerStatus newStatus);
+        public delegate void ServiceChangeEventHandler(object name, ServiceChangeEventArgs newStatus);
 
-        public event ServiceStatusChange OnChange;
+        public event ServiceChangeEventHandler OnChange;
         public ServiceController service;
         public ServiceControllerStatus status;
 
@@ -29,11 +28,14 @@ namespace CommandLine_App.GlobalCommands
 
             if(service.Status != status)
             {
-                OnChange.Invoke(Name, service.Status);
+                OnChange.Invoke(this, new ServiceChangeEventArgs(
+                                            Name: Name,
+                                            OldStatus: status,
+                                            NewStatus: service.Status
+                                            ));
             }
 
             status = service.Status;
-            Name = service.ServiceName;
         }
 
         public override string ToString()

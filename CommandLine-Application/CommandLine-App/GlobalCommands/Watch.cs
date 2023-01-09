@@ -1,44 +1,55 @@
-﻿using Serilog;
+﻿using CommandLine_App.Utilities.Implementations;
+using Serilog;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.ServiceProcess;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace CommandLine_App.GlobalCommands
 {
-
     public class Watch
     {
-        public bool IsWatching { get; set; }
+        private bool IsWatching { get; set; }
         public Service[] Services { get; private set; }
-        private FileSystemWatcher watcher;
-        private readonly string ConfigPath;
+        private FileSystemWatcher _watcher;
+        private readonly ServiceRepository _repository;
 
-        public Watch()
+        private readonly string configDirPath;
+        private const string CONFIGURATION_FILE_NAME = "ObservedServices.xml";
+        private const int WATCH_REFRESH_TIME = 2000;
+
+        private const NotifyFilters WATCHER_FILTERS = NotifyFilters.Attributes
+                                     | NotifyFilters.CreationTime
+                                     | NotifyFilters.DirectoryName
+                                     | NotifyFilters.FileName
+                                     | NotifyFilters.LastAccess
+                                     | NotifyFilters.LastWrite
+                                     | NotifyFilters.Security
+                                     | NotifyFilters.Size;
+
+        public Watch(ServiceRepository repoitory)
         {
-            ConfigPath = $"{Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName}" +
-                    $"\\Configuration";
-
+            configDirPath = $"{Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName}" +
+                    @"\Configuration";
+            _repository = repoitory;
             Services = InitializeServices();
             IsWatching = false;
         }
-        public async void WatchStart()
+        public void WatchStart()
         {
-            await Task.Run(() => 
+            Task.Run(() =>
             {
                 try
                 {
                     IsWatching = true;
-                    watcher = InitializeWatcher();
+                    _watcher = InitializeWatcher();
 
                     while (IsWatching)
                     {
-                        if (watcher == null || Services == null)
+                        if (_watcher == null || Services == null)
                             break;
 
                         foreach (Service service in Services)
@@ -50,170 +61,56 @@ namespace CommandLine_App.GlobalCommands
                             Console.WriteLine($"{service.Name} : {service.status}");
                         }
 
-                        Thread.Sleep(3000);
+                        Thread.Sleep(WATCH_REFRESH_TIME);
                         Console.Clear();
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Log.Error(ex, $"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}]" +
                     $"Watch start error.");
                 }
             });
-            
+
         }
 
         public void WatchStop()
         {
-            watcher.Dispose();
+
+            Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
+            $"Watching has been stopped.");
+
+            if(_watcher != null)
+                _watcher.Dispose();
+
             IsWatching = false;
         }
-        #region CRUD operations
-        public void GetAllServices()
-        {
-            Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
-                $"Printing information about all services.");
-
-            foreach (Service service in Services)
-            {
-                Console.WriteLine(service);
-            }
-        }
-        public void AddService(string name)
-        {
-            try
-            {
-                Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
-                $"Adding new service.");
-
-                XDocument xdoc = XDocument.Load
-                (ConfigPath + "\\ObservedServices.xml");
-                var services = xdoc.Root;
-
-                services.Add(new XElement("service",
-                                new XAttribute("name", name))
-                            );
-                xdoc.Save(ConfigPath + "\\ObservedServices.xml");
-            }
-            catch(Exception ex)
-            {
-                Log.Error(ex, $"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}]" +
-                    $" Adding new service failed.");
-            }
-        }
-
-        public void RemoveService(string name)
-        {
-            try
-            {
-                Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
-                $"Removing new service.");
-
-                XDocument xdoc = XDocument.Load
-                (ConfigPath + "\\ObservedServices.xml");
-                var services = xdoc.Root.Elements("service");
-
-                var serviceToRemove = services.FirstOrDefault(s => s.Attribute("name").Value == name);
-
-                if(serviceToRemove == null)
-                {
-                    Log.Warning($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
-                        $"No existig service with {name} name.");
-                }
-
-                serviceToRemove.Remove();
-                xdoc.Save(ConfigPath + "\\ObservedServices.xml");
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex, $"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}]" +
-                    $" Removing service failed.");
-            }
-        }
-
-        public void UpdateService(string serviceName, string newName)
-        {
-            try
-            {
-                Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
-                $"Updating new service.");
-
-                XDocument xdoc = XDocument.Load
-                (ConfigPath + "\\ObservedServices.xml");
-                var services = xdoc.Root.Elements("service");
-
-                var serviceToUpdate = services.FirstOrDefault(s => s.Attribute("name").Value == serviceName);
-
-                if (serviceToUpdate == null)
-                {
-                    Log.Warning($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
-                        $"No existig service with {serviceName} name.");
-                }
-
-                serviceToUpdate.Attribute("name").Value = newName;
-                xdoc.Save(ConfigPath + "\\ObservedServices.xml");
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex, $"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}]" +
-                    $" Service updating failed");
-            }
-        }
-
-        public void GetServiceByName(string name)
-        {
-            try
-            {
-                Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
-                $"Printing information about specificed service.");
-
-                var service = Services.FirstOrDefault(s => s.Name == name);
-
-                if (service == null)
-                {
-                    Log.Warning($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
-                        $"No existig service with {name} name.");
-                }
-
-                Console.WriteLine(service);
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex, $"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}]" +
-                    $" Getting service by name failed.");
-            }
-        }
-        #endregion
         private FileSystemWatcher InitializeWatcher()
         {
             try
             {
                 Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
-                $"Starting watcher initializer.");
+                "Starting watcher initializer.");
 
-                var fileWatcher = new FileSystemWatcher(ConfigPath);
+                var fileWatcher = new FileSystemWatcher(configDirPath);
 
-                fileWatcher.NotifyFilter = NotifyFilters.Attributes
-                                     | NotifyFilters.CreationTime
-                                     | NotifyFilters.DirectoryName
-                                     | NotifyFilters.FileName
-                                     | NotifyFilters.LastAccess
-                                     | NotifyFilters.LastWrite
-                                     | NotifyFilters.Security
-                                     | NotifyFilters.Size;
+                fileWatcher.NotifyFilter = WATCHER_FILTERS;
 
                 fileWatcher.Changed += OnConfigChange;
 
                 fileWatcher.EnableRaisingEvents = true;
-                fileWatcher.Filter = "ObservedServices.xml";
+                fileWatcher.Filter = CONFIGURATION_FILE_NAME;
+
+                Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
+                "File watcher has been initialized successfully.");
 
                 return fileWatcher;
             }
             catch(Exception ex)
             {
                 Log.Error(ex, $"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}]" +
-                    $" Initialize watcher error.");
-
+                    " Initialize watcher error.");
+                WatchStop();
                 return null;
             }
         }
@@ -223,58 +120,51 @@ namespace CommandLine_App.GlobalCommands
             try
             {
                 Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
-                $"Starting serice initializer.");
+                "Starting service initializer.");
 
-                XDocument xdoc = XDocument.Load
-                (ConfigPath + "\\ObservedServices.xml");
-                var services = xdoc.Root.Elements("service");
 
-                var listOfServices = new Service[services.Count()];
-
-                try
+                var services = _repository.GetAllServices().Select(s =>
                 {
-                    for (int i = 0; i < services.Count(); i++)
-                    {
-                        var service = new Service(services.ElementAtOrDefault(i).Attribute("name").Value);
-                        service.OnChange += OnStatusChange;
-                        listOfServices[i] = service;
-                    }
-                }
-                catch (InvalidOperationException ex)
-                {
-                    Log.Error(ex, $"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}]" +
-                        $" Initialize service error.");
-                }
+                    s.OnChange += OnStatusChange;
+                    return s;
+                });
+               
+                Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
+                "All services have been initialized successfully.");
 
-                return listOfServices;
+                return services.ToArray();
             }
             
             catch(Exception ex)
             {
                 Log.Error(ex, $"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}]" +
-                    $" Initialize service error.");
-
+                    " Initialize service error.");
+                WatchStop();
                 return null;
             }
         }
 
-        private void OnStatusChange(string serviceName, ServiceControllerStatus newStatus)
+        private void OnStatusChange(object sernder, ServiceChangeEventArgs e)
         {
             Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
-                $"{serviceName} changed status to {newStatus}.");
+                $"{e.name} changed status from {e.oldStatus} to {e.newStatus}.");
 
-            if (newStatus == ServiceControllerStatus.Stopped ||
-                    newStatus == ServiceControllerStatus.StopPending)
-                Console.ForegroundColor = ConsoleColor.Red;
+            switch (e.newStatus)
+            {
+                case ServiceControllerStatus.Stopped:
+                case ServiceControllerStatus.StopPending:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case ServiceControllerStatus.Running:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                case ServiceControllerStatus.Paused:
+                case ServiceControllerStatus.PausePending:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+            }
 
-            if (newStatus == ServiceControllerStatus.Paused ||
-                newStatus == ServiceControllerStatus.PausePending)
-                Console.ForegroundColor = ConsoleColor.Yellow;
-
-            if (newStatus == ServiceControllerStatus.Running)
-                Console.ForegroundColor = ConsoleColor.Green;
-
-            Console.WriteLine($"{serviceName} status has been changed to {newStatus}!");
+            Console.WriteLine($"{e.name} status has been changed to {e.newStatus}!");
             Console.ResetColor();
         }
 
@@ -283,13 +173,9 @@ namespace CommandLine_App.GlobalCommands
             Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
                 $"{e.FullPath} configuration has been {e.ChangeType}");
 
-            var changeingTask = Task.Run(() =>
-            {
-                Services = InitializeServices();
-                Console.WriteLine($"{e.Name} has been {e.ChangeType}!");
-            });
+            Services = InitializeServices();
+            Console.WriteLine($"{e.Name} has been {e.ChangeType}!");
 
-            changeingTask.Wait();
         }
     }
 
