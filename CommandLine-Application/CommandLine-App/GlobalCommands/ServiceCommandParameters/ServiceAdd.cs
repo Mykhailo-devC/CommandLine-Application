@@ -1,18 +1,17 @@
-﻿using Serilog;
+﻿using CommandLine_App.Utilities.Implementations;
+using Serilog;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace CommandLine_App.GlobalCommands.ServiceCommandParameters
 {
-    public class ServiceAdd : ServiceCommand
+    public class ServiceAdd : Service
     {
         public override bool Execute(params string[] param)
         {
             try
             {
-                _repository.AddService(param[0]);
+                ServiceRepository.AddService(param[0]);
                 return true;
             }
             catch (Exception ex)

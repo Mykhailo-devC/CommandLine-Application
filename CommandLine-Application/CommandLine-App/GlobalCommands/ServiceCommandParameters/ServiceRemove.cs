@@ -1,18 +1,18 @@
-﻿using Serilog;
+﻿using CommandLine_App.Utilities.Implementations;
+using Serilog;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
+
 
 namespace CommandLine_App.GlobalCommands.ServiceCommandParameters
 {
-    public class ServiceRemove : ServiceCommand
+    public class ServiceRemove : Service
     {
         public override bool Execute(params string[] param)
         {
             try
             {
-                _repository.RemoveService(param[0]);
+                ServiceRepository.RemoveService(param[0]);
                 return true;
             }
             catch (Exception ex)

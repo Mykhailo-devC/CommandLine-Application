@@ -1,4 +1,4 @@
-﻿using CommandLine_App.Utilities.Implementations;
+﻿using CommandLine_App.GlobalCommands;
 using Serilog;
 using System;
 using System.IO;
@@ -8,17 +8,28 @@ using System.ServiceProcess;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CommandLine_App.GlobalCommands
+namespace CommandLine_App.Utilities.Implementations
 {
     public class Watch
     {
+        private static Watch watch;
+        public static Watch Instance
+        {
+            get
+            {
+                if (watch == null)
+                {
+                    watch = new Watch();
+                }
+                return watch;
+            }
+        }
+
         private bool IsWatching { get; set; }
-        public Service[] Services { get; private set; }
+        public ServicePresentation[] Services { get; private set; }
         private FileSystemWatcher _watcher;
-        private readonly ServiceRepository _repository;
 
         private readonly string configDirPath;
-        private const string CONFIGURATION_FILE_NAME = "ObservedServices.xml";
         private const int WATCH_REFRESH_TIME = 2000;
 
         private const NotifyFilters WATCHER_FILTERS = NotifyFilters.Attributes
@@ -30,11 +41,10 @@ namespace CommandLine_App.GlobalCommands
                                      | NotifyFilters.Security
                                      | NotifyFilters.Size;
 
-        public Watch(ServiceRepository repoitory)
+        private Watch()
         {
             configDirPath = $"{Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName}" +
                     @"\Configuration";
-            _repository = repoitory;
             Services = InitializeServices();
             IsWatching = false;
         }
@@ -52,7 +62,7 @@ namespace CommandLine_App.GlobalCommands
                         if (_watcher == null || Services == null)
                             break;
 
-                        foreach (Service service in Services)
+                        foreach (ServicePresentation service in Services)
                         {
                             if (service == null)
                                 break;
@@ -67,7 +77,7 @@ namespace CommandLine_App.GlobalCommands
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, $"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}]" +
+                    Log.Error(ex, $"[Class:{GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}]" +
                     $"Watch start error.");
                 }
             });
@@ -77,10 +87,10 @@ namespace CommandLine_App.GlobalCommands
         public void WatchStop()
         {
 
-            Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
+            Log.Information($"[Class:{GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
             $"Watching has been stopped.");
 
-            if(_watcher != null)
+            if (_watcher != null)
                 _watcher.Dispose();
 
             IsWatching = false;
@@ -89,7 +99,7 @@ namespace CommandLine_App.GlobalCommands
         {
             try
             {
-                Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
+                Log.Information($"[Class:{GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
                 "Starting watcher initializer.");
 
                 var fileWatcher = new FileSystemWatcher(configDirPath);
@@ -99,45 +109,45 @@ namespace CommandLine_App.GlobalCommands
                 fileWatcher.Changed += OnConfigChange;
 
                 fileWatcher.EnableRaisingEvents = true;
-                fileWatcher.Filter = CONFIGURATION_FILE_NAME;
+                fileWatcher.Filter = ServiceRepository.CONFIGURATION_FILE_NAME;
 
-                Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
+                Log.Information($"[Class:{GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
                 "File watcher has been initialized successfully.");
 
                 return fileWatcher;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Log.Error(ex, $"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}]" +
+                Log.Error(ex, $"[Class:{GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}]" +
                     " Initialize watcher error.");
                 WatchStop();
                 return null;
             }
         }
 
-        private Service[] InitializeServices()
+        private ServicePresentation[] InitializeServices()
         {
             try
             {
-                Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
+                Log.Information($"[Class:{GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
                 "Starting service initializer.");
 
 
-                var services = _repository.GetAllServices().Select(s =>
+                var services = ServiceRepository.GetAllServices().Select(s =>
                 {
                     s.OnChange += OnStatusChange;
                     return s;
                 });
-               
-                Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
+
+                Log.Information($"[Class:{GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
                 "All services have been initialized successfully.");
 
                 return services.ToArray();
             }
-            
-            catch(Exception ex)
+
+            catch (Exception ex)
             {
-                Log.Error(ex, $"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}]" +
+                Log.Error(ex, $"[Class:{GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}]" +
                     " Initialize service error.");
                 WatchStop();
                 return null;
@@ -146,7 +156,7 @@ namespace CommandLine_App.GlobalCommands
 
         private void OnStatusChange(object sernder, ServiceChangeEventArgs e)
         {
-            Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
+            Log.Information($"[Class:{GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
                 $"{e.name} changed status from {e.oldStatus} to {e.newStatus}.");
 
             switch (e.newStatus)
@@ -170,7 +180,7 @@ namespace CommandLine_App.GlobalCommands
 
         private void OnConfigChange(object sender, FileSystemEventArgs e)
         {
-            Log.Information($"[Class:{this.GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
+            Log.Information($"[Class:{GetType().Name}][Method:{MethodBase.GetCurrentMethod().Name}] " +
                 $"{e.FullPath} configuration has been {e.ChangeType}");
 
             Services = InitializeServices();

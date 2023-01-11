@@ -1,5 +1,4 @@
-﻿using CommandLine_App.CommandEnum;
-using CommandLine_App.HelperService;
+﻿using CommandLine_App.HelperService;
 using CommandLine_App.Pools;
 using CommandLine_App.Utilities.Implementations;
 using CommandLine_App.Utilities.Interfaces;
@@ -59,10 +58,10 @@ namespace CommandLine_App.InputValidatorService
                         {
                             switch (result.parameter)
                             {
-                                case ParameterType.Add: return IsValidNameParameterArguments(result.arguments);
-                                case ParameterType.Remove: return IsValidNameParameterArguments(result.arguments);
+                                case ParameterType.Add: return IsPresentSingleStringArgument(result.arguments);
+                                case ParameterType.Remove: return IsPresentSingleStringArgument(result.arguments);
                                 case ParameterType.Update: return IsValidUpdateParameterArguments(result.arguments);
-                                case ParameterType.Watch: return TryParseWatchMode(result.arguments, out result.watchMode);
+                                case ParameterType.Watch: return IsValidWatchParameterArguments(result.arguments);
                                 default: return false;
                             }
                         }
@@ -71,7 +70,7 @@ namespace CommandLine_App.InputValidatorService
                         {
                             case ParameterType.Memory: return IsValidMemoryParameterAguments(result.arguments);
                             case ParameterType.Pid: return IsValidPidParameterArguments(result.arguments);
-                            case ParameterType.Name: return IsValidNameParameterArguments(result.arguments);
+                            case ParameterType.Name: return IsPresentSingleStringArgument(result.arguments);
                             case ParameterType.All: return IsValidAllParameterArguments(result.arguments);
                             default: return false;
                         }
@@ -105,15 +104,14 @@ namespace CommandLine_App.InputValidatorService
             }
         }
 
-        private bool TryParseWatchMode(string[] args, out WatchMode watchMode)
+        private bool IsValidWatchParameterArguments(string[] args)
         {
-            if(args.Length == 1 && Enum.TryParse(args[0], true, out watchMode))
+            if(args.Length == 1 && (args[0] == "start" || args[0] == "stop"))
             {
                 return true;
             }
             else
             {
-                watchMode = WatchMode.Undefined;
                 Log.Warning("[Class:{0}][Method:{1}] Incorrect arguments! [arguments = {2}]", this.GetType().Name, MethodBase.GetCurrentMethod().Name, args);
                 return false;
             }
@@ -170,9 +168,9 @@ namespace CommandLine_App.InputValidatorService
             }
         }
 
-        private bool IsValidNameParameterArguments(params string[] args)
+        private bool IsPresentSingleStringArgument(params string[] args)
         {
-            if(args.Length == 1 && !string.IsNullOrWhiteSpace(args.ElementAtOrDefault(0)))
+            if(args.Length == 1 && !string.IsNullOrWhiteSpace(args[0]))
             {
                 return true;
             }

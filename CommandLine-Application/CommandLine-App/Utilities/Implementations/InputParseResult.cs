@@ -1,5 +1,4 @@
-﻿using CommandLine_App.CommandEnum;
-using CommandLine_App.Pools;
+﻿using CommandLine_App.Pools;
 using System.Linq;
 
 namespace CommandLine_App.Utilities.Implementations
@@ -8,7 +7,6 @@ namespace CommandLine_App.Utilities.Implementations
     {
         public CommandType command = CommandType.Undefined;
         public ParameterType parameter = ParameterType.Undefined;
-        public WatchMode watchMode = WatchMode.Undefined;
         public string[] arguments = null;
         public bool IsHelp { get; set; } = false;
 

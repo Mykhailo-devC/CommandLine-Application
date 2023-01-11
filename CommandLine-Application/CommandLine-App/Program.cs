@@ -1,5 +1,4 @@
-﻿using CommandLine_App.CommandEnum;
-using CommandLine_App.Factory;
+﻿using CommandLine_App.Factory;
 using CommandLine_App.GlobalCommands;
 using CommandLine_App.InputValidatorService;
 using CommandLine_App.Logging;
@@ -21,6 +20,7 @@ namespace CommandLine_App
         private static readonly Help Help = new Help();
         public static void Main(string[] args)
         {
+            #region Single Command Flow
             /*Logger.LoggerSetup();
             var userInput = Console.ReadLine().Split(" ").ToList();
 
@@ -52,8 +52,10 @@ namespace CommandLine_App
             Log.Information($"Method:{MethodBase.GetCurrentMethod().Name}]" + 
                         "Program finish working.\n");
             Log.CloseAndFlush();*/
-            #region
-            
+            #endregion
+
+            #region MultiCommand Flow
+
 
             Logger.LoggerSetup();
             var _factory = new CommandFactory();
@@ -80,9 +82,7 @@ namespace CommandLine_App
                 }
 
 
-                var command = result.watchMode == WatchMode.Undefined ?
-                    _factory.GetCommand(result.command, result.parameter) :
-                    _factory.GetCommand(result.command, result.parameter, result.watchMode);
+                var command = _factory.GetCommand(result.command, result.parameter);
 
                 if (command != null)
                 {

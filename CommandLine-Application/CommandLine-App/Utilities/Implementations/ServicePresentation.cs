@@ -1,11 +1,10 @@
-﻿
-using System.Linq;
+﻿using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 
 namespace CommandLine_App.GlobalCommands
 {
-    public class Service
+    public class ServicePresentation
     {
         public delegate void ServiceChangeEventHandler(object name, ServiceChangeEventArgs newStatus);
 
@@ -15,7 +14,7 @@ namespace CommandLine_App.GlobalCommands
 
         public string Name { get; private set; }
 
-        public Service(string name)
+        public ServicePresentation(string name)
         {
             service = new ServiceController(name);
             status = service.Status;
