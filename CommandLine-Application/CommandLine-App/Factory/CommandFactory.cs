@@ -69,6 +69,7 @@ namespace CommandLine_App.Factory
                                 case ParameterType.Remove: return new ServiceRemove();
                                 case ParameterType.Update: return new ServiceUpdate();
                                 case ParameterType.Watch: return new ServiceWatch();
+                                case ParameterType.All: return new ServicePrintAll();
 
                                 default: return null;
                             }

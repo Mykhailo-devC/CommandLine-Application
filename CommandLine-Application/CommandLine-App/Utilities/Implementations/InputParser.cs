@@ -62,6 +62,7 @@ namespace CommandLine_App.InputValidatorService
                                 case ParameterType.Remove: return IsPresentSingleStringArgument(result.arguments);
                                 case ParameterType.Update: return IsValidUpdateParameterArguments(result.arguments);
                                 case ParameterType.Watch: return IsValidWatchParameterArguments(result.arguments);
+                                case ParameterType.All: return IsValidAllParameterArguments(result.arguments);
                                 default: return false;
                             }
                         }
